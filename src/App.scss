@@ -5,6 +5,11 @@
     margin: 0;
 }
 
+:root {
+    --primary: #3a0086;
+    --secondary: #86bd22;
+}
+
 body {
-    height: 100vh;
+    background-color: #ececec;
 }
