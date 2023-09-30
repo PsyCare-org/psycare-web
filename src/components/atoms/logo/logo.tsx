@@ -9,7 +9,6 @@ type Props = {
 export const LogoAtom = ({ 
     type = 'full' 
 }: Props) => {
-    console.log(logo)
     return (
         <img 
             className='logo-atom'
