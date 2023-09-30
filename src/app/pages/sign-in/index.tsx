@@ -9,9 +9,14 @@ import PasswordIcon from '@mui/icons-material/Password'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 import EmailIcon from '@mui/icons-material/Email'
+import useApi from 'src/app/hooks/useApi'
+import { useUser } from 'src/app/hooks/useUser'
 import './styles.scss'
 
 const SignIn = () => {
+
+    const { post } = useApi()
+    const { setUser } = useUser()
 
     const {
         control,
@@ -30,7 +35,10 @@ const SignIn = () => {
     const [hidePassword, setHidePassword] = useState<boolean>(true)
 
     const submitHandler = (value: SignInForm) => {
-        console.log(value)
+        post('/auth/sign-in', value, false)
+            .then(res => {
+                setUser(res)
+            })
     }
 
     return (
