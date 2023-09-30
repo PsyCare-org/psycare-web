@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
-import SignIn from 'src/pages/sign-in'
+import SignIn from 'src/app/pages/sign-in'
 
 export const router = createBrowserRouter([
     {

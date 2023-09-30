@@ -1,4 +1,4 @@
-import { AuthTemplate, TextFieldAtom } from 'src/components'
+import { AuthTemplate, TextFieldAtom } from 'src/app/components'
 import { Button, IconButton, Typography } from '@mui/material'
 import { Controller, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'

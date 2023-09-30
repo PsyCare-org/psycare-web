@@ -1,16 +1,14 @@
 import { ReactNode } from 'react'
-import { LogoAtom } from 'src/components/atoms/logo/logo'
 import mindImg from 'src/assets/images/mind.png'
+import { Typography } from '@mui/material'
+import { LogoAtom } from '../../atoms/logo/logo'
 import './auth.scss'
-import { Typography, useTheme } from '@mui/material'
 
 type Props = {
     children: ReactNode
 }
 
 export const AuthTemplate = ({ children }: Props) => {
-    const theme = useTheme()
-
     return (
         <div className='auth-template'>
             <main>
