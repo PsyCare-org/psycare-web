@@ -1,0 +1,42 @@
+div#sign-up-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+
+    div#head {
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+    }
+
+    div#type-selector {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+
+        div#button-group {
+            margin: 0 auto;
+    
+            button.person-type-btn {
+                display: flex;
+                flex-direction: column;
+                gap: .25rem;
+                min-width: 150px;
+            }
+    
+            .Mui-selected {
+                color: var(--primary);
+                background-color: rgba(58, 0, 134, 0.1);
+            }
+        }
+    }
+
+    div#bottom {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
+        text-align: center;
+    }
+}

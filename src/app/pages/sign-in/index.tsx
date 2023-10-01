@@ -13,7 +13,7 @@ import useApi from 'src/app/hooks/useApi'
 import { useUser } from 'src/app/hooks/useUser'
 import './styles.scss'
 
-const SignIn = () => {
+export const SignIn = () => {
 
     const { post } = useApi()
     const { setUser } = useUser()
@@ -113,5 +113,3 @@ const SignIn = () => {
         </AuthTemplate>
     )
 }
-
-export default SignIn
