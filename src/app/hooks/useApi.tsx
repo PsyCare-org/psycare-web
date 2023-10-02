@@ -19,7 +19,11 @@ const useApi = () => {
     
     const errorCallback = (error: any) => {
         console.error(error)
-        createSnack('Um erro inesperado ocorreu, tente novamente', 'error')
+
+        const errorMsg = error.response.data.message || 'Um erro inesperado aconteceu, tente novamente' 
+        createSnack(errorMsg, 'error')
+
+        return Promise.reject(error)
     }
 
     const get = (url: string, useAuth = true) => {
