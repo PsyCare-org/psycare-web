@@ -11,12 +11,16 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 import EmailIcon from '@mui/icons-material/Email'
 import useApi from 'src/app/hooks/useApi'
 import { useUser } from 'src/app/hooks/useUser'
+import { useNavigate } from 'react-router-dom'
 import './styles.scss'
+import { useQuery } from 'src/app/hooks/useQuery'
 
 export const SignIn = () => {
 
     const { post } = useApi()
     const { setUser } = useUser()
+    const navigate = useNavigate()
+    const query = useQuery()
 
     const {
         control,
@@ -27,7 +31,7 @@ export const SignIn = () => {
         reValidateMode: 'onChange',
         mode: 'onChange',
         defaultValues: {
-            email: '',
+            email: query.get('email') || '',
             password: ''
         }
     })
@@ -105,7 +109,7 @@ export const SignIn = () => {
                     <Typography variant='body2'>
                         Ainda não está cadastrado no PsyCare?
                     </Typography>
-                    <Button variant='text'>
+                    <Button variant='text' onClick={() => navigate('/auth/sign-up')}>
                         Criar conta
                     </Button>
                 </div>
