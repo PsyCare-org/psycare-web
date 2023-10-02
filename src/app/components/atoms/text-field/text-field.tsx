@@ -1,27 +1,20 @@
-import { InputAdornment, TextField } from '@mui/material'
-import { ReactNode, RefObject, createRef, forwardRef } from 'react'
-import { ControllerRenderProps } from 'react-hook-form'
+import { InputAdornment, TextField, TextFieldProps } from '@mui/material'
+import { ReactNode, RefObject, forwardRef } from 'react'
 
 type Props = {
-    autoFocus?: boolean
-    id?: string
-    type?: string
-    label: string
-    error?: boolean
-    helperText?: string
     startAdornment?: ReactNode
     endAdornment?: ReactNode
-} & ControllerRenderProps<any, any>
+} & Omit<TextFieldProps, 'InputProps'>
 
 export const TextFieldAtom = forwardRef((
     {
+        multiline,
         startAdornment,
         endAdornment,
         ...props
     }: Props, 
     ref
 ) => {
-
     return (
         <TextField
             {...props}
@@ -44,6 +37,7 @@ export const TextFieldAtom = forwardRef((
                     }
                 }
             }}
+            {...multiline && { multiline: true }}
         />
     )
 })
