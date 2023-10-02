@@ -7,10 +7,20 @@ import PsychologyIcon from '@mui/icons-material/Psychology'
 import { SignUpUser } from './user'
 import { SignUpProfessional } from './professional'
 import './styles.scss'
+import { useSnackbar } from 'src/app/hooks/useSnackbar'
+import { useNavigate } from 'react-router-dom'
 
 export const SignUp = () => {
 
+    const { createSnack } = useSnackbar()
+    const navigate = useNavigate()
+
     const [type, setType] = useState<PersonTypes | null>(null)
+
+    const submitHandler = (value: string) => {
+        createSnack('Conta criada com sucesso!', 'success')
+        navigate('/auth/sign-in?email=' + value)
+    }
 
     return (
         <AuthTemplate>
@@ -47,13 +57,15 @@ export const SignUp = () => {
 
                 { type === 'user' && <SignUpUser/> }
 
-                { type === 'professional' && <SignUpProfessional/> }
+                { type === 'professional' && (
+                    <SignUpProfessional submit={submitHandler} />
+                )}
 
                 <div id='bottom'>
                     <Typography variant='body2'>
                         Já possui cadastro no PsyCare?
                     </Typography>
-                    <Button variant='text'>
+                    <Button variant='text' onClick={() => navigate('/auth/sign-in')}>
                         Entrar
                     </Button>
                 </div>

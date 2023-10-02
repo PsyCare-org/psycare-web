@@ -1,4 +1,5 @@
 import { Theme, createTheme } from '@mui/material'
+import { red } from '@mui/material/colors'
 
 export const customTheme: Theme = createTheme({
     palette: {
@@ -36,6 +37,15 @@ export const customTheme: Theme = createTheme({
             A400: '#aeff61',
             A700: '#a1ff47',
             'contrastText': 'black'
+        },
+    },
+    components: {
+        MuiInputLabel: {
+            styleOverrides: {
+                'asterisk': {
+                    color: red[500]
+                }
+            }
         }
     }
 })

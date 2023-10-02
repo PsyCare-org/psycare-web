@@ -10,6 +10,7 @@ type Props = {
     error?: boolean
     helperText?: string
     disableTyping?: boolean
+    required?: boolean
 } & DatePickerProps<any> & React.RefAttributes<HTMLDivElement>
 
 export const DateFieldAtom = forwardRef((
@@ -17,6 +18,7 @@ export const DateFieldAtom = forwardRef((
         error,
         helperText,
         disableTyping = false,
+        required = false,
         ...props
     }: Props,
     ref
@@ -30,6 +32,7 @@ export const DateFieldAtom = forwardRef((
                     textField: {
                         error,
                         helperText,
+                        required,
                         ...disableTyping && {
                             onKeyDown: e => e.preventDefault(),
                         },
