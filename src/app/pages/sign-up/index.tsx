@@ -6,9 +6,9 @@ import PersonIcon from '@mui/icons-material/Person'
 import PsychologyIcon from '@mui/icons-material/Psychology'
 import { SignUpUser } from './user'
 import { SignUpProfessional } from './professional'
-import './styles.scss'
 import { useSnackbar } from 'src/app/hooks/useSnackbar'
 import { useNavigate } from 'react-router-dom'
+import './styles.scss'
 
 export const SignUp = () => {
 
@@ -55,7 +55,9 @@ export const SignUp = () => {
                     </ToggleButtonGroup>
                 </div>
 
-                { type === 'user' && <SignUpUser/> }
+                { type === 'user' && (
+                    <SignUpUser submit={submitHandler} />
+                )}
 
                 { type === 'professional' && (
                     <SignUpProfessional submit={submitHandler} />
