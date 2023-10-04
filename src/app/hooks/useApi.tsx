@@ -20,7 +20,7 @@ const useApi = () => {
     const errorCallback = (error: any) => {
         console.error(error)
 
-        const errorMsg = error.response.data.message || 'Um erro inesperado aconteceu, tente novamente' 
+        const errorMsg = error?.response?.data?.message || 'Um erro inesperado aconteceu, tente novamente' 
         createSnack(errorMsg, 'error')
 
         return Promise.reject(error)
