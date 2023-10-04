@@ -52,6 +52,8 @@ export const SignUpProfessional = ({ submit }: Props) => {
         reValidateMode: 'onChange',
         mode: 'onChange',
         defaultValues: {
+            cpf: '',
+            crp: '',
             abstract: '',
             birthDate: '',
             confirmPassword: '',
@@ -104,6 +106,42 @@ export const SignUpProfessional = ({ submit }: Props) => {
                         error={!!formErrors.surname}
                         helperText={formErrors.surname?.message}
                     />
+                )}
+            />
+
+            <Controller
+                name='cpf'
+                control={control}
+                render={({ field }) => (
+                    <InputMask
+                        mask='999.999.999-99'
+                        {...field}
+                    >
+                        <TextField
+                            id='cpf'
+                            label='CPF'
+                            error={!!formErrors.cpf}
+                            helperText={formErrors.cpf?.message}
+                        />
+                    </InputMask>
+                )}
+            />
+
+            <Controller
+                name='crp'
+                control={control}
+                render={({ field }) => (
+                    <InputMask
+                        mask='99/99999'
+                        {...field}
+                    >
+                        <TextField
+                            id='crp'
+                            label='Número CRP'
+                            error={!!formErrors.crp}
+                            helperText={formErrors.crp?.message}
+                        />
+                    </InputMask>
                 )}
             />
 

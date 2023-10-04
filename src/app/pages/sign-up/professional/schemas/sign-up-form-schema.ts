@@ -3,9 +3,15 @@ import { ProfessionalType } from 'src/enums/professional-type'
 import * as Yup from 'yup'
 
 export const signUpFormSchema = Yup.object({
+    cpf: Yup.string()
+        .typeError('O CPF é obrigatório')
+        .required('O CPF é obrigatório'),
+    crp: Yup.string()
+        .typeError('O CRP é obrigatório')
+        .required('O CRP é obrigatório'),
     email: Yup.string()
         .typeError('O Email é obrigatório')
-        .email('Deve ser um email válido')
+        .email('Deve ser um Email válido')
         .required('O Email é obrigatório'),
     password: Yup.string()
         .typeError('A Senha é obrigatória')

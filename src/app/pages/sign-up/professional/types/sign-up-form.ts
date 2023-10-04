@@ -2,6 +2,8 @@ import { Gender } from 'src/enums/gender'
 import { ProfessionalType } from 'src/enums/professional-type'
 
 export type SignUpForm = {
+    cpf: string
+    crp: string
     email: string
     password: string
     confirmPassword: string
