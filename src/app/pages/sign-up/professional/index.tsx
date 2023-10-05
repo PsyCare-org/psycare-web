@@ -2,14 +2,14 @@ import { Controller, useForm } from 'react-hook-form'
 import { SignUpForm } from './types/sign-up-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { signUpFormSchema } from './schemas/sign-up-form-schema'
-import { DateFieldAtom, SelectFieldAtom, TextFieldAtom } from 'src/app/components'
+import { ButtonAtom, DateFieldAtom, SelectFieldAtom, TextFieldAtom } from 'src/app/components'
 import EmailIcon from '@mui/icons-material/Email'
 import PasswordIcon from '@mui/icons-material/Password'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 import PhoneIcon from '@mui/icons-material/Phone'
 import { useState } from 'react'
-import { Button, IconButton, InputAdornment, TextField } from '@mui/material'
+import { IconButton, InputAdornment, TextField } from '@mui/material'
 import { Gender } from 'src/enums/gender'
 import InputMask from 'react-input-mask'
 import { ProfessionalType } from 'src/enums/professional-type'
@@ -71,7 +71,8 @@ export const SignUpProfessional = ({ submit }: Props) => {
     const submitHandler = (value: SignUpForm) => {
         const { confirmPassword, ...payload } = value
 
-        post('/professional', payload, false).then(() => submit(value.email))
+        // post('/professional', payload, false).then(() => submit(value.email))
+        post('/professional', payload, false).then(() => console.log('cu'))
     }
 
     return (
@@ -316,13 +317,14 @@ export const SignUpProfessional = ({ submit }: Props) => {
                 )}
             />
 
-            <Button
+            <ButtonAtom
                 variant='contained'
                 type='submit'
                 disabled={!formIsValid}
+                intercept='/professional'
             >
                 Criar conta
-            </Button>
+            </ButtonAtom>
         </form>
     )
 }

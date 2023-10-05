@@ -1,5 +1,5 @@
-import { AuthTemplate, TextFieldAtom } from 'src/app/components'
-import { Button, IconButton, Typography } from '@mui/material'
+import { AuthTemplate, ButtonAtom, TextFieldAtom } from 'src/app/components'
+import { IconButton, Typography } from '@mui/material'
 import { Controller, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { formSchema } from './schemas/form-schema'
@@ -12,8 +12,8 @@ import EmailIcon from '@mui/icons-material/Email'
 import useApi from 'src/app/hooks/useApi'
 import { useUser } from 'src/app/hooks/useUser'
 import { useNavigate } from 'react-router-dom'
-import './styles.scss'
 import { useQuery } from 'src/app/hooks/useQuery'
+import './styles.scss'
 
 export const SignIn = () => {
 
@@ -96,22 +96,23 @@ export const SignIn = () => {
                         )}
                     />
 
-                    <Button 
+                    <ButtonAtom 
                         variant='contained'
                         type='submit'
                         disabled={!formIsValid}
+                        intercept='/auth/sign-in'
                     >
                         Entrar
-                    </Button>
+                    </ButtonAtom>
                 </form>
 
                 <div id='bottom'>
                     <Typography variant='body2'>
                         Ainda não está cadastrado no PsyCare?
                     </Typography>
-                    <Button variant='text' onClick={() => navigate('/auth/sign-up')}>
+                    <ButtonAtom variant='text' onClick={() => navigate('/auth/sign-up')}>
                         Criar conta
-                    </Button>
+                    </ButtonAtom>
                 </div>
             </div>
         </AuthTemplate>

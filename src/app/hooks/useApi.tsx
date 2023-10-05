@@ -51,6 +51,7 @@ const useApi = () => {
     }
 
     return {
+        axios,
         get,
         post,
         put,

@@ -5,8 +5,8 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useState } from 'react'
 import { signUpFormSchema } from './schemas/sign-up-form-schema'
 import { SignUpForm } from './types/sign-up-form'
-import { DateFieldAtom, SelectFieldAtom, TextFieldAtom } from 'src/app/components'
-import { Button, IconButton, InputAdornment, TextField } from '@mui/material'
+import { ButtonAtom, DateFieldAtom, SelectFieldAtom, TextFieldAtom } from 'src/app/components'
+import { IconButton, InputAdornment, TextField } from '@mui/material'
 import ReactInputMask from 'react-input-mask'
 import EmailIcon from '@mui/icons-material/Email'
 import PasswordIcon from '@mui/icons-material/Password'
@@ -208,13 +208,14 @@ export const SignUpUser = ({ submit }: Props) => {
                 )}
             />
 
-            <Button
+            <ButtonAtom
                 variant='contained'
                 type='submit'
                 disabled={!formIsValid}
+                intercept='/user'
             >
                 Criar conta
-            </Button>
+            </ButtonAtom>
         </form>
     )
 }
