@@ -15,7 +15,8 @@ const UserProvider = ({ children }: Props) => {
     }, [])
 
     useEffect(() => {
-        window.sessionStorage.setItem('user', JSON.stringify(user))
+        if(user !== null)
+            window.sessionStorage.setItem('user', JSON.stringify(user))
     }, [user])
 
     return (
