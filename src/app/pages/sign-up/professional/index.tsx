@@ -128,6 +128,7 @@ export const SignUpProfessional = ({ submit }: Props) => {
                             label='CPF'
                             error={!!formErrors.cpf}
                             helperText={formErrors.cpf?.message}
+                            required
                         />
                     </InputMask>
                 )}
@@ -146,6 +147,7 @@ export const SignUpProfessional = ({ submit }: Props) => {
                             label='Número CRP'
                             error={!!formErrors.crp}
                             helperText={formErrors.crp?.message}
+                            required
                         />
                     </InputMask>
                 )}
