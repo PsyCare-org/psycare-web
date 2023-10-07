@@ -1,0 +1,24 @@
+div#profile {
+    width: 70vw;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: .2fr .8fr;
+    gap: 2rem;
+
+    aside {
+        li {
+            display: block;
+            
+            &.active {
+                .MuiListItemButton-root {
+                    background-color: rgba(58, 0, 134, .3);
+                    color: var(--primary);
+                    
+                    .MuiListItemIcon-root {
+                        color: var(--primary);
+                    }
+                }
+            }
+        }
+    }
+}
