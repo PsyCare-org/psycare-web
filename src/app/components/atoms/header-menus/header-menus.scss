@@ -1,0 +1,17 @@
+div#header-menus {
+    display: flex;
+    gap: 1rem;
+
+    button {
+        color: white;
+
+        div.MuiAvatar-root {
+            border: 1px solid white;
+        }
+    }
+}
+
+span#username {
+    font: inherit;
+    font-weight: bold;
+}

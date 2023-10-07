@@ -1,0 +1,10 @@
+div#default-template {
+    display: flex;
+    flex-direction: column;
+    
+    main {
+        height: calc(100vh - 4rem);
+        overflow-y: auto;
+        padding: 1rem 1.5rem;
+    }
+}
