@@ -6,7 +6,7 @@ type Props = {
     endAdornment?: ReactNode
 } & Omit<TextFieldProps, 'InputProps'>
 
-export const TextFieldAtom = forwardRef((
+export const AtomTextField = forwardRef((
     {
         multiline,
         startAdornment,
@@ -42,4 +42,4 @@ export const TextFieldAtom = forwardRef((
     )
 })
 
-TextFieldAtom.displayName = 'TextFieldAtom'
+AtomTextField.displayName = 'AtomTextField'

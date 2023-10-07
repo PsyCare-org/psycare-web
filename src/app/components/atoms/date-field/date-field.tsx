@@ -13,7 +13,7 @@ type Props = {
     required?: boolean
 } & DatePickerProps<any> & React.RefAttributes<HTMLDivElement>
 
-export const DateFieldAtom = forwardRef((
+export const AtomDateField = forwardRef((
     {
         error,
         helperText,
@@ -43,4 +43,4 @@ export const DateFieldAtom = forwardRef((
     )
 })
 
-DateFieldAtom.displayName = 'DateFieldAtom'
+AtomDateField.displayName = 'AtomDateField'

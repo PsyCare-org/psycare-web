@@ -6,7 +6,7 @@ type Props = {
     type?: 'full' | 'icon'
 }
 
-export const LogoAtom = ({ 
+export const AtomLogo = ({ 
     type = 'full' 
 }: Props) => {
     return (

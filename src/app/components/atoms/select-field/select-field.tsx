@@ -7,7 +7,7 @@ type Props = {
     helperText?: string
 } &  Omit<SelectProps, 'children' | 'label'>
 
-export const SelectFieldAtom = forwardRef((
+export const AtomSelectField = forwardRef((
     {
         label,
         options,
@@ -44,4 +44,4 @@ export const SelectFieldAtom = forwardRef((
     )
 })
 
-SelectFieldAtom.displayName  = 'SelectFieldAtom'
+AtomSelectField.displayName  = 'AtomSelectField'

@@ -1,4 +1,4 @@
-import { AuthTemplate, ButtonAtom, TextFieldAtom } from 'src/app/components'
+import { OrgAuth, AtomButton, AtomTextField } from 'src/app/components'
 import { IconButton, Typography } from '@mui/material'
 import { Controller, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -46,7 +46,7 @@ export const SignIn = () => {
     }
 
     return (
-        <AuthTemplate>
+        <OrgAuth>
             <div id='sign-in-wrap'>
                 <div id='head'>
                     <Typography variant='h4'>
@@ -62,7 +62,7 @@ export const SignIn = () => {
                         name='email'
                         control={control}
                         render={({ field }) => (
-                            <TextFieldAtom
+                            <AtomTextField
                                 {...field}
                                 id='email'
                                 type='text'
@@ -79,7 +79,7 @@ export const SignIn = () => {
                         name='password'
                         control={control}
                         render={({ field }) => (
-                            <TextFieldAtom
+                            <AtomTextField
                                 {...field}
                                 id='password'
                                 type={hidePassword ? 'password' : 'text'}
@@ -96,24 +96,24 @@ export const SignIn = () => {
                         )}
                     />
 
-                    <ButtonAtom 
+                    <AtomButton 
                         variant='contained'
                         type='submit'
                         disabled={!formIsValid}
                     >
                         Entrar
-                    </ButtonAtom>
+                    </AtomButton>
                 </form>
 
                 <div id='bottom'>
                     <Typography variant='body2'>
                         Ainda não está cadastrado no PsyCare?
                     </Typography>
-                    <ButtonAtom variant='text' onClick={() => navigate('/auth/sign-up')}>
+                    <AtomButton variant='text' onClick={() => navigate('/auth/sign-up')}>
                         Criar conta
-                    </ButtonAtom>
+                    </AtomButton>
                 </div>
             </div>
-        </AuthTemplate>
+        </OrgAuth>
     )
 }

@@ -1,6 +1,6 @@
 import { Button, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material'
 import { useState } from 'react'
-import { AuthTemplate } from 'src/app/components'
+import { OrgAuth } from 'src/app/components'
 import { PersonTypes } from 'src/types/person-types'
 import PersonIcon from '@mui/icons-material/Person'
 import PsychologyIcon from '@mui/icons-material/Psychology'
@@ -23,7 +23,7 @@ export const SignUp = () => {
     }
 
     return (
-        <AuthTemplate>
+        <OrgAuth>
             <div id='sign-up-wrap'>
                 <div id='head'>
                     <Typography variant='h4'>
@@ -73,6 +73,6 @@ export const SignUp = () => {
                 </div>
             </div>
 
-        </AuthTemplate>
+        </OrgAuth>
     )
 }

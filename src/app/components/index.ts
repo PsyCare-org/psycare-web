@@ -4,4 +4,4 @@ export * from './atoms/logo/logo'
 export * from './atoms/select-field/select-field'
 export * from './atoms/text-field/text-field'
 
-export * from './templates/auth/auth'
+export * from './organisms/auth/auth'

@@ -2,7 +2,7 @@ import { Controller, useForm } from 'react-hook-form'
 import { SignUpForm } from './types/sign-up-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { signUpFormSchema } from './schemas/sign-up-form-schema'
-import { ButtonAtom, DateFieldAtom, SelectFieldAtom, TextFieldAtom } from 'src/app/components'
+import { AtomButton, AtomDateField, AtomSelectField, AtomTextField } from 'src/app/components'
 import EmailIcon from '@mui/icons-material/Email'
 import PasswordIcon from '@mui/icons-material/Password'
 import VisibilityIcon from '@mui/icons-material/Visibility'
@@ -86,7 +86,7 @@ export const SignUpProfessional = ({ submit }: Props) => {
                 name='name'
                 control={control}
                 render={({ field }) => (
-                    <TextFieldAtom
+                    <AtomTextField
                         {...field}
                         required
                         id='name'
@@ -103,7 +103,7 @@ export const SignUpProfessional = ({ submit }: Props) => {
                 name='surname'
                 control={control}
                 render={({ field }) => (
-                    <TextFieldAtom
+                    <AtomTextField
                         required
                         {...field}
                         id='surname'
@@ -155,7 +155,7 @@ export const SignUpProfessional = ({ submit }: Props) => {
                 name='email'
                 control={control}
                 render={({ field }) => (
-                    <TextFieldAtom
+                    <AtomTextField
                         required
                         {...field}
                         id='email'
@@ -172,7 +172,7 @@ export const SignUpProfessional = ({ submit }: Props) => {
                 name='password'
                 control={control}
                 render={({ field }) => (
-                    <TextFieldAtom
+                    <AtomTextField
                         required
                         {...field}
                         id='password'
@@ -194,7 +194,7 @@ export const SignUpProfessional = ({ submit }: Props) => {
                 name='confirmPassword'
                 control={control}
                 render={({ field }) => (
-                    <TextFieldAtom
+                    <AtomTextField
                         required
                         {...field}
                         id='confirmPassword'
@@ -241,7 +241,7 @@ export const SignUpProfessional = ({ submit }: Props) => {
                 name='gender'
                 control={control}
                 render={({ field }) => (
-                    <SelectFieldAtom
+                    <AtomSelectField
                         required
                         {...field}
                         id='gender'
@@ -257,7 +257,7 @@ export const SignUpProfessional = ({ submit }: Props) => {
                 name='birthDate'
                 control={control}
                 render={({ field }) => (
-                    <DateFieldAtom
+                    <AtomDateField
                         required
                         {...field}
                         label='Data de Nascimento'
@@ -273,7 +273,7 @@ export const SignUpProfessional = ({ submit }: Props) => {
                 name='type'
                 control={control}
                 render={({ field }) => (
-                    <SelectFieldAtom
+                    <AtomSelectField
                         required
                         {...field}
                         id='type'
@@ -289,7 +289,7 @@ export const SignUpProfessional = ({ submit }: Props) => {
                 name='languages'
                 control={control}
                 render={({ field }) => (
-                    <SelectFieldAtom
+                    <AtomSelectField
                         required
                         {...field}
                         id='languages'
@@ -306,7 +306,7 @@ export const SignUpProfessional = ({ submit }: Props) => {
                 name='abstract'
                 control={control}
                 render={({ field }) => (
-                    <TextFieldAtom
+                    <AtomTextField
                         required
                         {...field}
                         id='abstract'
@@ -322,14 +322,14 @@ export const SignUpProfessional = ({ submit }: Props) => {
                 )}
             />
 
-            <ButtonAtom
+            <AtomButton
                 variant='contained'
                 type='submit'
                 disabled={!formIsValid}
                 loading={loading}
             >
                 Criar conta
-            </ButtonAtom>
+            </AtomButton>
         </form>
     )
 }

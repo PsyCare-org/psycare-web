@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useState } from 'react'
 import { signUpFormSchema } from './schemas/sign-up-form-schema'
 import { SignUpForm } from './types/sign-up-form'
-import { ButtonAtom, DateFieldAtom, SelectFieldAtom, TextFieldAtom } from 'src/app/components'
+import { AtomButton, AtomDateField, AtomSelectField, AtomTextField } from 'src/app/components'
 import { IconButton, InputAdornment, TextField } from '@mui/material'
 import ReactInputMask from 'react-input-mask'
 import EmailIcon from '@mui/icons-material/Email'
@@ -61,7 +61,7 @@ export const SignUpUser = ({ submit }: Props) => {
                 name='name'
                 control={control}
                 render={({ field }) => (
-                    <TextFieldAtom
+                    <AtomTextField
                         {...field}
                         required
                         id='name'
@@ -78,7 +78,7 @@ export const SignUpUser = ({ submit }: Props) => {
                 name='surname'
                 control={control}
                 render={({ field }) => (
-                    <TextFieldAtom
+                    <AtomTextField
                         required
                         {...field}
                         id='surname'
@@ -94,7 +94,7 @@ export const SignUpUser = ({ submit }: Props) => {
                 name='email'
                 control={control}
                 render={({ field }) => (
-                    <TextFieldAtom
+                    <AtomTextField
                         required
                         {...field}
                         id='email'
@@ -111,7 +111,7 @@ export const SignUpUser = ({ submit }: Props) => {
                 name='password'
                 control={control}
                 render={({ field }) => (
-                    <TextFieldAtom
+                    <AtomTextField
                         required
                         {...field}
                         id='password'
@@ -133,7 +133,7 @@ export const SignUpUser = ({ submit }: Props) => {
                 name='confirmPassword'
                 control={control}
                 render={({ field }) => (
-                    <TextFieldAtom
+                    <AtomTextField
                         required
                         {...field}
                         id='confirmPassword'
@@ -180,7 +180,7 @@ export const SignUpUser = ({ submit }: Props) => {
                 name='gender'
                 control={control}
                 render={({ field }) => (
-                    <SelectFieldAtom
+                    <AtomSelectField
                         required
                         {...field}
                         id='gender'
@@ -196,7 +196,7 @@ export const SignUpUser = ({ submit }: Props) => {
                 name='birthDate'
                 control={control}
                 render={({ field }) => (
-                    <DateFieldAtom
+                    <AtomDateField
                         required
                         {...field}
                         label='Data de Nascimento'
@@ -208,13 +208,13 @@ export const SignUpUser = ({ submit }: Props) => {
                 )}
             />
 
-            <ButtonAtom
+            <AtomButton
                 variant='contained'
                 type='submit'
                 disabled={!formIsValid}
             >
                 Criar conta
-            </ButtonAtom>
+            </AtomButton>
         </form>
     )
 }

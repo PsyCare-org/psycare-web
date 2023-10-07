@@ -3,7 +3,7 @@ type Props = {
     loading?: boolean
 } & ButtonProps
 
-export const ButtonAtom = ({
+export const AtomButton = ({
     loading,
     ...buttonProps
 }: Props) => {

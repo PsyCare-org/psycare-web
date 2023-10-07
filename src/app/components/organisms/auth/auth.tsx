@@ -1,18 +1,18 @@
 import { ReactNode } from 'react'
 import mindImg from 'src/assets/images/mind.png'
 import { Typography } from '@mui/material'
-import { LogoAtom } from '../../atoms/logo/logo'
 import './auth.scss'
+import { AtomLogo } from '../../atoms/logo/logo'
 
 type Props = {
     children: ReactNode
 }
 
-export const AuthTemplate = ({ children }: Props) => {
+export const OrgAuth = ({ children }: Props) => {
     return (
-        <div className='auth-template'>
+        <div className='auth-organism'>
             <main>
-                <LogoAtom />
+                <AtomLogo />
                 <div className='content'>
                     { children }
                 </div>
