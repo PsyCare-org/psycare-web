@@ -1,17 +1,17 @@
-import { ThemeProvider } from '@emotion/react'
+import { ThemeProvider } from '@mui/material'
 import { customTheme } from './constants/custom-theme'
 import { RouterProvider } from 'react-router-dom'
-import { router } from './constants/router'
 import { UserProvider } from './app/providers/user'
 import { SnackbarProvider } from './app/providers/snackbar'
 import './App.scss'
+import { Router } from './app/router'
 
 function App() {
     return (
         <ThemeProvider theme={customTheme}>
             <UserProvider>
                 <SnackbarProvider>
-                    <RouterProvider router={router}/>
+                    <Router/>
                 </SnackbarProvider>
             </UserProvider>
         </ThemeProvider>
