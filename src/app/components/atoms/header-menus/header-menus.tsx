@@ -63,7 +63,7 @@ export const HeaderMenus = () => {
                             <PersonIcon />
                         </ListItemIcon>
                         <ListItemText>
-                            Meu perfil
+                            Perfil
                         </ListItemText>
                     </MenuItem>
 

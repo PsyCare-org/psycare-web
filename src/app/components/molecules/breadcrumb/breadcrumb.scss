@@ -1,0 +1,10 @@
+nav#mol-breadcrumb {
+    padding: .5rem 1.5rem;
+    background-color: var(--background-color);
+
+    .active:hover {
+        color: var(--secondary);
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}

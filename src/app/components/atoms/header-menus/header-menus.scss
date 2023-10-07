@@ -3,10 +3,8 @@ div#header-menus {
     gap: 1rem;
 
     button {
-        color: white;
-
         div.MuiAvatar-root {
-            border: 1px solid white;
+            border: 1px solid rgba(58, 0, 134, 0.5);
         }
     }
 }

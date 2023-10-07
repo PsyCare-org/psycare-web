@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useUser } from 'src/app/hooks'
 import { Page, professionalPages, userPages } from './utils/pages'
-import { Button } from '@mui/material'
+import { Button, List } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import './header-pages.scss'
 
@@ -25,6 +25,7 @@ export const HeaderPages = () => {
                 <Button
                     key={page.url}
                     variant='text'
+                    sx={{ color: (theme) => theme.palette.grey[700] }}
                     onClick={() => navigate(page.url)}
                 >
                     {page.name}

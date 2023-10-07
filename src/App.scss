@@ -8,10 +8,11 @@
 :root {
     --primary: #3a0086;
     --secondary: #86bd22;
+    --background-color: #f6f5f5;
 }
 
 body {
-    background-color: #ececec;
+    background-color: var(--background-color) !important;
 
     ::-webkit-scrollbar {
         width: 13px;
