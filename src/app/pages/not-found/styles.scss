@@ -1,0 +1,40 @@
+main#not-found {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    background-color: var(--primary);
+
+    div#text {
+        width: 510px;
+        display: flex;
+        flex-direction: column;
+        color: white;
+        gap: .5rem;
+        text-align: center;
+
+        h1 {
+            font-size: 120px;
+            font-weight: bold;
+        }
+
+        p {
+            width: 75%;
+            margin: auto;
+        }
+
+        button {
+            color: white;
+            border: 1px solid white;
+            width: 75%;
+            margin: auto;
+            margin-top: 1rem;
+        }
+    }
+
+    img {
+        max-height: 300px;
+    }
+}

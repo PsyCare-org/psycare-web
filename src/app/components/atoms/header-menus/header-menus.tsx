@@ -26,7 +26,7 @@ export const HeaderMenus = () => {
 
     return (
         <div id='header-menus'>
-            <IconButton>
+            <IconButton onClick={() => navigate('/messages')}>
                 <EmailIcon />
             </IconButton>
 
@@ -77,7 +77,6 @@ export const HeaderMenus = () => {
                     </MenuItem>
                 </Menu>
             </>
-
         </div>
     )
 }

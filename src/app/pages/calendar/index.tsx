@@ -1,9 +1,9 @@
 import { OrgDefault } from 'src/app/components'
 
-export const Home = () => {
+export const Calendar = () => {
     return (
         <OrgDefault>
-            <h1 style={{ height: '3000px' }}>home</h1>
+            <h1>Calendar</h1>
         </OrgDefault>
     )
 }

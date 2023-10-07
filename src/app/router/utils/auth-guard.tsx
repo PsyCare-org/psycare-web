@@ -12,12 +12,12 @@ export const AuthGuard = ({ type }: Props) => {
         return (
             user?.accessToken
                 ? <Outlet />
-                : <Navigate to='/auth/sign-in'/>
+                : <Navigate to='/auth/sign-in' />
         )
     } else {
         return (
             user?.accessToken
-                ? <Navigate to='/home'/>
+                ? <Navigate to='/home' />
                 : <Outlet />
         )
     }
