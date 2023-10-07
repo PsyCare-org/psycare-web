@@ -1,4 +1,4 @@
-import { ThemeProvider } from '@mui/material'
+import { CssBaseline, ThemeProvider } from '@mui/material'
 import { customTheme } from './constants/custom-theme'
 import { RouterProvider } from 'react-router-dom'
 import { UserProvider } from './app/providers/user'
@@ -14,6 +14,7 @@ function App() {
                     <Router/>
                 </SnackbarProvider>
             </UserProvider>
+            <CssBaseline />
         </ThemeProvider>
     )
 }

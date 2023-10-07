@@ -1,5 +1,9 @@
+import { OrgDefault } from 'src/app/components'
+
 export const Home = () => {
     return (
-        <h1>home</h1>
+        <OrgDefault>
+            <h1 style={{ height: '3000px' }}>home</h1>
+        </OrgDefault>
     )
 }

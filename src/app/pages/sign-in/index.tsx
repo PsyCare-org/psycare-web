@@ -41,6 +41,7 @@ export const SignIn = () => {
     const submitHandler = (value: SignInForm) => {
         post('/auth/sign-in', value, false).then(res => {
             signIn(res)
+            navigate('/home')
         })
     }
 

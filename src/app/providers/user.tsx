@@ -12,7 +12,6 @@ const UserProvider = ({ children }: Props) => {
 
     const signIn = (value: User) => {
         setUser(value)
-        window.sessionStorage.setItem('user', JSON.stringify(user))
     }
 
     const signOut = () => {
@@ -25,6 +24,11 @@ const UserProvider = ({ children }: Props) => {
         if(userString !== null) 
             signIn(JSON.parse(userString))
     }, [])
+
+    useEffect(() => {
+        if(user !== null)
+            window.sessionStorage.setItem('user', JSON.stringify(user))
+    }, [user])
 
     return (
         <UserContext.Provider value={{ user, signIn, signOut }}>
