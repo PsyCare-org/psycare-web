@@ -100,7 +100,6 @@ export const SignIn = () => {
                         variant='contained'
                         type='submit'
                         disabled={!formIsValid}
-                        intercept='/auth/sign-in'
                     >
                         Entrar
                     </ButtonAtom>

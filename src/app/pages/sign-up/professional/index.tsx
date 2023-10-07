@@ -43,6 +43,8 @@ export const SignUpProfessional = ({ submit }: Props) => {
 
     const [hidePassword, setHidePassword] = useState<boolean>(true)
 
+    const [loading, setLoading] = useState<boolean>(false)
+
     const {
         control,
         handleSubmit,
@@ -69,10 +71,13 @@ export const SignUpProfessional = ({ submit }: Props) => {
     })
 
     const submitHandler = (value: SignUpForm) => {
+        setLoading(true)
+
         const { confirmPassword, ...payload } = value
 
-        // post('/professional', payload, false).then(() => submit(value.email))
-        post('/professional', payload, false).then(() => console.log('cu'))
+        post('/professional', payload, false)
+            .then(() => submit(value.email))
+            .finally(() => setLoading(false))
     }
 
     return (
@@ -321,7 +326,7 @@ export const SignUpProfessional = ({ submit }: Props) => {
                 variant='contained'
                 type='submit'
                 disabled={!formIsValid}
-                intercept='/professional'
+                loading={loading}
             >
                 Criar conta
             </ButtonAtom>

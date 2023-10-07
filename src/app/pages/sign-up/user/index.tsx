@@ -212,7 +212,6 @@ export const SignUpUser = ({ submit }: Props) => {
                 variant='contained'
                 type='submit'
                 disabled={!formIsValid}
-                intercept='/user'
             >
                 Criar conta
             </ButtonAtom>
