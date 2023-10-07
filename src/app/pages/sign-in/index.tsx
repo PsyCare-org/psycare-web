@@ -18,7 +18,7 @@ import './styles.scss'
 export const SignIn = () => {
 
     const { post } = useApi()
-    const { setUser } = useUser()
+    const { signIn } = useUser()
     const navigate = useNavigate()
     const query = useQuery()
 
@@ -39,10 +39,9 @@ export const SignIn = () => {
     const [hidePassword, setHidePassword] = useState<boolean>(true)
 
     const submitHandler = (value: SignInForm) => {
-        post('/auth/sign-in', value, false)
-            .then(res => {
-                setUser(res)
-            })
+        post('/auth/sign-in', value, false).then(res => {
+            signIn(res)
+        })
     }
 
     return (
