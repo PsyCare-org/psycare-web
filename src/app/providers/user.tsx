@@ -1,32 +1,28 @@
 import { ReactNode, useEffect, useState } from 'react'
 import { User } from 'src/types/user'
 import { UserContext } from '../contexts/user'
-import { useNavigate } from 'react-router-dom'
 
 type Props = {
     children: ReactNode
 }
 
 const UserProvider = ({ children }: Props) => {
-    
-    const navigate = useNavigate()
 
     const [user, setUser] = useState<User | null>(null)
 
     const signIn = (value: User) => {
         setUser(value)
-        navigate('/home')
     }
 
     const signOut = () => {
         setUser(null)
-        navigate('/auth/sign-in')
-        window.location.reload()
+        window.sessionStorage.removeItem('user')
     }
 
     useEffect(() => {
         const userString = window.sessionStorage.getItem('user')
-        if(userString !== null) setUser(JSON.parse(userString))
+        if(userString !== null) 
+            signIn(JSON.parse(userString))
     }, [])
 
     useEffect(() => {
