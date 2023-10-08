@@ -1,7 +1,7 @@
 import { Avatar, Divider, IconButton, ListItemIcon, ListItemText, Menu, MenuItem, Typography } from '@mui/material'
 import EmailIcon from '@mui/icons-material/Email'
 import NotificationsIcon from '@mui/icons-material/Notifications'
-import { MouseEvent, useEffect, useState } from 'react'
+import { MouseEvent, useState } from 'react'
 import { useUser } from 'src/app/hooks'
 import PersonIcon from '@mui/icons-material/Person'
 import LogoutIcon from '@mui/icons-material/Logout'
@@ -23,10 +23,6 @@ export const HeaderMenus = () => {
         navigate('/')
         window.location.reload()
     }
-
-    useEffect(() => {
-
-    }, [])
 
     return (
         <div id='header-menus'>

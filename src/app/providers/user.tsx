@@ -30,6 +30,13 @@ const UserProvider = ({ children }: Props) => {
         setAvatar(value)
     }
 
+    const updateName = (name: string) => {
+        setUser(currentUser => ({
+            ...currentUser,
+            name
+        } as User))
+    }
+
     useEffect(() => {
         const userString = window.sessionStorage.getItem('user')
         if(userString !== null) 
@@ -44,7 +51,8 @@ const UserProvider = ({ children }: Props) => {
     return (
         <UserContext.Provider 
             value={{ 
-                user, 
+                user,
+                updateName,
                 avatar,
                 updateAvatar,
                 signIn, 
