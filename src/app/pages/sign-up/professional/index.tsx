@@ -10,10 +10,9 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 import PhoneIcon from '@mui/icons-material/Phone'
 import { useState } from 'react'
 import { IconButton, InputAdornment, TextField } from '@mui/material'
-import { Gender } from 'src/enums/gender'
 import InputMask from 'react-input-mask'
-import { ProfessionalType } from 'src/enums/professional-type'
-import useApi from 'src/app/hooks/useApi'
+import { useApi } from 'src/app/hooks'
+import { genderOptions, languageOptions, typeOptions } from 'src/constants'
 import './styles.scss'
 
 type Props = {
@@ -23,23 +22,6 @@ type Props = {
 export const SignUpProfessional = ({ submit }: Props) => {
 
     const { post } = useApi()
-
-
-    const genderOptions = Object.values(Gender).map(el => ({
-        value: el,
-        label: el
-    }))
-
-    const typeOptions = Object.values(ProfessionalType).map(el => ({
-        value: el,
-        label: el
-    }))
-
-    const languageOptions = [
-        { label: 'Português', value: 'pt-br' },
-        { label: 'Inglês', value: 'en' },
-        { label: 'Espanhol', value: 'es' },
-    ]
 
     const [hidePassword, setHidePassword] = useState<boolean>(true)
 

@@ -1,5 +1,5 @@
 import { Controller, useForm } from 'react-hook-form'
-import useApi from 'src/app/hooks/useApi'
+import { useApi } from 'src/app/hooks'
 import { Gender } from 'src/enums/gender'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useState } from 'react'
@@ -14,6 +14,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility'
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 import PhoneIcon from '@mui/icons-material/Phone'
 import './styles.scss'
+import { genderOptions } from 'src/constants'
 
 type Props = {
     submit: (value: string) => void
@@ -21,11 +22,6 @@ type Props = {
 
 export const SignUpUser = ({ submit }: Props) => {
     const { post } = useApi()
-
-    const genderOptions = Object.values(Gender).map(el => ({
-        value: el,
-        label: el
-    }))
 
     const [hidePassword, setHidePassword] = useState<boolean>(true)
 

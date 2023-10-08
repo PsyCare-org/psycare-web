@@ -1,9 +1,10 @@
 import { FormControl, FormHelperText, InputLabel, MenuItem, Select, SelectProps } from '@mui/material'
 import { RefObject, forwardRef } from 'react'
+import { Option } from 'src/types'
 
 type Props = {
     label?: string
-    options?: Array<{ label: string, value: any }>
+    options?: Option[]
     helperText?: string
 } &  Omit<SelectProps, 'children' | 'label'>
 

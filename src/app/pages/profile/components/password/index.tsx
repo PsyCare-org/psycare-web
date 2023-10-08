@@ -9,8 +9,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility'
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 import { useState } from 'react'
 import './styles.scss'
-import useApi from 'src/app/hooks/useApi'
-import { useSnackbar, useUser } from 'src/app/hooks'
+import { useApi, useSnackbar, useUser } from 'src/app/hooks'
 import { useNavigate } from 'react-router-dom'
 
 export const ProfilePassword = () => {

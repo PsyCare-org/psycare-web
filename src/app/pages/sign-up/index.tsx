@@ -1,7 +1,7 @@
 import { Button, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material'
 import { useState } from 'react'
 import { OrgAuth } from 'src/app/components'
-import { PersonTypes } from 'src/types/person-types'
+import { PersonTypes } from 'src/types'
 import PersonIcon from '@mui/icons-material/Person'
 import PsychologyIcon from '@mui/icons-material/Psychology'
 import { SignUpUser } from './user'

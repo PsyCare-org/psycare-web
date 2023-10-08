@@ -1,8 +1,7 @@
 import { ReactNode, useEffect, useState } from 'react'
-import { User } from 'src/types/user'
+import { User } from 'src/types'
 import { UserContext } from '../contexts/user'
-import useApi from '../hooks/useApi'
-import { useFile } from '../hooks'
+import { useApi, useFile } from '../hooks'
 
 type Props = {
     children: ReactNode

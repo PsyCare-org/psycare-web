@@ -1,5 +1,5 @@
-import { SetStateAction, createContext } from 'react'
-import { User } from 'src/types/user'
+import { createContext } from 'react'
+import { User } from 'src/types'
 
 type UserContextType = {
     user: User | null,

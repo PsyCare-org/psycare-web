@@ -1,9 +1,9 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 import { useUser } from './useUser'
-import env from 'src/constants/env'
 import { useSnackbar } from './useSnackbar'
+import { env } from 'src/constants'
 
-const useApi = () => {
+export const useApi = () => {
     const { user } = useUser()
     const { createSnack } = useSnackbar()
 
@@ -79,5 +79,3 @@ const useApi = () => {
         del
     }
 }
-
-export default useApi

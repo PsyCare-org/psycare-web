@@ -2,8 +2,7 @@ import { Card, Typography } from '@mui/material'
 import WarningIcon from '@mui/icons-material/Warning'
 import { AtomButton } from 'src/app/components'
 import './styles.scss'
-import useApi from 'src/app/hooks/useApi'
-import { useSnackbar, useUser } from 'src/app/hooks'
+import { useApi, useSnackbar, useUser } from 'src/app/hooks'
 import { useNavigate } from 'react-router-dom'
 
 export const ProfileDelete = () => {

@@ -1,7 +1,6 @@
 import { Avatar, CircularProgress, Typography } from '@mui/material'
 import { ChangeEvent, createRef, useEffect, useState } from 'react'
-import { useFile, useSnackbar, useUser } from 'src/app/hooks'
-import useApi from 'src/app/hooks/useApi'
+import { useApi, useFile, useSnackbar, useUser } from 'src/app/hooks'
 import { AtomButton } from 'src/app/components'
 import './styles.scss'
 
