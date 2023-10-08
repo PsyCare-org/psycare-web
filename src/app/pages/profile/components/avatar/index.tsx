@@ -7,7 +7,7 @@ import './styles.scss'
 
 export const ProfileAvatar = () => {
 
-    const { user } = useUser()
+    const { user, updateAvatar } = useUser()
     const { getFile, post, del } = useApi()
     const { createSnack } = useSnackbar()
 
@@ -16,9 +16,13 @@ export const ProfileAvatar = () => {
     const [loading, setLoading] = useState<boolean>(true)
     const [img, setImg] = useState<string>('')
 
-    const loadUserImg = () => {
+    const loadUserImg = (updateGlobalAvatar = false) => {
         getFile(`/avatar/${user?.type}/${user?.id}`)
-            .then(res => setImg(useFile(res)))
+            .then(res => {
+                const newImg = useFile(res)
+                setImg(newImg)
+                if(updateGlobalAvatar) updateAvatar(newImg)
+            })
             .finally(() => setLoading(false))
     }
 
@@ -33,7 +37,7 @@ export const ProfileAvatar = () => {
 
         post(`/avatar/${user?.type}/${user?.id}`, payload).then(() => {
             createSnack('Avatar atualizado com sucesso!', 'success')
-            loadUserImg()
+            loadUserImg(true)
         })
     }
 
@@ -42,7 +46,7 @@ export const ProfileAvatar = () => {
 
         del(`/avatar/${user?.type}/${user?.id}`).then(() => {
             createSnack('Avatar removido com sucesso!', 'success')
-            loadUserImg()
+            loadUserImg(true)
         })
     }
 

@@ -1,7 +1,7 @@
 import { Avatar, Divider, IconButton, ListItemIcon, ListItemText, Menu, MenuItem, Typography } from '@mui/material'
 import EmailIcon from '@mui/icons-material/Email'
 import NotificationsIcon from '@mui/icons-material/Notifications'
-import { MouseEvent, useState } from 'react'
+import { MouseEvent, useEffect, useState } from 'react'
 import { useUser } from 'src/app/hooks'
 import PersonIcon from '@mui/icons-material/Person'
 import LogoutIcon from '@mui/icons-material/Logout'
@@ -11,7 +11,7 @@ import './header-menus.scss'
 export const HeaderMenus = () => {
 
     const navigate = useNavigate()
-    const { user, signOut } = useUser()
+    const { user, avatar, signOut } = useUser()
 
     const [anchor, setAnchor] = useState<HTMLElement | null>(null)
     const openMenu = (event: MouseEvent<HTMLButtonElement>) => setAnchor(event.currentTarget)
@@ -23,6 +23,10 @@ export const HeaderMenus = () => {
         navigate('/')
         window.location.reload()
     }
+
+    useEffect(() => {
+
+    }, [])
 
     return (
         <div id='header-menus'>
@@ -39,7 +43,10 @@ export const HeaderMenus = () => {
                     id='profile'
                     onClick={openMenu}
                 >
-                    <Avatar sx={{ height: '30px', width: '30px' }} />
+                    <Avatar 
+                        sx={{ height: '30px', width: '30px' }}
+                        src={avatar || ''}
+                    />
                 </IconButton>
 
                 <Menu
