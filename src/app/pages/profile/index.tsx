@@ -2,7 +2,7 @@ import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui
 import { BreadcrumbItem, OrgDefault } from 'src/app/components'
 import './styles.scss'
 import { useState } from 'react'
-import AccountBoxIcon from '@mui/icons-material/AccountBox'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import TextSnippetIcon from '@mui/icons-material/TextSnippet'
 import PasswordIcon from '@mui/icons-material/Password'
 import DeleteIcon from '@mui/icons-material/Delete'
@@ -22,7 +22,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 const menus: Menu[] = [
     { icon: <TextSnippetIcon/>, label: 'Dados', value: 'data' },
-    { icon: <AccountBoxIcon/>, label: 'Avatar', value: 'avatar' },
+    { icon: <AccountCircleIcon/>, label: 'Avatar', value: 'avatar' },
     { icon: <PasswordIcon/>, label: 'Alterar senha', value: 'password' },
     { icon: <DeleteIcon/>, label: 'Excluir conta', value: 'delete' },
 ]

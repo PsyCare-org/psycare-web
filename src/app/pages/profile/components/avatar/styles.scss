@@ -1,0 +1,39 @@
+div#profile-avatar {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    form {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+
+        div#avatar {
+            width: 350px;
+            height: 350px;
+
+            div#loading-overlay {
+                position: absolute;
+                background-color: rgb(0 0 0 / 90%);
+                width: inherit;
+                height: inherit;
+                z-index: 2;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+            }
+    
+            div.MuiAvatar-root {
+                width: inherit;
+                height: inherit;
+            }
+        }
+
+        div#controls {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+    }
+}
