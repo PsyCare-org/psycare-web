@@ -38,6 +38,12 @@ const useApi = () => {
             .catch(errorCallback)
     }
 
+    const patch = (url: string, payload: any, useAuth = true) => {
+        return axios.patch(`${env.dataApiUrl}${url}`, payload, useAuth ? authConfig : undefined)
+            .then(successCallback)
+            .catch(errorCallback)
+    }
+
     const put = (url: string, payload: any, useAuth = true) => {
         return axios.put(`${env.dataApiUrl}${url}`, payload, useAuth ? authConfig : undefined)
             .then(successCallback)
@@ -54,6 +60,7 @@ const useApi = () => {
         axios,
         get,
         post,
+        patch,
         put,
         del
     }
