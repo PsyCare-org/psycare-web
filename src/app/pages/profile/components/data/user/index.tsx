@@ -134,24 +134,22 @@ export const ProfileDataUser = () => {
                     )}
                 />
 
-                {fullUser && (
-                    <Controller
-                        name='gender'
-                        control={control}
-                        render={({ field: { ref, ...field } }) => (
-                            <AtomSelectField
-                                required
-                                {...field}
-                                inputRef={ref}
-                                id='gender'
-                                label='Gênero'
-                                error={!!formErrors.gender}
-                                helperText={formErrors.gender?.message}
-                                options={genderOptions}
-                            />
-                        )}
-                    />
-                )}
+                <Controller
+                    name='gender'
+                    control={control}
+                    render={({ field: { ref, ...field } }) => (
+                        <AtomSelectField
+                            required
+                            {...field}
+                            inputRef={ref}
+                            id='gender'
+                            label='Gênero'
+                            error={!!formErrors.gender}
+                            helperText={formErrors.gender?.message}
+                            options={genderOptions}
+                        />
+                    )}
+                />
 
                 <Controller
                     name='birthDate'

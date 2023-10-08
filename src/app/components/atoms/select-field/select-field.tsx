@@ -21,7 +21,7 @@ export const AtomSelectField = forwardRef((
     const labelId = `${selectProps.id}-label`
 
     return (
-        <FormControl error={error}>
+        <FormControl error={error} {...selectProps.id && { id: selectProps.id }}>
             <InputLabel id={labelId} required={selectProps.required}>
                 { label }
             </InputLabel>

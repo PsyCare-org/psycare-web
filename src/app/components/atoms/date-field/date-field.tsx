@@ -2,6 +2,7 @@ import { DatePicker, DatePickerProps, LocalizationProvider } from '@mui/x-date-p
 import { RefObject, forwardRef } from 'react'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import 'dayjs/locale/pt-br'
+import './date-field.scss'
 
 type Props = {
     id?: string
@@ -15,6 +16,7 @@ type Props = {
 
 export const AtomDateField = forwardRef((
     {
+        id,
         error,
         helperText,
         disableTyping = false,
@@ -24,22 +26,24 @@ export const AtomDateField = forwardRef((
     ref
 ) => {
     return (
-        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='pt-br'>
-            <DatePicker
-                {...props}
-                ref={ref as RefObject<HTMLDivElement>}
-                slotProps={{
-                    textField: {
-                        error,
-                        helperText,
-                        required,
-                        ...disableTyping && {
-                            onKeyDown: e => e.preventDefault(),
-                        },
-                    }
-                }}
-            />
-        </LocalizationProvider>
+        <div {...id && { id: id }} className='atom-date-field'>
+            <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='pt-br'>
+                <DatePicker
+                    {...props}
+                    ref={ref as RefObject<HTMLDivElement>}
+                    slotProps={{
+                        textField: {
+                            error,
+                            helperText,
+                            required,
+                            ...disableTyping && {
+                                onKeyDown: e => e.preventDefault(),
+                            },
+                        }
+                    }}
+                />
+            </LocalizationProvider>
+        </div>
     )
 })
 

@@ -1,0 +1,14 @@
+form#profile-data-professional {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 1.5rem;
+
+    #abstract,
+    #expericences,
+    #specializations,
+    #historic,
+    #description {
+        grid-column: span 2;
+    }
+}
