@@ -2,4 +2,11 @@ div#header-pages {
     display: flex;
     gap: 2rem;
     margin: 0 3px 0 5rem;
+
+    button.active {
+        color: var(--secondary);
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 5px;
+    }
 }
