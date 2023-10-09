@@ -1,4 +1,5 @@
 export * from './useApi'
+export * from './useAvatar'
 export * from './useFile'
 export * from './useQuery'
 export * from './useSnackbar'

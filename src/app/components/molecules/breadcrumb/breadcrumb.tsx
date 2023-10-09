@@ -27,7 +27,7 @@ export const MolBreadcrumb = ({ items }: Props) => {
                 <Typography 
                     key={item.url}
                     onClick={() => item.active && navigate(item.url)}
-                    color={index === items.length - 1 ? 'primary' : 'text.secondary'}
+                    color={index === items.length - 1 ? 'text.secondary' : 'text.disabled'}
                     className={item.active ? 'active' : 'disabled'}
                 >
                     { item.label }

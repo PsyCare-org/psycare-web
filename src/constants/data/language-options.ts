@@ -1,5 +1,12 @@
-export const languageOptions = [
-    { label: 'Português', value: 'pt-br' },
-    { label: 'Inglês', value: 'en' },
-    { label: 'Espanhol', value: 'es' },
-]
+import { Language } from 'src/enums'
+
+export const languageLabels = {
+    'pt-br': 'Português',
+    'en': 'Inglês',
+    'es': 'Espanhol'
+}
+
+export const languageOptions = Object.values(Language).map(el => ({
+    value: el,
+    label: languageLabels[el]
+}))
