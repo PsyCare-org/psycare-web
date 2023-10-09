@@ -1,9 +1,8 @@
-import { Avatar, Card, CardActionArea, CardContent, Rating, Typography } from '@mui/material'
+import { Avatar, Card, CardContent, Rating, Typography } from '@mui/material'
 import { Professional } from 'src/types'
 import { crpStateMap, languageLabels } from 'src/constants'
+import { useNavigate } from 'react-router-dom'
 import './styles.scss'
-import { useRef } from 'react'
-import TouchRipple from '@mui/material/ButtonBase/TouchRipple'
 
 type Props = {
     item: Professional
@@ -11,11 +10,22 @@ type Props = {
 
 export const ProfessionalsResultItem = ({ item }: Props) => {
 
+    const navigate = useNavigate()
+
     const state: string = crpStateMap[item.crp.split('/')[0]]
     const languages = item.languages.map(el => languageLabels[el]).join(', ')
 
+    const redirectHandler = () => {
+        navigate(`/professionals/${item.id}`)
+    }
+
     return (
-        <Card key={item.id} elevation={3} className='professional-item'>
+        <Card 
+            key={item.id} 
+            elevation={3} 
+            className='professional-item'
+            onClick={redirectHandler}
+        >
             <CardContent>
                 <div id='header'>
                     <Avatar src={item.avatar} />

@@ -1,5 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
-import { Attendances, Calendar, Historic, Messages, NotFound, Patients, Professionals, Profile, SignIn, SignUp } from 'src/app/pages'
+import { Attendances, Calendar, Historic, Messages, NotFound, Patients, Professional, Professionals, Profile, SignIn, SignUp } from 'src/app/pages'
 import { AuthGuard } from './utils/auth-guard'
 import { HomeHandler } from './utils/home-handler'
 
@@ -15,6 +15,7 @@ export const Router = () => {
                     <Route path='/home' element={<HomeHandler />} />
 
                     <Route path='/professionals' element={<Professionals />} />
+                    <Route path='/professionals/:id' element={<Professional />} />
                     <Route path='/attendances' element={<Attendances />} />
                     <Route path='/historic' element={<Historic />} />
                     <Route path='/calendar' element={<Calendar />} />
