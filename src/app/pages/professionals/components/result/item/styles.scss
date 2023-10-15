@@ -11,41 +11,6 @@ div.professional-item {
         flex-direction: column;
         gap: 1.25rem;
 
-        div#header {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-    
-            div.MuiAvatar-root {
-                width: 125px;
-                height: 125px;
-                box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2), 0px 5px 8px 0px rgba(0,0,0,0.14), 0px 1px 14px 0px rgba(0,0,0,0.12);
-            }
-    
-            div#text {
-                display: flex;
-                flex-direction: column;
-    
-                h5 {
-                    margin-bottom: .25rem;
-                }
-    
-                p#crp {
-                    span {
-                        font: inherit;
-                        color: var(--primary);
-                        font-weight: 500;
-                    }
-                }
-    
-                div#rating {
-                    display: flex;
-                    align-items: center;
-                    gap: .5rem;
-                }
-            }
-        }
-    
         div#body {
             h6 {
                 padding: 0 .5rem;

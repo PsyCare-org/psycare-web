@@ -1,0 +1,44 @@
+div#mol-professional-header {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+
+    div.MuiAvatar-root {
+        box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2), 
+                    0px 5px 8px 0px rgba(0,0,0,0.14), 
+                    0px 1px 14px 0px rgba(0,0,0,0.12);
+
+        &.normal-size {
+            width: 125px;
+            height: 125px;
+        }
+
+        &.large-size {
+            width: 175px;
+            height: 175px;
+        }
+    }
+
+    div#text {
+        display: flex;
+        flex-direction: column;
+
+        h5 {
+            margin-bottom: .25rem;
+        }
+
+        p#crp {
+            span {
+                font: inherit;
+                color: var(--primary);
+                font-weight: 500;
+            }
+        }
+
+        div#rating {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+        }
+    }
+}
