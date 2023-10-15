@@ -1,0 +1,41 @@
+@mixin head-cell {
+    border-color: var(--primary);
+    text-align: center;
+    vertical-align: middle;
+    background-color: var(--primary);
+    color: white;
+    font-weight: 700;
+    padding: 1rem;
+}
+
+div#mol-calendar {
+    border-radius: 5px;
+
+    table {
+        &.disabled-border th, td {
+            border-color: transparent !important;
+        }
+
+        tr {
+            height: 1px;
+
+            th {
+                border-right: 1px solid;
+                @include head-cell();
+                
+            }
+    
+            td {
+                border-right: 1px solid rgba(224, 224, 224, 1);
+        
+                &.head-cell {
+                    @include head-cell();
+                }
+
+                &.normal-cell {
+                    height: inherit;
+                }
+            }
+        }
+    }
+}

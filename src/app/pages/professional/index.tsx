@@ -1,9 +1,12 @@
-import { Avatar, Rating, Typography } from '@mui/material'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { AtomLoader, BreadcrumbItem, MolProfessionalHeader, OrgDefault } from 'src/app/components'
 import { useApi, useAvatar } from 'src/app/hooks'
 import { Professional as Professional_ } from 'src/types'
+import { ProfessionalCalendar } from './calendar'
+import { ProfessionalProfile } from './profile'
+import { ProfessionalRatings } from './ratings'
+import './styles.scss'
 
 export const Professional = () => {
 
@@ -15,7 +18,9 @@ export const Professional = () => {
 
     useEffect(() => {
         get(`/professional/${id}`).then(res => {
-            if (res.avatar) res.avatar = useAvatar(res.avatar.avatar)
+            res.occupiedHours = ['qua-08', 'seg-11', 'qui-14', 'sex-14']
+            if (res.avatar) res.avatar = useAvatar(res.avatar.data.data)
+
             setProfessional(res)
             setBreadcrumbs([
                 { active: true, label: 'Profissionais', url: '/professionals' },
@@ -26,13 +31,17 @@ export const Professional = () => {
 
     return (
         <OrgDefault breadcrumbs={breadcrumbs}>
-            {!professional && <AtomLoader />}
-            {professional && (
+            { !professional && <AtomLoader /> }
+
+            { professional && (
                 <div id='professional'>
-                    <MolProfessionalHeader 
-                        professional={professional} 
-                        size='large'
-                    />
+                    <MolProfessionalHeader professional={professional} size='large'/>
+
+                    <ProfessionalProfile professional={professional} />
+
+                    <ProfessionalCalendar occupiedHours={professional.occupiedHours || []} />
+
+                    <ProfessionalRatings professional={professional} />
                 </div>
             )}
         </OrgDefault>

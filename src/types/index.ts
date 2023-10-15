@@ -1,4 +1,6 @@
+export * from './calendar-hour'
 export * from './option'
 export * from './person-types'
 export * from './professional'
+export * from './rating'
 export * from './user'

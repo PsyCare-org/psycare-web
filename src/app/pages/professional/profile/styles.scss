@@ -1,0 +1,17 @@
+div#professional-profile {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+
+    #title {
+        margin-bottom: 1rem;
+    }
+
+    div.field {
+        display: grid;
+        grid-template-columns: .15fr .85fr;
+        grid-template-rows: auto;
+        gap: .5rem;
+        padding: 0 2rem;
+    }
+}
