@@ -18,8 +18,6 @@ export const Professional = () => {
 
     useEffect(() => {
         get(`/professional/${id}`).then(res => {
-            res.occupiedHours = ['qua-08', 'seg-11', 'qui-14', 'sex-14']
-
             setProfessional(res)
             setBreadcrumbs([
                 { active: true, label: 'Profissionais', url: '/professionals' },
@@ -32,13 +30,16 @@ export const Professional = () => {
         <OrgDefault breadcrumbs={breadcrumbs}>
             { !professional && <AtomLoader /> }
 
-            { professional && (
+            { professional && id && (
                 <div id='professional'>
                     <MolProfessionalHeader professional={professional} size='large'/>
 
                     <ProfessionalProfile professional={professional} />
 
-                    <ProfessionalCalendar occupiedHours={professional.occupiedHours || []} />
+                    <ProfessionalCalendar 
+                        professionalId={+id}
+                        occupiedHours={professional.occupiedHours || []}
+                    />
 
                     <ProfessionalRatings professional={professional} />
                 </div>

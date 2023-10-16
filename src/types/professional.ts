@@ -1,5 +1,6 @@
 import { Gender, Language, ProfessionalType } from 'src/enums'
-import { CalendarHour } from './calendar-hour'
+import { OccupiedHour } from './occupied-hour'
+import { Attendance } from './attendance'
 
 export type Professional = {
     id: number
@@ -22,7 +23,8 @@ export type Professional = {
     historic?: string
     rating?: number
     ratingCount?: number
-    occupiedHours?: CalendarHour[]
+    occupiedHours?: OccupiedHour[]
+    attendances?: Attendance[]
     createdAt: string
     updatedAt: string
 }

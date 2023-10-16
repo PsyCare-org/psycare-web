@@ -36,7 +36,7 @@ export const ProfessionalProfile = ({ professional }: Props) => {
                             { label }
                         </Typography>
                         <Typography variant='body1'>
-                            { professional[id] || '...' }
+                            { professional[id] as string || '...' }
                         </Typography>
                     </div>
 

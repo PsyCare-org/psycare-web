@@ -1,4 +1,6 @@
+export * from './attendance'
 export * from './calendar-hour'
+export * from './occupied-hour'
 export * from './option'
 export * from './person-types'
 export * from './professional'
