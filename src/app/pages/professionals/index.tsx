@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { AtomPaginator, BreadcrumbItem, OrgDefault } from 'src/app/components'
 import { Filter } from './components/filter/types/filter'
-import { useApi, useAvatar } from 'src/app/hooks'
+import { useApi } from 'src/app/hooks'
 import { Professional } from 'src/types'
 import { Typography } from '@mui/material'
 import { ProfessionalsFilter } from './components/filter'
@@ -37,10 +37,7 @@ export const Professionals = () => {
 
         get(`/professional?${params}`).then((res: any) => {
             setTotal(res.total)
-            setData(res.data.map((el: any) => {
-                if (el.avatar) el.avatar = useAvatar(el.avatar.data.data)
-                return el
-            }))
+            setData(res.data)
         })
     }
 

@@ -32,19 +32,6 @@ export const useApi = () => {
             .catch(errorCallback)
     }
 
-    const getFile = (url: string, useAuth = true) => {
-        const headers = useAuth ? authConfig.headers : {}
-
-        const config: AxiosRequestConfig = {
-            ...headers,
-            responseType: 'arraybuffer'
-        }
-
-        return axios.get(`${env.dataApiUrl}${url}`, config)
-            .then(successCallback)
-            .catch(errorCallback)
-    }
-
     const post = (url: string, payload: any, useAuth = true) => {
         return axios.post(`${env.dataApiUrl}${url}`, payload, useAuth ? authConfig : undefined)
             .then(successCallback)
@@ -72,7 +59,6 @@ export const useApi = () => {
     return {
         axios,
         get,
-        getFile,
         post,
         patch,
         put,

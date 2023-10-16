@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { AtomLoader, BreadcrumbItem, MolProfessionalHeader, OrgDefault } from 'src/app/components'
-import { useApi, useAvatar } from 'src/app/hooks'
+import { useApi } from 'src/app/hooks'
 import { Professional as Professional_ } from 'src/types'
 import { ProfessionalCalendar } from './calendar'
 import { ProfessionalProfile } from './profile'
@@ -19,7 +19,6 @@ export const Professional = () => {
     useEffect(() => {
         get(`/professional/${id}`).then(res => {
             res.occupiedHours = ['qua-08', 'seg-11', 'qui-14', 'sex-14']
-            if (res.avatar) res.avatar = useAvatar(res.avatar.data.data)
 
             setProfessional(res)
             setBreadcrumbs([

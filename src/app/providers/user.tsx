@@ -1,7 +1,9 @@
 import { ReactNode, useEffect, useState } from 'react'
 import { User } from 'src/types'
 import { UserContext } from '../contexts/user'
-import { useApi, useFile } from '../hooks'
+import { useApi } from '../hooks'
+import { env } from 'src/constants'
+import { AxiosRequestConfig } from 'axios'
 
 type Props = {
     children: ReactNode
@@ -9,7 +11,7 @@ type Props = {
 
 const UserProvider = ({ children }: Props) => {
 
-    const { getFile } = useApi()
+    const { axios } = useApi()
 
     const [user, setUser] = useState<User | null>(null)
     const [avatar, setAvatar] = useState<string | null>(null)
@@ -17,8 +19,15 @@ const UserProvider = ({ children }: Props) => {
     const signIn = (value: User) => {
         setUser(value)
 
-        getFile(`/avatar/${value?.type}/${value?.id}`)
-            .then(res => setAvatar(useFile(res)))
+        const url = `${env.dataApiUrl}/avatar/${value.type}/${value.id}`
+
+        const config: AxiosRequestConfig = {
+            headers: {
+                'Authorization': 'Bearer ' + value.accessToken
+            }
+        }
+
+        axios.get(url, config).then(res => setAvatar(res.data))
     }
 
     const signOut = () => {

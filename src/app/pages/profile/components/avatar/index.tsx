@@ -1,13 +1,13 @@
 import { Avatar, CircularProgress, Typography } from '@mui/material'
 import { ChangeEvent, createRef, useEffect, useState } from 'react'
-import { useApi, useFile, useSnackbar, useUser } from 'src/app/hooks'
+import { useApi, useSnackbar, useUser } from 'src/app/hooks'
 import { AtomButton } from 'src/app/components'
 import './styles.scss'
 
 export const ProfileAvatar = () => {
 
     const { user, updateAvatar } = useUser()
-    const { getFile, post, del } = useApi()
+    const { get, post, del } = useApi()
     const { createSnack } = useSnackbar()
 
     const imgInputRef = createRef<HTMLInputElement>()
@@ -16,11 +16,10 @@ export const ProfileAvatar = () => {
     const [img, setImg] = useState<string>('')
 
     const loadUserImg = (updateGlobalAvatar = false) => {
-        getFile(`/avatar/${user?.type}/${user?.id}`)
+        get(`/avatar/${user?.type}/${user?.id}`)
             .then(res => {
-                const newImg = useFile(res)
-                setImg(newImg)
-                if(updateGlobalAvatar) updateAvatar(newImg)
+                setImg(res)
+                if(updateGlobalAvatar) updateAvatar(res)
             })
             .finally(() => setLoading(false))
     }
