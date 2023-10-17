@@ -1,7 +1,7 @@
-import { Rating, Typography } from '@mui/material'
+import { Typography } from '@mui/material'
 import { Professional } from 'src/types'
-import { TEMPORARY_RATINGS } from './temp/ratings'
 import './styles.scss'
+import { AtomRating } from 'src/app/components'
 
 type Props = {
     professional: Professional
@@ -15,8 +15,7 @@ export const ProfessionalRatings = ({ professional }: Props) => {
             </Typography>
 
             <div id='total'>
-                <Rating
-                    readOnly
+                <AtomRating
                     size='medium'
                     value={professional.rating}
                 />
@@ -29,14 +28,10 @@ export const ProfessionalRatings = ({ professional }: Props) => {
             </div>
 
             <div id='content'>
-                { TEMPORARY_RATINGS.map(rating => (
+                { professional.ratings && professional.ratings.length > 0 && professional.ratings.map(rating => (
                     <div key={rating.id} className='rating'>
                         <div>
-                            <Rating
-                                readOnly
-                                size='small'
-                                value={rating.value}
-                            />
+                            <AtomRating value={rating.value} />
                             <Typography variant='body2' color='text.secondary'>
                                 { new Date(rating.createdAt).toLocaleDateString() }
                             </Typography>

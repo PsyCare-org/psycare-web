@@ -1,9 +1,10 @@
-import { Avatar, Rating, Typography } from '@mui/material'
+import { Avatar, Typography } from '@mui/material'
 import { crpStateMap, languageLabels } from 'src/constants'
 import { Professional } from 'src/types'
 import './professional-header.scss'
 import { ProfessionalHeaderSize } from './types/size'
 import { ProfessionalHeaderTypography } from './types/typography'
+import { AtomRating } from '../../atoms/rating/rating'
 
 type Props = {
     size?: ProfessionalHeaderSize
@@ -54,7 +55,7 @@ export const MolProfessionalHeader = ({
                 </Typography>
 
                 <div id='rating'>
-                    <Rating readOnly value={professional.rating} />
+                    <AtomRating value={professional.rating} />
                     <Typography variant={typography[size].text} color='text.disabled'>
                         {professional.ratingCount !== null && professional.ratingCount !== undefined
                             ? `(${professional.ratingCount} avaliações)`

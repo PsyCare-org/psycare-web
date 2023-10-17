@@ -7,6 +7,7 @@ export * from './atoms/logo/logo'
 export * from './atoms/masked-field/masked-field'
 export * from './atoms/modal/modal'
 export * from './atoms/paginator/paginator'
+export * from './atoms/rating/rating'
 export * from './atoms/select-field/select-field'
 export * from './atoms/text-field/text-field'
 
