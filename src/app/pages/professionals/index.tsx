@@ -11,7 +11,7 @@ import './styles.scss'
 const breadcrumbs: BreadcrumbItem[] = [
     {
         active: false,
-        label: 'Profissionals',
+        label: 'Profissionais',
         url: '/professionals'
     }
 ]
