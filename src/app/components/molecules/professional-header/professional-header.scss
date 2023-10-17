@@ -8,6 +8,11 @@ div#mol-professional-header {
                     0px 5px 8px 0px rgba(0,0,0,0.14), 
                     0px 1px 14px 0px rgba(0,0,0,0.12);
 
+        &.small-size {
+            width: 100px;
+            height: 100px;
+        }
+
         &.normal-size {
             width: 125px;
             height: 125px;

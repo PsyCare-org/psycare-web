@@ -11,6 +11,7 @@ export * from './atoms/rating/rating'
 export * from './atoms/select-field/select-field'
 export * from './atoms/text-field/text-field'
 
+export * from './molecules/attendance-card/attendance-card'
 export * from './molecules/breadcrumb/breadcrumb'
 export * from './molecules/header/header'
 export * from './molecules/professional-header/professional-header'

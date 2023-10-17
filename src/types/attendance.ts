@@ -11,4 +11,6 @@ export type Attendance = {
     professionalId: number
     user: User
     userId: number
+    meetingsCount?: number
+    createdAt: string
 }

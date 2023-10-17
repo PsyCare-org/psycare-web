@@ -8,11 +8,13 @@ import { AtomRating } from '../../atoms/rating/rating'
 
 type Props = {
     size?: ProfessionalHeaderSize
+    showLangAndRating?: boolean
     professional: Professional
 }
 
 export const MolProfessionalHeader = ({
     size = 'normal',
+    showLangAndRating = true,
     professional
 }: Props) => {
 
@@ -20,6 +22,10 @@ export const MolProfessionalHeader = ({
     const languages = professional.languages.map(el => languageLabels[el]).join(', ')
 
     const typography: ProfessionalHeaderTypography = {
+        small: {
+            title: 'h6',
+            text: 'body2'
+        },
         normal: {
             title: 'h5',
             text: 'body2'
@@ -50,19 +56,23 @@ export const MolProfessionalHeader = ({
                     <span>CRP:</span> {professional.crp} | {state}
                 </Typography>
 
-                <Typography variant={typography[size].text} color='text.secondary'>
-                    Idioma(s): {languages}
-                </Typography>
+                { showLangAndRating && (
+                    <>
+                        <Typography variant={typography[size].text} color='text.secondary'>
+                            Idioma(s): {languages}
+                        </Typography>
 
-                <div id='rating'>
-                    <AtomRating value={professional.rating} />
-                    <Typography variant={typography[size].text} color='text.disabled'>
-                        {professional.ratingCount !== null && professional.ratingCount !== undefined
-                            ? `(${professional.ratingCount} avaliações)`
-                            : 'Nenhuma avaliação'
-                        }
-                    </Typography>
-                </div>
+                        <div id='rating'>
+                            <AtomRating value={professional.rating} />
+                            <Typography variant={typography[size].text} color='text.disabled'>
+                                {professional.ratingCount !== null && professional.ratingCount !== undefined
+                                    ? `(${professional.ratingCount} avaliações)`
+                                    : 'Nenhuma avaliação'
+                                }
+                            </Typography>
+                        </div>
+                    </>
+                )}
             </div>
         </div>
     )

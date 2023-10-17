@@ -1,0 +1,39 @@
+#mol-attendance-card {
+    width: max-content;
+
+    &:hover {
+        box-shadow: 0px 9px 11px -5px rgba(0,0,0,0.2), 
+                    0px 18px 28px 2px rgba(0,0,0,0.14), 
+                    0px 7px 34px 6px rgba(0,0,0,0.12);
+        cursor: pointer;
+    }
+
+    .MuiCardContent-root {
+        display: grid;
+        gap: 2rem;
+        grid-template-columns: .95fr .1fr .95fr;
+        align-items: center;
+
+        hr {
+            justify-self: center;
+        }
+
+        #details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            width: max-content;
+            gap: 1rem 2.5rem;
+
+            #calendar-hour,
+            #meetings-count {
+                grid-column: span 1;
+            }
+
+            p#created-at {
+                grid-column: span 2;
+                text-align: center;
+            }
+        }
+    }
+
+}
