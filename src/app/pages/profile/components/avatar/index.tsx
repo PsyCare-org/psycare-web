@@ -1,12 +1,12 @@
 import { Avatar, CircularProgress, Typography } from '@mui/material'
 import { ChangeEvent, createRef, useEffect, useState } from 'react'
-import { useApi, useSnackbar, useUser } from 'src/app/hooks'
+import { useApi, useSnackbar, usePerson } from 'src/app/hooks'
 import { AtomButton } from 'src/app/components'
 import './styles.scss'
 
 export const ProfileAvatar = () => {
 
-    const { user, updateAvatar } = useUser()
+    const { person, updateAvatar } = usePerson()
     const { get, post, del } = useApi()
     const { createSnack } = useSnackbar()
 
@@ -15,8 +15,8 @@ export const ProfileAvatar = () => {
     const [loading, setLoading] = useState<boolean>(true)
     const [img, setImg] = useState<string>('')
 
-    const loadUserImg = (updateGlobalAvatar = false) => {
-        get(`/avatar/${user?.type}/${user?.id}`)
+    const loadPersonImg = (updateGlobalAvatar = false) => {
+        get(`/avatar/${person?.type}/${person?.id}`)
             .then(res => {
                 setImg(res)
                 if(updateGlobalAvatar) updateAvatar(res)
@@ -33,23 +33,23 @@ export const ProfileAvatar = () => {
         const payload = new FormData()
         payload.append('file', files[0])
 
-        post(`/avatar/${user?.type}/${user?.id}`, payload).then(() => {
+        post(`/avatar/${person?.type}/${person?.id}`, payload).then(() => {
             createSnack('Avatar atualizado com sucesso!', 'success')
-            loadUserImg(true)
+            loadPersonImg(true)
         })
     }
 
     const deleteImg = () => {
         setLoading(true)
 
-        del(`/avatar/${user?.type}/${user?.id}`).then(() => {
+        del(`/avatar/${person?.type}/${person?.id}`).then(() => {
             createSnack('Avatar removido com sucesso!', 'success')
-            loadUserImg(true)
+            loadPersonImg(true)
         })
     }
 
     useEffect(() => {
-        loadUserImg()
+        loadPersonImg()
     }, [])
 
     return (

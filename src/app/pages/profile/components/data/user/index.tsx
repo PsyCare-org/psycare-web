@@ -4,7 +4,7 @@ import { ProfileDataUserForm } from './types/profile-data-user'
 import { profileDataUserFormSchema } from './schemas/profile-data-user-form-schema'
 import { useEffect, useState } from 'react'
 import { FullUser } from './types/full-user'
-import { useApi, useSnackbar, useUser } from 'src/app/hooks'
+import { useApi, useSnackbar, usePerson } from 'src/app/hooks'
 import { AtomButton, AtomDateField, AtomSelectField, AtomTextField } from 'src/app/components'
 import ReactInputMask from 'react-input-mask'
 import EmailIcon from '@mui/icons-material/Email'
@@ -18,7 +18,7 @@ export const ProfileDataUser = () => {
 
     const { get, patch } = useApi()
     const { createSnack } = useSnackbar()
-    const { user, updateName } = useUser()
+    const { person, updateName } = usePerson()
 
     const [fullUser, setFullUser] = useState<FullUser | null>(null)
 
@@ -39,7 +39,7 @@ export const ProfileDataUser = () => {
             birthDate: (value.birthDate as Dayjs).toDate().toISOString()
         }
 
-        patch(`/user/${user?.id}`, payload).then((res: FullUser) => {
+        patch(`/user/${person?.id}`, payload).then((res: FullUser) => {
             updateFormValue(res)
             updateName(res.name)
             createSnack('Dados atualizados com sucesso!', 'success')
@@ -55,7 +55,7 @@ export const ProfileDataUser = () => {
     }
 
     useEffect(() => {
-        get(`/user/${user?.id}`).then((res: FullUser) => {
+        get(`/user/${person?.id}`).then((res: FullUser) => {
             setFullUser(res)
             updateFormValue(res)
         })

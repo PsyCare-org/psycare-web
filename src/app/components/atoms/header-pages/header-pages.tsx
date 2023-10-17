@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useUser } from 'src/app/hooks'
+import { usePerson } from 'src/app/hooks'
 import { Page, professionalPages, userPages } from './utils/pages'
 import { Button, List } from '@mui/material'
 import { useLocation, useNavigate } from 'react-router-dom'
@@ -10,15 +10,15 @@ export const HeaderPages = () => {
     const { pathname } = useLocation()
     const navigate = useNavigate()
 
-    const { user } = useUser()
+    const { person } = usePerson()
     const [pages, setPages] = useState<Page[]>([])
 
     useEffect(() => {
-        if(user?.type === 'user')
+        if(person?.type === 'user')
             setPages(userPages)
         else
             setPages(professionalPages)
-    }, [user])
+    }, [person])
 
     return (
         <div id='header-pages'>

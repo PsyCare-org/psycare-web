@@ -1,17 +1,17 @@
 import { createContext } from 'react'
-import { User } from 'src/types'
+import { Person } from 'src/types'
 
-type UserContextType = {
-    user: User | null,
+type PersonContextType = {
+    person: Person | null,
     avatar: string | null,
     updateName: (value: string) => void
     updateAvatar: (value: string) => void
-    signIn: (value: User) => void
+    signIn: (value: Person) => void
     signOut: () => void
 }
 
-export const UserContext = createContext<UserContextType>({
-    user: null,
+export const PersonContext = createContext<PersonContextType>({
+    person: null,
     avatar: null,
     updateName: () => {},
     updateAvatar: () => {},

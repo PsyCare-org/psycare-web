@@ -1,4 +1,4 @@
-import { useApi, useSnackbar, useUser } from 'src/app/hooks'
+import { useApi, useSnackbar, usePerson } from 'src/app/hooks'
 import './styles.scss'
 import { FullProfessional } from './types/full-professional'
 import { useEffect, useState } from 'react'
@@ -17,7 +17,7 @@ export const ProfileDataProfessional = () => {
 
     const { get, patch } = useApi()
     const { createSnack } = useSnackbar()
-    const { user, updateName } = useUser()
+    const { person, updateName } = usePerson()
 
     const [fullProfessional, setFullProfessional] = useState<FullProfessional | null>(null)
 
@@ -38,7 +38,7 @@ export const ProfileDataProfessional = () => {
             birthDate: (value.birthDate as Dayjs).toDate().toISOString()
         }
 
-        patch(`/professional/${user?.id}`, payload).then((res: FullProfessional) => {
+        patch(`/professional/${person?.id}`, payload).then((res: FullProfessional) => {
             updateFormValue(res)
             updateName(res.name)
             createSnack('Dados atualizados com sucesso!', 'success')
@@ -60,7 +60,7 @@ export const ProfileDataProfessional = () => {
     }
 
     useEffect(() => {
-        get(`/professional/${user?.id}`).then((res: FullProfessional) => {
+        get(`/professional/${person?.id}`).then((res: FullProfessional) => {
             setFullProfessional(res)
             updateFormValue(res)
         })

@@ -1,10 +1,10 @@
 import { Navigate } from 'react-router-dom'
-import { useUser } from 'src/app/hooks'
+import { usePerson } from 'src/app/hooks'
 
 export const HomeHandler = () => {
-    const { user } = useUser()
+    const { person } = usePerson()
 
-    if(user?.type === 'user') {
+    if(person?.type === 'user') {
         return <Navigate to='/professionals'/>
     } else {
         return <Navigate to='/Patients'/>

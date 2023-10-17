@@ -4,7 +4,7 @@ import { CalendarHour, OccupiedHour } from 'src/types'
 import CheckIcon from '@mui/icons-material/Check'
 import RemoveIcon from '@mui/icons-material/Remove'
 import './styles.scss'
-import { useApi, useSnackbar, useUser } from 'src/app/hooks'
+import { useApi, useSnackbar, usePerson } from 'src/app/hooks'
 import { useEffect, useState } from 'react'
 import { AtomButton, AtomModal } from 'src/app/components'
 
@@ -15,7 +15,7 @@ type Props = {
 
 export const ProfessionalCalendar = ({ professionalId, occupiedHours }: Props) => {
 
-    const { user } = useUser()
+    const { person } = usePerson()
     const { post } = useApi()
     const { createSnack } = useSnackbar()
 
@@ -31,7 +31,7 @@ export const ProfessionalCalendar = ({ professionalId, occupiedHours }: Props) =
     const createAttendance = () => {
         const payload = {
             calendarHour,
-            userId: user?.id,
+            userId: person?.id,
             professionalId
         }
 
@@ -43,7 +43,7 @@ export const ProfessionalCalendar = ({ professionalId, occupiedHours }: Props) =
     }
 
     useEffect(() => {
-        const newShouldBlock = !!occupiedHours.find(el => el.userId === user?.id)
+        const newShouldBlock = !!occupiedHours.find(el => el.userId === person?.id)
         setShouldBlock(newShouldBlock)
     }, [])
 

@@ -1,7 +1,15 @@
+import { Gender } from 'src/enums'
+
 export type User = {
     id: number
-    type: 'user' | 'professional'
-    name: string
     email: string
-    accessToken: string
+    phoneNumber?: string
+    name: string
+    surname?: string
+    gender: Gender
+    birthDate: string
+    avatar?: string
+    avatarId?: number
+    createdAt: string
+    updatedAt: string
 }

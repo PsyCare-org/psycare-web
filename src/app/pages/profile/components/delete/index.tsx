@@ -2,18 +2,18 @@ import { Card, Typography } from '@mui/material'
 import WarningIcon from '@mui/icons-material/Warning'
 import { AtomButton } from 'src/app/components'
 import './styles.scss'
-import { useApi, useSnackbar, useUser } from 'src/app/hooks'
+import { useApi, useSnackbar, usePerson } from 'src/app/hooks'
 import { useNavigate } from 'react-router-dom'
 
 export const ProfileDelete = () => {
 
     const navigate = useNavigate()
-    const { user, signOut } = useUser()
+    const { person, signOut } = usePerson()
     const { del } = useApi()
     const { createSnack } = useSnackbar()
 
     const deleteAccount = () => {
-        del(`/${user?.type}/${user?.id}`).then(() => {
+        del(`/${person?.type}/${person?.id}`).then(() => {
             createSnack('Conta excluída com sucesso! Você será desconectado em instantes...', 'success')
             setTimeout(() => {
                 signOut()

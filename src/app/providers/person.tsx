@@ -1,23 +1,23 @@
 import { ReactNode, useEffect, useState } from 'react'
-import { User } from 'src/types'
-import { UserContext } from '../contexts/user'
+import { Person } from 'src/types'
 import { useApi } from '../hooks'
 import { env } from 'src/constants'
 import { AxiosRequestConfig } from 'axios'
+import { PersonContext } from '../contexts/person'
 
 type Props = {
     children: ReactNode
 }
 
-const UserProvider = ({ children }: Props) => {
+const PersonProvider = ({ children }: Props) => {
 
     const { axios } = useApi()
 
-    const [user, setUser] = useState<User | null>(null)
+    const [person, setPerson] = useState<Person | null>(null)
     const [avatar, setAvatar] = useState<string | null>(null)
 
-    const signIn = (value: User) => {
-        setUser(value)
+    const signIn = (value: Person) => {
+        setPerson(value)
 
         const url = `${env.dataApiUrl}/avatar/${value.type}/${value.id}`
 
@@ -31,8 +31,8 @@ const UserProvider = ({ children }: Props) => {
     }
 
     const signOut = () => {
-        setUser(null)
-        window.sessionStorage.removeItem('user')
+        setPerson(null)
+        window.sessionStorage.removeItem('person')
     }
 
     const updateAvatar = (value: string) => {
@@ -40,27 +40,27 @@ const UserProvider = ({ children }: Props) => {
     }
 
     const updateName = (name: string) => {
-        setUser(currentUser => ({
-            ...currentUser,
+        setPerson(currentPerson => ({
+            ...currentPerson,
             name
-        } as User))
+        } as Person))
     }
 
     useEffect(() => {
-        const userString = window.sessionStorage.getItem('user')
-        if(userString !== null) 
-            signIn(JSON.parse(userString))
+        const personString = window.sessionStorage.getItem('pérson')
+        if(personString !== null) 
+            signIn(JSON.parse(personString))
     }, [])
 
     useEffect(() => {
-        if(user !== null)
-            window.sessionStorage.setItem('user', JSON.stringify(user))
-    }, [user])
+        if(person !== null)
+            window.sessionStorage.setItem('person', JSON.stringify(person))
+    }, [person])
 
     return (
-        <UserContext.Provider 
+        <PersonContext.Provider 
             value={{ 
-                user,
+                person,
                 updateName,
                 avatar,
                 updateAvatar,
@@ -69,8 +69,8 @@ const UserProvider = ({ children }: Props) => {
             }}
         >
             { children }
-        </UserContext.Provider>
+        </PersonContext.Provider>
     )
 }
 
-export { UserProvider }
+export { PersonProvider }

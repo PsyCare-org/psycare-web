@@ -11,12 +11,12 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 import EmailIcon from '@mui/icons-material/Email'
 import { useNavigate } from 'react-router-dom'
 import './styles.scss'
-import { useApi, useQuery, useUser } from 'src/app/hooks'
+import { useApi, useQuery, usePerson } from 'src/app/hooks'
 
 export const SignIn = () => {
 
     const { post } = useApi()
-    const { signIn } = useUser()
+    const { signIn } = usePerson()
     const navigate = useNavigate()
     const query = useQuery()
 

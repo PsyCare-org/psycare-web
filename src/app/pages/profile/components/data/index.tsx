@@ -1,12 +1,12 @@
 import { Typography } from '@mui/material'
 import './styles.scss'
-import { useUser } from 'src/app/hooks'
+import { usePerson } from 'src/app/hooks'
 import { ProfileDataUser } from './user'
 import { ProfileDataProfessional } from './professional'
 
 export const ProfileData = () => {
 
-    const { user } = useUser()
+    const { person } = usePerson()
 
     return (
         <div id='profile-data'>
@@ -16,7 +16,7 @@ export const ProfileData = () => {
                 </Typography>
                 <Typography variant='body1' color='text.secondary'>
                     Preencha os campos abaixo com suas informações pessoais.
-                    { user?.type === 'professional' && (
+                    { person?.type === 'professional' && (
                         <>
                             <br />
                             <span>
@@ -27,9 +27,9 @@ export const ProfileData = () => {
                 </Typography>
             </div>
 
-            { user?.type === 'user' && <ProfileDataUser /> }
+            { person?.type === 'user' && <ProfileDataUser /> }
 
-            { user?.type === 'professional' && <ProfileDataProfessional /> }
+            { person?.type === 'professional' && <ProfileDataProfessional /> }
         </div>
     )
 }

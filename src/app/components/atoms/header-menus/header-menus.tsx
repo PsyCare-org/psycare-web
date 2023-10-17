@@ -2,7 +2,7 @@ import { Avatar, Divider, IconButton, ListItemIcon, ListItemText, Menu, MenuItem
 import EmailIcon from '@mui/icons-material/Email'
 import NotificationsIcon from '@mui/icons-material/Notifications'
 import { MouseEvent, useState } from 'react'
-import { useUser } from 'src/app/hooks'
+import { usePerson } from 'src/app/hooks'
 import PersonIcon from '@mui/icons-material/Person'
 import LogoutIcon from '@mui/icons-material/Logout'
 import { useNavigate } from 'react-router-dom'
@@ -11,7 +11,7 @@ import './header-menus.scss'
 export const HeaderMenus = () => {
 
     const navigate = useNavigate()
-    const { user, avatar, signOut } = useUser()
+    const { person, avatar, signOut } = usePerson()
 
     const [anchor, setAnchor] = useState<HTMLElement | null>(null)
     const openMenu = (event: MouseEvent<HTMLButtonElement>) => setAnchor(event.currentTarget)
@@ -54,7 +54,7 @@ export const HeaderMenus = () => {
                         <Typography variant='body2'>
                             Autenticado como <span></span>
                             <span id='username'>
-                                { user?.name }
+                                { person?.name }
                             </span>
                         </Typography>
                     </MenuItem>

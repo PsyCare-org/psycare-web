@@ -1,15 +1,15 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
-import { useUser } from './useUser'
 import { useSnackbar } from './useSnackbar'
 import { env } from 'src/constants'
+import { usePerson } from './usePerson'
 
 export const useApi = () => {
-    const { user } = useUser()
+    const { person } = usePerson()
     const { createSnack } = useSnackbar()
 
     const authConfig: AxiosRequestConfig = {
         headers: {
-            'Authorization': 'Bearer ' + user?.accessToken
+            'Authorization': 'Bearer ' + person?.accessToken
         }
     }
 

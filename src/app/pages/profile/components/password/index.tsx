@@ -9,13 +9,13 @@ import VisibilityIcon from '@mui/icons-material/Visibility'
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 import { useState } from 'react'
 import './styles.scss'
-import { useApi, useSnackbar, useUser } from 'src/app/hooks'
+import { useApi, useSnackbar, usePerson } from 'src/app/hooks'
 import { useNavigate } from 'react-router-dom'
 
 export const ProfilePassword = () => {
 
     const navigate = useNavigate()
-    const { user, signOut } = useUser()
+    const { person, signOut } = usePerson()
     const { patch } = useApi()
     const { createSnack } = useSnackbar()
 
@@ -38,7 +38,7 @@ export const ProfilePassword = () => {
     })
 
     const submitHandler = ({ newConfirmPassword, ...payload }: ProfilePasswordForm) => {
-        patch(`/${user?.type}/change-password/${user?.id}`, payload).then(() => {
+        patch(`/${person?.type}/change-password/${person?.id}`, payload).then(() => {
             createSnack('Senha alterada com sucesso! Você será desconectado em instantes...', 'success')
             setTimeout(() => {
                 signOut()

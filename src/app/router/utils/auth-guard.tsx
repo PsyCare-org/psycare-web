@@ -1,22 +1,22 @@
 import { Navigate, Outlet } from 'react-router-dom'
-import { useUser } from 'src/app/hooks'
+import { usePerson } from 'src/app/hooks'
 
 type Props = {
     type: 'private' | 'public'
 }
 
 export const AuthGuard = ({ type }: Props) => {
-    const { user } = useUser()
+    const { person } = usePerson()
 
     if(type === 'private') {
         return (
-            user?.accessToken
+            person?.accessToken
                 ? <Outlet />
                 : <Navigate to='/auth/sign-in' />
         )
     } else {
         return (
-            user?.accessToken
+            person?.accessToken
                 ? <Navigate to='/home' />
                 : <Outlet />
         )
