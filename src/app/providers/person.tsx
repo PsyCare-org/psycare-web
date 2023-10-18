@@ -47,7 +47,7 @@ const PersonProvider = ({ children }: Props) => {
     }
 
     useEffect(() => {
-        const personString = window.sessionStorage.getItem('pérson')
+        const personString = window.sessionStorage.getItem('person')
         if(personString !== null) 
             signIn(JSON.parse(personString))
     }, [])

@@ -14,7 +14,9 @@ export * from './atoms/text-field/text-field'
 export * from './molecules/attendance-card/attendance-card'
 export * from './molecules/breadcrumb/breadcrumb'
 export * from './molecules/header/header'
-export * from './molecules/professional-header/professional-header'
+export * from './molecules/professional-display/professional-display'
 
 export * from './organisms/auth/auth'
 export * from './organisms/default/default'
+
+export * from './templates/attendances/attendances'

@@ -1,11 +1,11 @@
-import { Typography } from '@mui/material'
-import { BreadcrumbItem, OrgDefault } from 'src/app/components'
-import { useApi, usePerson } from 'src/app/hooks'
+import { Link } from '@mui/material'
+import { BreadcrumbItem, TemAttendances } from 'src/app/components'
 import { useEffect, useState } from 'react'
-import { SplittedAttendances } from './types/splitted-attendances'
-import { AttendancesPending } from './components/pending'
-import { AttendancesList } from './components/list'
+import { AttendancesPending } from './pending'
+import { useNavigate } from 'react-router-dom'
+import { Attendance } from 'src/types'
 import './styles.scss'
+import { useApi, usePerson } from 'src/app/hooks'
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -19,40 +19,34 @@ export const Attendances = () => {
 
     const { get } = useApi()
     const { person } = usePerson()
+    const navigate = useNavigate()
 
-    const [attendances, setAttendances] = useState<SplittedAttendances | null>(null)
+    const [pendingAttendances, setPendingAttendances] = useState<Attendance[]>([])
+    const [attendances, setAttendances] = useState<Attendance[] | null>(null)
 
     useEffect(() => {
         get(`/attendance/${person?.type}/${person?.id}`).then(res => {
-            setAttendances({
-                active: res.data.active,
-                pending: res.data.pending
-            })
+            setAttendances(res.data.active)
+            setPendingAttendances(res.data.pending)
         })
     }, [])
 
     return (
-        <OrgDefault breadcrumbs={breadcrumbs}>
-            <div id='attendances'>
-                <div id='head'>
-                    <div id='title'>
-                        <Typography variant='h4'>
-                            Acompanhamentos
-                        </Typography>
-                        <Typography variant='body1' color='text.secondary'>
-                            Aqui você encontra informações sobre os seus acompanhamentos em andamento e as solicitações pendentes.
-                        </Typography>
-                    </div>
-
-                    { attendances && (
-                        <AttendancesPending data={attendances.pending}/>
-                    )}
-                </div>
-
-                { attendances && (
-                    <AttendancesList data={attendances.active} />
-                )}
-            </div>            
-        </OrgDefault>
+        <TemAttendances
+            breadcrumbs={breadcrumbs}
+            title='Acompanhamentos'
+            subTitle='Aqui você encontra informações sobre os seus acompanhamentos em andamento e as solicitações pendentes.'
+            emptyTitle='Nenhum Acompanhamento Ativo!'
+            emptyDescription={(
+                <>
+                    Você não possui nenhum acompanhamento ativo no momento. Considere explorar a <Link onClick={() => navigate('/professionals')}>lista de profissionais</Link> disponíveis ou verificar o <Link onClick={() => navigate('/historic')}>histórico de acompanhamentos</Link> anteriores.
+                </>
+            )}
+            headButton={(
+                <AttendancesPending data={pendingAttendances} />
+            )}
+            data={attendances}
+            onAttendanceClick={({ id }) => navigate(`/attendances/${id}`)}
+        />
     )
 }

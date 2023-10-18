@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { AtomLoader, BreadcrumbItem, MolProfessionalHeader, OrgDefault } from 'src/app/components'
+import { AtomLoader, BreadcrumbItem, MolProfessionalDisplay, OrgDefault } from 'src/app/components'
 import { useApi } from 'src/app/hooks'
 import { Professional as Professional_ } from 'src/types'
 import { ProfessionalCalendar } from './calendar'
@@ -32,7 +32,7 @@ export const Professional = () => {
 
             { professional && id && (
                 <div id='professional'>
-                    <MolProfessionalHeader professional={professional} size='large'/>
+                    <MolProfessionalDisplay professional={professional} size='large'/>
 
                     <ProfessionalProfile professional={professional} />
 

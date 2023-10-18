@@ -3,7 +3,7 @@ import { Professional } from 'src/types'
 import { crpStateMap, languageLabels } from 'src/constants'
 import { useNavigate } from 'react-router-dom'
 import './styles.scss'
-import { MolProfessionalHeader } from 'src/app/components'
+import { MolProfessionalDisplay } from 'src/app/components'
 
 type Props = {
     item: Professional
@@ -25,7 +25,7 @@ export const ProfessionalsResultItem = ({ item }: Props) => {
             onClick={redirectHandler}
         >
             <CardContent>
-                <MolProfessionalHeader
+                <MolProfessionalDisplay
                     professional={item}
                     size='normal'
                 />

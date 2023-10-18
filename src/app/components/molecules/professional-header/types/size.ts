@@ -1,1 +1,0 @@
-export type ProfessionalHeaderSize = 'small' | 'normal' | 'large'

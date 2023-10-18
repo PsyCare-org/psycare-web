@@ -1,3 +1,4 @@
+import dayjs from 'dayjs'
 import { days, hours } from 'src/constants'
 import { CalendarHour } from 'src/types'
 
@@ -8,7 +9,12 @@ export const useUtils = () => {
         return `${days[day]} às ${hours[hour]}`
     }
 
+    const calcAge = (birthDate: string) => {
+        return `${dayjs(new Date()).diff(birthDate, 'years')} anos`
+    }
+
     return {
-        formatCalendarHour
+        formatCalendarHour,
+        calcAge
     }
 }

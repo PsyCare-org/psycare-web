@@ -1,0 +1,1 @@
+export type ProfessionalDisplaySize = 'small' | 'normal' | 'large'

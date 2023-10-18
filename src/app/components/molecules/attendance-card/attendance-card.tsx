@@ -1,27 +1,40 @@
 import { Card, CardContent, Divider, Typography } from '@mui/material'
 import { Attendance } from 'src/types'
-import { MolProfessionalHeader } from '../professional-header/professional-header'
-import { useNavigate } from 'react-router-dom'
-import { useUtils } from 'src/app/hooks'
+import { MolProfessionalDisplay } from '../professional-display/professional-display'
+import { usePerson, useUtils } from 'src/app/hooks'
+import { MolUserDisplay } from '../user-display/user-display'
 import './attendance-card.scss'
 
 type Props = {
     attendance: Attendance
+    onClick: (attendance: Attendance) => void
 }
 
-export const MolAttendanceCard = ({ attendance }: Props) => {
+export const MolAttendanceCard = ({
+    attendance,
+    onClick
+}: Props) => {
 
-    const navigate = useNavigate()
+    const { person } = usePerson()
     const { formatCalendarHour } = useUtils()
 
     return (
-        <Card id='mol-attendance-card' onClick={() => navigate(`/attendance/${attendance.id}`)}>
+        <Card id='mol-attendance-card' onClick={() => onClick}>
             <CardContent>
-                <MolProfessionalHeader
-                    professional={attendance.professional}
-                    showLangAndRating={false}
-                    size='small'
-                />
+                { person?.type === 'user' && (
+                    <MolProfessionalDisplay
+                        professional={attendance.professional}
+                        showLangAndRating={false}
+                        size='small'
+                    />
+                )}
+
+                { person?.type === 'professional' && (
+                    <MolUserDisplay
+                        user={attendance.user}
+                        size='small'
+                    />
+                )}
 
                 <Divider
                     orientation='vertical'

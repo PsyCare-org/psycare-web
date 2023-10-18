@@ -1,18 +1,18 @@
 import { Avatar, Typography } from '@mui/material'
 import { crpStateMap, languageLabels } from 'src/constants'
 import { Professional } from 'src/types'
-import './professional-header.scss'
-import { ProfessionalHeaderSize } from './types/size'
-import { ProfessionalHeaderTypography } from './types/typography'
 import { AtomRating } from '../../atoms/rating/rating'
+import { ProfessionalDisplaySize } from './types/size'
+import { ProfessionalDisplayTypography } from './types/typography'
+import './professional-display.scss'
 
 type Props = {
-    size?: ProfessionalHeaderSize
+    size?: ProfessionalDisplaySize
     showLangAndRating?: boolean
     professional: Professional
 }
 
-export const MolProfessionalHeader = ({
+export const MolProfessionalDisplay = ({
     size = 'normal',
     showLangAndRating = true,
     professional
@@ -21,7 +21,7 @@ export const MolProfessionalHeader = ({
     const state: string = crpStateMap[professional.crp.split('/')[0]]
     const languages = professional.languages.map(el => languageLabels[el]).join(', ')
 
-    const typography: ProfessionalHeaderTypography = {
+    const typography: ProfessionalDisplayTypography = {
         small: {
             title: 'h6',
             text: 'body2'
@@ -37,7 +37,7 @@ export const MolProfessionalHeader = ({
     }
 
     return (
-        <div id='mol-professional-header'>
+        <div id='mol-professional-display'>
             <Avatar 
                 src={professional.avatar}
                 className={`${size}-size`}

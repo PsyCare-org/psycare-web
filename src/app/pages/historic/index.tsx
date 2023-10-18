@@ -1,8 +1,8 @@
-import { Link, Typography } from '@mui/material'
-import { useEffect, useState } from 'react'
+import { Link } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
-import { BreadcrumbItem, MolAttendanceCard, OrgDefault } from 'src/app/components'
+import { BreadcrumbItem, TemAttendances } from 'src/app/components'
 import { useApi, usePerson } from 'src/app/hooks'
+import { useEffect, useState } from 'react'
 import { Attendance } from 'src/types'
 import './styles.scss'
 
@@ -16,8 +16,8 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 export const Historic = () => {
 
-    const { get } = useApi()
     const { person } = usePerson()
+    const { get } = useApi()
     const navigate = useNavigate()
 
     const [attendances, setAttendances] = useState<Attendance[] | null>(null)
@@ -29,38 +29,18 @@ export const Historic = () => {
     }, [])
 
     return (
-        <OrgDefault breadcrumbs={breadcrumbs}>
-            <div id='historic'>
-                <div id='title'>
-                    <Typography variant='h4'>
-                        Histórico de Acompanhamentos
-                    </Typography>
-                    <Typography variant='body1' color='text.secondary'>
-                        Aqui estão registrados todos os seus acompanhamentos inativos ou encerrados.
-                    </Typography>
-                </div>
-
-                <div id='content'>
-                    { attendances && attendances.length > 0 && (
-                        <div id='list'>
-                            {attendances.map(attendance => (
-                                <MolAttendanceCard key={attendance.id} attendance={attendance} />
-                            ))}
-                        </div>
-                    )}
-
-                    { attendances && attendances.length == 0 && (
-                        <div id='empty'>
-                            <Typography variant='h6'>
-                                Nenhum Histórico de Acompanhamento!
-                            </Typography>
-                            <Typography variant='body1'>
-                                Você não possui nenhum histórico de acompanhamento. Considere explorar a <Link onClick={() => navigate('/professionals')}>lista de profissionais</Link> disponíveis.
-                            </Typography>
-                        </div>
-                    )}
-                </div>
-            </div>
-        </OrgDefault>
+        <TemAttendances
+            breadcrumbs={breadcrumbs}
+            title={`Histórico de ${person?.type === 'user' ? 'Acompanhamentos' : 'Atendimentos'}`}
+            subTitle={`Aqui estão registrados todos os seus ${person?.type === 'user' ? 'acompanhamentos' : 'atendimentos'} inativos ou encerrados.`}
+            emptyTitle={`Nenhum histórico de ${person?.type === 'user' ? 'acompanhamento' : 'atendimento'}!`}
+            emptyDescription={(
+                <>
+                    Você não possui nenhum histórico de acompanhamento. Considere explorar a <Link onClick={() => navigate('/professionals')}>lista de profissionais</Link> disponíveis.
+                </>
+            )}
+            onAttendanceClick={({ id }) => navigate(`/historic/${id}`)}
+            data={attendances}
+        />
     )
 }

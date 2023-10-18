@@ -24,7 +24,7 @@ export const AttendancesPending = ({ data }: Props) => {
                     disabled={data.length === 0}
                     onClick={() => setModal(true)}
                 >
-                    Acompanhamentos pendentes
+                    Solicitações pendentes
                 </AtomButton>
             </Tooltip>
 

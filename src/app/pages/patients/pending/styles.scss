@@ -1,0 +1,11 @@
+#patients-pending {
+    .MuiListItem-root {
+        padding-right: 175px;
+    }
+
+    .MuiListItemSecondaryAction-root {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+}

@@ -7,6 +7,6 @@ export const HomeHandler = () => {
     if(person?.type === 'user') {
         return <Navigate to='/professionals'/>
     } else {
-        return <Navigate to='/Patients'/>
+        return <Navigate to='/patients'/>
     }
 }
