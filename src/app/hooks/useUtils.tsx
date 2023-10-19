@@ -4,9 +4,13 @@ import { CalendarHour } from 'src/types'
 
 export const useUtils = () => {
 
-    const formatCalendarHour = (calendarHour: CalendarHour) => {
+    const formatDate = (origin: string) => {
+        return new Date(origin).toLocaleDateString('pt-BR')
+    }
+
+    const formatCalendarHour = (calendarHour: CalendarHour, upperCase = true) => {
         const [ day, hour ] = calendarHour.split('-')
-        return `${days[day]} às ${hours[hour]}`
+        return `${upperCase ? days[day] : days[day].toLowerCase()} às ${hours[hour]}`
     }
 
     const calcAge = (birthDate: string) => {
@@ -14,6 +18,7 @@ export const useUtils = () => {
     }
 
     return {
+        formatDate,
         formatCalendarHour,
         calcAge
     }

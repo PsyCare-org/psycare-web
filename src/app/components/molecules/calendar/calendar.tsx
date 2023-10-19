@@ -5,11 +5,13 @@ import { hours as hours_, days as days_ } from 'src/constants'
 import './calendar.scss'
 
 type Props = {
+    className?: string
     border?: boolean
     children: (id: CalendarHour, label?: string) => ReactNode
 }
 
 export const MolCalendar = ({
+    className,
     border = true,
     children,
 }: Props) => {
@@ -19,7 +21,7 @@ export const MolCalendar = ({
     const invalidHours = ['sab-13', 'sab-14', 'sab-15', 'sab-16']
 
     return (
-        <TableContainer id='mol-calendar'>
+        <TableContainer id='mol-calendar' { ...className && { className } }>
             <Table className={border ? '' : 'disabled-border'}>
                 <TableHead>
                     <TableRow>

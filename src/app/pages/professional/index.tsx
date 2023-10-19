@@ -18,6 +18,7 @@ export const Professional = () => {
 
     useEffect(() => {
         get(`/professional/${id}`).then(res => {
+            console.log(res)
             setProfessional(res)
             setBreadcrumbs([
                 { active: true, label: 'Profissionais', url: '/professionals' },
@@ -39,6 +40,7 @@ export const Professional = () => {
                     <ProfessionalCalendar 
                         professionalId={+id}
                         occupiedHours={professional.occupiedHours || []}
+                        attendances={professional.attendances || []}
                     />
 
                     <ProfessionalRatings professional={professional} />

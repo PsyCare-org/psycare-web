@@ -1,25 +1,33 @@
 import { Tooltip, Typography } from '@mui/material'
 import { MolCalendar } from 'src/app/components/molecules/calendar/calendar'
-import { CalendarHour, OccupiedHour } from 'src/types'
+import { Attendance, CalendarHour, OccupiedHour } from 'src/types'
 import CheckIcon from '@mui/icons-material/Check'
 import RemoveIcon from '@mui/icons-material/Remove'
 import './styles.scss'
-import { useApi, useSnackbar, usePerson } from 'src/app/hooks'
+import { useApi, useSnackbar, usePerson, useUtils } from 'src/app/hooks'
 import { useEffect, useState } from 'react'
 import { AtomButton, AtomModal } from 'src/app/components'
+import { AttendanceStatus } from 'src/enums'
 
 type Props = {
+    attendances: Attendance[]
     professionalId: number
     occupiedHours: OccupiedHour[]
 }
 
-export const ProfessionalCalendar = ({ professionalId, occupiedHours }: Props) => {
+export const ProfessionalCalendar = ({
+    attendances,
+    professionalId,
+    occupiedHours
+}: Props) => {
 
     const { person } = usePerson()
     const { post } = useApi()
     const { createSnack } = useSnackbar()
+    const { formatCalendarHour, formatDate } = useUtils()
 
     const [shouldBlock, setShouldBlock] = useState<boolean>(false)
+    const [attendance, setAttendance] = useState<Attendance | null>(null)
     const [modal, setModal] = useState<boolean>(false)
     const [calendarHour, setCalendarHour] = useState<CalendarHour | null>(null)
 
@@ -45,6 +53,9 @@ export const ProfessionalCalendar = ({ professionalId, occupiedHours }: Props) =
     useEffect(() => {
         const newShouldBlock = !!occupiedHours.find(el => el.userId === person?.id)
         setShouldBlock(newShouldBlock)
+
+        const newAttendance = attendances.find(el => el.userId === person?.id) || null
+        setAttendance(newAttendance)
     }, [])
 
     return (
@@ -54,7 +65,7 @@ export const ProfessionalCalendar = ({ professionalId, occupiedHours }: Props) =
             </Typography>
 
             <div id='calendar-wrap'>
-                <MolCalendar border={false}>
+                <MolCalendar border={false} { ...shouldBlock && { className: 'should-block' } }>
                     {(calendarHour, label) => {
                         const isOccupied = occupiedHours.find(el => el.calendarHour === calendarHour)
 
@@ -103,14 +114,32 @@ export const ProfessionalCalendar = ({ professionalId, occupiedHours }: Props) =
                     </div>
                 </div>
 
-                { shouldBlock && (
+                { shouldBlock && attendance && (
                     <div id='blocker'>
-                        <Typography>
-                            Você já possui um acompanhamento(ou solicitação) com esse profissional.
-                        </Typography>
-                        <AtomButton variant='contained'>
-                            Ver acompanhamento
-                        </AtomButton>
+                        { attendance.status === AttendanceStatus.active && (
+                            <>
+                                <Typography>
+                                    Você já está em acompnhamento com esse profissional.
+                                </Typography>
+                                <Typography>
+                                    Seus encontros semanais estão programados para ocorrer toda { formatCalendarHour(attendance.calendarHour, false) }.
+                                </Typography>
+                                <AtomButton variant='contained'>
+                                    Ver acompanhamento
+                                </AtomButton>
+                            </>
+                        )}
+
+                        { attendance.status === AttendanceStatus.pending && (
+                            <>
+                                <Typography>
+                                    Você já enviou uma solicitação de acompanhamento para esse profissional.
+                                </Typography>
+                                <Typography>
+                                    A solicitação foi feita em { formatDate(attendance.createdAt) }.
+                                </Typography>
+                            </>
+                        )}
                     </div>
                 )}
             </div>
