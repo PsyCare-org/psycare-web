@@ -77,6 +77,32 @@ export const ProfessionalCalendar = ({ professionalId, occupiedHours }: Props) =
                     }}
                 </MolCalendar>
 
+                <div id='subtitles'>
+                    <Typography variant='subtitle1'>
+                        Legenda:
+                    </Typography>
+                    <div id='items'>
+                        <div className='item'>
+                            <RemoveIcon />
+                            <Typography variant='body1'>
+                                →
+                            </Typography>
+                            <Typography variant='body2'>
+                                Horário ocupado
+                            </Typography>
+                        </div>
+                        <div className='item'>
+                            <CheckIcon />
+                            <Typography variant='body1'>
+                                →
+                            </Typography>
+                            <Typography variant='body2'>
+                                Horário disponível
+                            </Typography>
+                        </div>
+                    </div>
+                </div>
+
                 { shouldBlock && (
                     <div id='blocker'>
                         <Typography>
