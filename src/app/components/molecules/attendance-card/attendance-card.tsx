@@ -16,7 +16,7 @@ export const MolAttendanceCard = ({
 }: Props) => {
 
     const { person } = usePerson()
-    const { formatCalendarHour } = useUtils()
+    const { formatCalendarHour, formatDate } = useUtils()
 
     return (
         <Card id='mol-attendance-card' onClick={() => onClick}>
@@ -59,7 +59,7 @@ export const MolAttendanceCard = ({
                         </Typography>
                     </div>
                     <Typography id='created-at' variant='body2' color='text.secondary'>
-                        Desde {new Date(attendance.createdAt).toLocaleDateString()}
+                        Desde { formatDate(attendance.createdAt) }
                     </Typography>
                 </div>
             </CardContent>

@@ -5,6 +5,7 @@ import { Attendance } from 'src/types'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext'
 import { useNavigate } from 'react-router-dom'
 import './styles.scss'
+import { useUtils } from 'src/app/hooks'
 
 type Props = {
     data: Attendance[]
@@ -13,6 +14,7 @@ type Props = {
 export const AttendancesPending = ({ data }: Props) => {
 
     const navigate = useNavigate()
+    const { formatDate } = useUtils()
 
     const [modal, setModal] = useState<boolean>(false)
 
@@ -46,7 +48,7 @@ export const AttendancesPending = ({ data }: Props) => {
                             </ListItemAvatar>
                             <ListItemText
                                 primary={`${attendance.professional.name} ${attendance.professional.surname}`}
-                                secondary={`Solicitado em: ${new Date(attendance.createdAt).toLocaleString()}`}
+                                secondary={`Solicitado em: ${ formatDate(attendance.createdAt) }`}
                             />
                             <ListItemSecondaryAction>
                                 <Tooltip title='Ver perfil do profissional'>

@@ -2,12 +2,16 @@ import { Typography } from '@mui/material'
 import { Professional } from 'src/types'
 import './styles.scss'
 import { AtomRating } from 'src/app/components'
+import { useUtils } from 'src/app/hooks'
 
 type Props = {
     professional: Professional
 }
 
 export const ProfessionalRatings = ({ professional }: Props) => {
+
+    const { formatDate } = useUtils()
+
     return (
         <div id='professional-ratings'>
             <Typography variant='h5'>
@@ -33,7 +37,7 @@ export const ProfessionalRatings = ({ professional }: Props) => {
                         <div>
                             <AtomRating value={rating.value} />
                             <Typography variant='body2' color='text.secondary'>
-                                { new Date(rating.createdAt).toLocaleDateString() }
+                                { formatDate(rating.createdAt) }
                             </Typography>
                             <Typography variant='body1'>
                                 { rating.description }
