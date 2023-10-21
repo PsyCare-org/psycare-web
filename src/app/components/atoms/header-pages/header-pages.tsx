@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { usePerson } from 'src/app/hooks'
-import { Page, professionalPages, userPages } from './utils/pages'
-import { Button, List } from '@mui/material'
+import { Button } from '@mui/material'
+import { Page } from './types/page'
 import { useLocation, useNavigate } from 'react-router-dom'
 import './header-pages.scss'
 
@@ -14,10 +14,16 @@ export const HeaderPages = () => {
     const [pages, setPages] = useState<Page[]>([])
 
     useEffect(() => {
+        const newPages: Page[] = [
+            { name: 'Acompanhamentos', url: '/attendances'},
+            { name: 'Histórico', url: '/historic'},
+            { name: 'Agenda', url: '/calendar'},
+        ]
+
         if(person?.type === 'user')
-            setPages(userPages)
-        else
-            setPages(professionalPages)
+            newPages.unshift({ name: 'Profissionais', url: '/professionals'})
+
+        setPages(newPages)
     }, [person])
 
     return (

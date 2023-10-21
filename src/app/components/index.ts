@@ -20,3 +20,4 @@ export * from './organisms/auth/auth'
 export * from './organisms/default/default'
 
 export * from './templates/attendances/attendances'
+export * from './templates/attendance/attendance'

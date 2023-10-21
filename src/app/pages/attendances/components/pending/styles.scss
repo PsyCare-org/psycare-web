@@ -1,3 +1,10 @@
+div#attendances-pending {
+    button {
+        width: 200px;
+        text-transform: capitalize;
+    }
+}
+
 #patients-pending {
     .MuiListItem-root {
         padding-right: 175px;

@@ -1,19 +1,11 @@
-import { Link } from '@mui/material'
-import { BreadcrumbItem, TemAttendances } from 'src/app/components'
 import { useEffect, useState } from 'react'
-import { AttendancesPending } from './pending'
 import { useNavigate } from 'react-router-dom'
-import { Attendance } from 'src/types'
-import './styles.scss'
+import { TemAttendances } from 'src/app/components'
 import { useApi, usePerson } from 'src/app/hooks'
-
-const breadcrumbs: BreadcrumbItem[] = [
-    {
-        active: false,
-        label: 'Acompanhamentos',
-        url: '/attendances'
-    }
-]
+import { Attendance, Person } from 'src/types'
+import './styles.scss'
+import { AttendancesPending } from './components/pending'
+import { useChildProps } from './hooks/useChildProps'
 
 export const Attendances = () => {
 
@@ -21,30 +13,28 @@ export const Attendances = () => {
     const { person } = usePerson()
     const navigate = useNavigate()
 
+    const props = useChildProps()[(person as Person).type]
+
     const [pendingAttendances, setPendingAttendances] = useState<Attendance[]>([])
     const [attendances, setAttendances] = useState<Attendance[] | null>(null)
 
-    useEffect(() => {
+    const loadData = () => {
         get(`/attendance/${person?.type}/${person?.id}`).then(res => {
             setAttendances(res.data.active)
             setPendingAttendances(res.data.pending)
         })
+    }
+
+    useEffect(() => {
+        loadData()
     }, [])
 
     return (
         <TemAttendances
-            breadcrumbs={breadcrumbs}
-            title='Acompanhamentos'
-            subTitle='Aqui você encontra informações sobre os seus acompanhamentos em andamento e as solicitações pendentes.'
-            emptyTitle='Nenhum Acompanhamento Ativo!'
-            emptyDescription={(
-                <>
-                    Você não possui nenhum acompanhamento ativo no momento. Considere explorar a <Link onClick={() => navigate('/professionals')}>lista de profissionais</Link> disponíveis ou verificar o <Link onClick={() => navigate('/historic')}>histórico de acompanhamentos</Link> anteriores.
-                </>
-            )}
-            headButton={(
-                <AttendancesPending data={pendingAttendances} />
-            )}
+            { ...props }
+            { ...pendingAttendances.length > 0 && {
+                headButton: <AttendancesPending data={pendingAttendances} reload={loadData} />
+            }}
             data={attendances}
             onAttendanceClick={({ id }) => navigate(`/attendances/${id}`)}
         />

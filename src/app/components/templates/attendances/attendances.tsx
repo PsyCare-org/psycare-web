@@ -6,7 +6,7 @@ import { MolAttendanceCard } from '../../molecules/attendance-card/attendance-ca
 import { Typography } from '@mui/material'
 import './attendances.scss'
 
-type Props = {
+export type TemAttendancesProps = {
     breadcrumbs: BreadcrumbItem[]
     title: ReactNode
     subTitle: ReactNode
@@ -26,7 +26,7 @@ export const TemAttendances = ({
     onAttendanceClick,
     emptyTitle,
     emptyDescription
-}: Props) => {
+}: TemAttendancesProps) => {
     return (
         <OrgDefault breadcrumbs={breadcrumbs}>
             <div id='tem-attendances'>
