@@ -3,7 +3,7 @@ import {
     Attendance,
     Attendances,
     Calendar,
-    Historic,
+    Historics,
     Messages,
     NotFound,
     Professional,
@@ -29,7 +29,7 @@ export const Router = () => {
                     <Route path='/professionals/:id' element={<Professional />} />
                     <Route path='/attendances' element={<Attendances />} />
                     <Route path='/attendances/:id' element={<Attendance />} />
-                    <Route path='/historic' element={<Historic />} />
+                    <Route path='/historics' element={<Historics />} />
                     <Route path='/calendar' element={<Calendar />} />
                     <Route path='/profile' element={<Profile />} />
                     <Route path='/messages' element={<Messages />} />

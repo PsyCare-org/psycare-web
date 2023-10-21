@@ -3,24 +3,27 @@ import { useNavigate } from 'react-router-dom'
 import { BreadcrumbItem, TemAttendances } from 'src/app/components'
 import { useApi, usePerson } from 'src/app/hooks'
 import { useEffect, useState } from 'react'
-import { Attendance } from 'src/types'
+import { Attendance, Person } from 'src/types'
 import './styles.scss'
+import { useChildProps } from './hooks/useChildProps'
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
         active: false,
         label: 'Histórico',
-        url: '/historic'
+        url: '/historics'
     }
 ]
 
-export const Historic = () => {
+export const Historics = () => {
 
     const { person } = usePerson()
     const { get } = useApi()
     const navigate = useNavigate()
 
     const [attendances, setAttendances] = useState<Attendance[] | null>(null)
+
+    const props = useChildProps()[(person as Person).type]
 
     useEffect(() => {
         get(`/attendance/${person?.type}/${person?.id}`).then(res => {
@@ -30,16 +33,9 @@ export const Historic = () => {
 
     return (
         <TemAttendances
+            { ...props }
             breadcrumbs={breadcrumbs}
-            title={`Histórico de ${person?.type === 'user' ? 'Acompanhamentos' : 'Atendimentos'}`}
-            subTitle={`Aqui estão registrados todos os seus ${person?.type === 'user' ? 'acompanhamentos' : 'atendimentos'} inativos ou encerrados.`}
-            emptyTitle={`Nenhum histórico de ${person?.type === 'user' ? 'acompanhamento' : 'atendimento'}!`}
-            emptyDescription={(
-                <>
-                    Você não possui nenhum histórico de acompanhamento. Considere explorar a <Link onClick={() => navigate('/professionals')}>lista de profissionais</Link> disponíveis.
-                </>
-            )}
-            onAttendanceClick={({ id }) => navigate(`/historic/${id}`)}
+            onAttendanceClick={({ id }) => navigate(`/historics/${id}`)}
             data={attendances}
         />
     )
