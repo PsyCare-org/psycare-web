@@ -16,7 +16,7 @@ export const HeaderPages = () => {
     useEffect(() => {
         const newPages: Page[] = [
             { name: 'Acompanhamentos', url: '/attendances'},
-            { name: 'Histórico', url: '/historic'},
+            { name: 'Histórico', url: '/historics'},
             { name: 'Agenda', url: '/calendar'},
         ]
 
