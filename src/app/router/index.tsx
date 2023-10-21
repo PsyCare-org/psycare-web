@@ -1,5 +1,17 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
-import { Attendances, Calendar, Historic, Messages, NotFound, Professional, Professionals, Profile, SignIn, SignUp } from 'src/app/pages'
+import {
+    Attendance,
+    Attendances,
+    Calendar,
+    Historic,
+    Messages,
+    NotFound,
+    Professional,
+    Professionals,
+    Profile,
+    SignIn,
+    SignUp
+} from 'src/app/pages'
 import { AuthGuard } from './utils/auth-guard'
 
 export const Router = () => {
@@ -16,6 +28,7 @@ export const Router = () => {
                     <Route path='/professionals' element={<Professionals />} />
                     <Route path='/professionals/:id' element={<Professional />} />
                     <Route path='/attendances' element={<Attendances />} />
+                    <Route path='/attendances/:id' element={<Attendance />} />
                     <Route path='/historic' element={<Historic />} />
                     <Route path='/calendar' element={<Calendar />} />
                     <Route path='/profile' element={<Profile />} />

@@ -1,3 +1,4 @@
+export * from './attendance/index'
 export * from './attendances/index'
 export * from './calendar/index'
 export * from './historic/index'
