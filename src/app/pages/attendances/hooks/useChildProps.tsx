@@ -25,7 +25,7 @@ export const useChildProps = (): ChildProps => {
             breadcrumbs: [{
                 active: false,
                 label: 'Pacientes',
-                url: '/patients'
+                url: '/attendances'
             }],
             title: 'Pacientes',
             subTitle: 'Aqui estão todos os atendimentos ativos que você, como profissional, está atualmente cuidando. Este é o seu espaço para acompanhar o progresso e fornecer o melhor suporte aos seus pacientes.',
