@@ -48,7 +48,7 @@ export const SignIn = () => {
             <div id='sign-in-wrap'>
                 <div id='head'>
                     <Typography variant='h4'>
-                        Bem vinde de volta!
+                        Bem vindo(a) de volta!
                     </Typography>
                     <Typography variant='body1'>
                         Autentique-se para voltar a utilizar a ferramenta.
