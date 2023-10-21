@@ -19,7 +19,7 @@ export const MolAttendanceCard = ({
     const { formatCalendarHour, formatDate } = useUtils()
 
     return (
-        <Card id='mol-attendance-card' onClick={() => onClick}>
+        <Card id='mol-attendance-card' onClick={() => onClick(attendance)}>
             <CardContent>
                 { person?.type === 'user' && (
                     <MolProfessionalDisplay
