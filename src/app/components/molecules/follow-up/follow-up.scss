@@ -1,0 +1,33 @@
+#mol-follow-up {
+    display: grid;
+    grid-template-columns: .9fr .1fr;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid rgb(0 0 0 / 10%);
+
+    div#content {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto;
+        gap: .5rem;
+
+        #title {
+            grid-column: span 2;
+        }
+
+        #status,
+        #type {
+            grid-column: span 1;
+        }
+
+        #description  {
+            grid-column: span 4;
+        }
+    }
+
+    div#actions {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+}

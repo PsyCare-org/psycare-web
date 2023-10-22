@@ -1,0 +1,16 @@
+div#atom-empty {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: .75rem;
+    width: 60%;
+    margin: 0 auto;
+
+    h6 {
+        color: var(--primary);
+    }
+
+    .MuiLink-root:hover {
+        cursor: pointer;
+    }
+}

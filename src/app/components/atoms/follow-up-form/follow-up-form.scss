@@ -1,0 +1,17 @@
+form#atom-follow-up-form {
+    width: 30vw;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    gap: 1rem;
+    padding: 1rem;
+
+    #title,
+    #type {
+        grid-column: span 2;
+    }
+
+    #description {
+        grid-column: span 4;
+    }
+}

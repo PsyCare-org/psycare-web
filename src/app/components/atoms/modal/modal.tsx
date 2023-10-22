@@ -10,6 +10,10 @@ type Props = {
     showButtons?: boolean
     cancelBtnLabel?: string
     confirmBtnLabel?: string
+    confirmBtnColor?: 'inherit' | 'primary' | 'error' | 'secondary' | 'success' | 'info' | 'warning'
+    confirmBtnVariant?: 'text' | 'outlined' | 'contained'
+    confirmBtnForm?: string
+    confirmBtnDisabled?: boolean
     confirmBtnClick?: () => void
 }
 
@@ -21,7 +25,11 @@ export const AtomModal = ({
     showButtons = true,
     cancelBtnLabel = 'Cancelar',
     confirmBtnClick,
-    confirmBtnLabel = 'Confirmar'
+    confirmBtnLabel = 'Confirmar',
+    confirmBtnVariant = 'outlined',
+    confirmBtnColor = 'primary',
+    confirmBtnDisabled = false,
+    confirmBtnForm,
 }: Props) => {
     return (
         <Dialog 
@@ -43,7 +51,13 @@ export const AtomModal = ({
                         { cancelBtnLabel }
                     </Button>
 
-                    <Button variant='outlined' onClick={confirmBtnClick}>
+                    <Button 
+                        variant={confirmBtnVariant}
+                        color={confirmBtnColor} 
+                        onClick={confirmBtnClick}
+                        disabled={confirmBtnDisabled}
+                        { ...confirmBtnForm && { form: confirmBtnForm } }
+                    >
                         { confirmBtnLabel }
                     </Button>
                 </DialogActions>

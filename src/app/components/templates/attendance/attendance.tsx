@@ -51,7 +51,7 @@ export const TemAttendance = ({
                         )}
                         
                         { menuValue === 'follow-up' && (
-                            <MolAttendanceFollowUp data={data} />
+                            <MolAttendanceFollowUp data={data} reload={onReloadData} />
                         )}
 
                         { menuValue === 'meetings' && (
