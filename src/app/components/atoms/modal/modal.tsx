@@ -3,6 +3,7 @@ import { ReactNode, SetStateAction } from 'react'
 import './modal.scss'
 
 type Props = {
+    className?: string
     value: boolean
     setValue: (value: SetStateAction<boolean>) => void
     title: string
@@ -18,6 +19,7 @@ type Props = {
 }
 
 export const AtomModal = ({
+    className,
     value,
     setValue,
     title,
@@ -34,6 +36,7 @@ export const AtomModal = ({
     return (
         <Dialog 
             id='atom-modal'
+            { ...className && { className }}
             open={value} 
             onClose={() => setValue(false)}
         >
