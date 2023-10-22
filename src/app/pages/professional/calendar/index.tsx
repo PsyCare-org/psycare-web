@@ -13,12 +13,14 @@ type Props = {
     attendances: Attendance[]
     professionalId: number
     occupiedHours: OccupiedHour[]
+    reload: () => void
 }
 
 export const ProfessionalCalendar = ({
     attendances,
     professionalId,
-    occupiedHours
+    occupiedHours,
+    reload
 }: Props) => {
 
     const { person } = usePerson()
@@ -46,7 +48,7 @@ export const ProfessionalCalendar = ({
         post('/attendance', payload).then(() => {
             createSnack('Solicitação enviada com sucesso!', 'success')
             setModal(false)
-            setShouldBlock(true)
+            reload()
         })
     }
 
@@ -56,7 +58,7 @@ export const ProfessionalCalendar = ({
 
         const newAttendance = attendances.find(el => el.userId === person?.id) || null
         setAttendance(newAttendance)
-    }, [])
+    }, [attendance, occupiedHours])
 
     return (
         <div id='professional-calendar'>

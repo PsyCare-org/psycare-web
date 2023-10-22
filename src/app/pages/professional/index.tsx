@@ -16,7 +16,7 @@ export const Professional = () => {
     const [breadcrumbs, setBreadcrumbs] = useState<BreadcrumbItem[] | undefined>(undefined)
     const [professional, setProfessional] = useState<Professional_ | null>(null)
 
-    useEffect(() => {
+    const loadData = () => {
         get(`/professional/${id}`).then(res => {
             console.log(res)
             setProfessional(res)
@@ -25,6 +25,10 @@ export const Professional = () => {
                 { active: false, label: `${res.name} ${res.surname}`, url: `/professionals/${id}` }
             ])
         })
+    }
+
+    useEffect(() => {
+        loadData()
     }, [])
 
     return (
@@ -41,6 +45,7 @@ export const Professional = () => {
                         professionalId={+id}
                         occupiedHours={professional.occupiedHours || []}
                         attendances={professional.attendances || []}
+                        reload={loadData}
                     />
 
                     <ProfessionalRatings professional={professional} />
