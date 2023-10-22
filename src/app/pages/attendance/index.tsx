@@ -36,6 +36,7 @@ export const Attendance = () => {
         <TemAttendance
             breadcrumbs={breadcrumbs}
             data={data}
+            onReloadData={loadData}
         />
     )
 }

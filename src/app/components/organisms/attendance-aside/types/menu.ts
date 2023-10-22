@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-export type MenuValue = 'details' | 'medical-record' | 'meetings' | 'follow-up' | 'delete'
+export type MenuValue = 'rating' | 'details' | 'medical-record' | 'meetings' | 'follow-up' | 'delete'
 
 export type Menu = {
     icon: ReactNode,

@@ -2,59 +2,32 @@ import { usePerson } from 'src/app/hooks'
 import { Attendance } from 'src/types'
 import { MolProfessionalDisplay } from '../../molecules/professional-display/professional-display'
 import { MolUserDisplay } from '../../molecules/user-display/user-display'
-import { IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
-import { Menu } from './types/menu'
-import DescriptionIcon from '@mui/icons-material/Description'
-import MedicalInformationIcon from '@mui/icons-material/MedicalInformation'
-import ChecklistIcon from '@mui/icons-material/Checklist'
-import EventIcon from '@mui/icons-material/Event'
-import DeleteIcon from '@mui/icons-material/Delete'
+import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
 import ChatIcon from '@mui/icons-material/Chat'
 import VideoChatIcon from '@mui/icons-material/VideoChat'
-import './attendance-aside.scss'
 import { AtomButton } from '../../atoms/button/button'
+import { AttendanceStatus } from 'src/enums'
+import { useMenus } from './hooks/useMenus'
+import './attendance-aside.scss'
 
 type Props = {
     data: Attendance
+    onReloadData: () => void
     menuValue: string
     setMenuValue: (value: string) => void
 }
 
 export const OrgAttendanceAside = ({
     data,
+    onReloadData,
     menuValue,
     setMenuValue
 }: Props) => {
 
     const { person } = usePerson()
+    const { userMenus, professionalMenus } = useMenus()
 
-    const menus: Menu[] = [
-        {
-            label: 'Detalhes',
-            value: 'details',
-            icon: <DescriptionIcon />
-        },
-        { 
-            label: 'Prontuário',
-            value: 'medical-record',
-            icon: <MedicalInformationIcon />
-        },
-        { 
-            label: 'Afazeres',
-            value: 'follow-up',
-            icon: <ChecklistIcon />
-        },
-        { 
-            label: 'Encontros',
-            value: 'meetings',
-            icon: <EventIcon />
-        },
-        { 
-            label: 'Encerrar acompanhamento',
-            value: 'delete',
-            icon: <DeleteIcon />
-        }
-    ]
+    const menus = person?.type === 'user' ? userMenus : professionalMenus
 
     return (
         <aside id='mol-attendance-aside'>
@@ -72,16 +45,18 @@ export const OrgAttendanceAside = ({
                 />
             )}
 
-            <div id='communications'>
-                <AtomButton>
-                    <ChatIcon />
-                    Chat
-                </AtomButton>
-                <AtomButton>
-                    <VideoChatIcon />
-                    Chamada
-                </AtomButton>
-            </div>
+            { data.status === AttendanceStatus.active && (
+                <div id='communications'>
+                    <AtomButton>
+                        <ChatIcon />
+                        Chat
+                    </AtomButton>
+                    <AtomButton>
+                        <VideoChatIcon />
+                        Chamada
+                    </AtomButton>
+                </div>
+            )}
 
             <List>
                 { menus.map(menu => (

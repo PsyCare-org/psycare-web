@@ -8,7 +8,8 @@ import {
     MolAttendanceFollowUp,
     MolAttendanceMeetings,
     MolAttendanceDelete, 
-    MolAttendanceDetails
+    MolAttendanceDetails,
+    MolAttendanceRating
 } from 'src/app/components'
 import { useState } from 'react'
 import './attendance.scss'
@@ -16,10 +17,12 @@ import './attendance.scss'
 type Props = {
     breadcrumbs: BreadcrumbItem[] | undefined
     data?: Attendance
+    onReloadData: () => void
 }
 
 export const TemAttendance = ({
     breadcrumbs,
+    onReloadData,
     data
 }: Props) => {
 
@@ -33,6 +36,7 @@ export const TemAttendance = ({
                 <div id='attendance'>
                     <OrgAttendanceAside 
                         data={data}
+                        onReloadData={onReloadData}
                         menuValue={menuValue}
                         setMenuValue={setMenuValue}
                     />
@@ -52,6 +56,10 @@ export const TemAttendance = ({
 
                         { menuValue === 'meetings' && (
                             <MolAttendanceMeetings data={data} />
+                        )}
+
+                        { menuValue === 'rating' && (
+                            <MolAttendanceRating data={data} />
                         )}
 
                         { menuValue === 'delete' && (
