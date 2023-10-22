@@ -22,7 +22,7 @@ export const Professional = () => {
             setProfessional(res)
             setBreadcrumbs([
                 { active: true, label: 'Profissionais', url: '/professionals' },
-                { active: false, label: `${res.name} ${res.surname}`, url: `/professionals/${id}` }
+                { active: false, label: `${res.name} ${res.surname || ''}`, url: `/professionals/${id}` }
             ])
         })
     }
