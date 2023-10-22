@@ -3,6 +3,9 @@ import { CalendarHour } from './calendar-hour'
 import { Professional } from './professional'
 import { User } from './user'
 import { Rating } from './rating'
+import { MedicalRecord } from './medical-record'
+import { FollowUp } from './follow-up'
+import { Meeting } from './meeting'
 
 export type Attendance = {
     id: number
@@ -12,7 +15,9 @@ export type Attendance = {
     professionalId: number
     user: User
     userId: number
-    meetingsCount?: number
     rating?: Rating
+    medicalRecord?: MedicalRecord
+    followUps?: FollowUp[]
+    meetings?: Meeting[]
     createdAt: string
 }

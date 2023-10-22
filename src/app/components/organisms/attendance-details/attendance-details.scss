@@ -1,0 +1,15 @@
+div#mol-attendance-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    div#content {
+        div.field {
+            display: grid;
+            grid-template-columns: .25fr .75fr;
+            grid-template-rows: auto;
+            gap: .5rem;
+            padding: 1rem 2rem;
+        }
+    }
+}
