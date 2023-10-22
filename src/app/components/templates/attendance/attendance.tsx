@@ -6,10 +6,10 @@ import {
     OrgAttendanceAside,
     MolAttendanceMedicalRecord,
     MolAttendanceFollowUp,
-    MolAttendanceMeetings,
     MolAttendanceDelete, 
     MolAttendanceDetails,
-    MolAttendanceRating
+    MolAttendanceRating,
+    MolAttendanceMeeting
 } from 'src/app/components'
 import { useState } from 'react'
 import './attendance.scss'
@@ -70,10 +70,9 @@ export const TemAttendance = ({
                         )}
 
                         { menuValue === 'meetings' && (
-                            <MolAttendanceMeetings
+                            <MolAttendanceMeeting
                                 data={data}
                                 isActive={isActive}
-                                professionalName={professionalName}
                                 reload={onReloadData}
                             />
                         )}

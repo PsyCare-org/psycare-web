@@ -1,4 +1,4 @@
-import { Card, CardContent, IconButton, Tooltip, Typography } from '@mui/material'
+import { IconButton, Tooltip, Typography } from '@mui/material'
 import { useState } from 'react'
 import { useApi, usePerson, useSnackbar } from 'src/app/hooks'
 import { FollowUp } from 'src/types'

@@ -1,0 +1,22 @@
+div#mol-attendance-meeting {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    div#head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+
+        button {
+            width: 250px;
+        }
+    }
+
+    & > div#content {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+}

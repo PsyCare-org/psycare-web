@@ -1,0 +1,23 @@
+.custom-modal-width .MuiDialog-paperScrollPaper {
+    max-width: 1000px;
+
+    form#atom-meeting-form {
+        width: 40vw;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto;
+        gap: 1rem;
+        padding: 1rem;
+    
+        #dateTime,
+        #status {
+            grid-column: span 2;
+        }
+    
+        #relatory,
+        #analisys,
+        #observations {
+            grid-column: span 4;
+        }
+    }
+}

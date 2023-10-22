@@ -1,0 +1,31 @@
+#mol-meeting {
+    display: grid;
+    grid-template-columns: .9fr .1fr;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid rgb(0 0 0 / 10%);
+
+    div#content {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto;
+        gap: .5rem;
+
+        #dateTime,
+        #status {
+            grid-column: span 2;
+        }
+
+        #relatory, 
+        #analisys,
+        #observations {
+            grid-column: span 4;
+        }
+    }
+
+    div#actions {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+}

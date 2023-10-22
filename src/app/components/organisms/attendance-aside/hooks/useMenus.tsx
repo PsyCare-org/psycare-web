@@ -11,7 +11,6 @@ export const useMenus = (status: AttendanceStatus) => {
     const userMenus: Menu[] = [
         { label: 'Detalhes', value: 'details', icon: <DescriptionOutlinedIcon /> },
         { label: 'Afazeres', value: 'follow-up', icon: <ChecklistIcon /> },
-        { label: 'Encontros', value: 'meetings', icon: <EventIcon /> },
         { label: 'Avaliar', value: 'rating', icon: <StarIcon /> },
         ...status === AttendanceStatus.active 
             ? [{ label: 'Encerrar acompanhamento', value: 'delete', icon: <DeleteForeverOutlinedIcon /> } as Menu]
