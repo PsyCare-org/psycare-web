@@ -35,6 +35,7 @@ export const Historic = () => {
         <TemAttendance
             breadcrumbs={breadcrumbs}
             data={data}
+            onReloadData={loadData}
         />
     )
 }
