@@ -31,7 +31,7 @@ export const MolAttendanceDetails = ({ data }: Props) => {
             value: data.status
         },
         {
-            id: 'meetingsCount',
+            id: 'followUpCounter',
             label: 'Afazeres cadastrados',
             value: data.followUps?.length || 0
         },
