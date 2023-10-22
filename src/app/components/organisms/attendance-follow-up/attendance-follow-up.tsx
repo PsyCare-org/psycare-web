@@ -75,7 +75,8 @@ export const MolAttendanceFollowUp = ({ data, reload }: Props) => {
                 <AtomEmpty title='Nenhum Afazer!'>
                     {person?.type === 'user'
                         ? <>
-                            No momento não há nenhum afazer registrado para você. Caso tenha alguma dúvida ou precise de orientação, não hesite em entrar em contato com ${professionalName}.
+                            No momento não há nenhum afazer registrado para você. 
+                            Caso tenha alguma dúvida ou precise de orientação, não hesite em entrar em contato com {professionalName}.
                         </>
                         : <>
                             No momento não há nenhum afazer registrado. Para adicionar um afazer, utilize o botão acima ou <Link onClick={() => setCreateModal(true)}>clique aqui</Link>

@@ -4,12 +4,13 @@ div#mol-attendance-details {
     gap: 2rem;
 
     div#content {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto;
+        gap: 1.5em;
+
         div.field {
-            display: grid;
-            grid-template-columns: .25fr .75fr;
-            grid-template-rows: auto;
-            gap: .5rem;
-            padding: 1rem 2rem;
+            grid-column: span 1;
         }
     }
 }

@@ -43,18 +43,18 @@ export const MolAttendanceCard = ({
 
                 <div id='details'>
                     <div id='calendar-hour'>
-                        <Typography variant='subtitle1' color='primary'>
+                        <Typography variant='subtitle1'>
                             Horário dos encontros:
                         </Typography>
-                        <Typography variant='body1'>
+                        <Typography variant='body1' color='text.secondary'>
                             {formatCalendarHour(attendance.calendarHour)}
                         </Typography>
                     </div>
                     <div id='meetings-count'>
-                        <Typography variant='subtitle1' color='primary'>
+                        <Typography variant='subtitle1'>
                             Encontros realizados:
                         </Typography>
-                        <Typography variant='body1'>
+                        <Typography variant='body1' color='text.secondary'>
                             {attendance.meetings?.length || 0}
                         </Typography>
                     </div>

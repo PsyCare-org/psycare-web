@@ -2,7 +2,7 @@ import { Attendance } from 'src/types'
 import { Field } from './types/field'
 import { usePerson, useUtils } from 'src/app/hooks'
 import { Fragment } from 'react'
-import { Divider, Typography } from '@mui/material'
+import { Typography } from '@mui/material'
 import './attendance-details.scss'
 
 type Props = {
@@ -61,18 +61,16 @@ export const MolAttendanceDetails = ({ data }: Props) => {
             </div>
 
             <div id='content'>
-                {fields.map(({ id, label, value }, index) => (
+                {fields.map(({ id, label, value }) => (
                     <Fragment key={id}>
                         <div key={id} className='field'>
-                            <Typography variant='subtitle1' color='primary'>
+                            <Typography variant='subtitle1'>
                                 { label }
                             </Typography>
-                            <Typography variant='body1'>
+                            <Typography variant='body1' color='text.secondary'>
                                 { value }
                             </Typography>
                         </div>
-
-                        {index !== fields.length - 1 && <Divider />}
                     </Fragment>
                 ))}
             </div>
