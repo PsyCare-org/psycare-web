@@ -55,7 +55,7 @@ export const MolAttendanceCard = ({
                             Encontros realizados:
                         </Typography>
                         <Typography variant='body1'>
-                            {attendance.meetingsCount || 0}
+                            {attendance.meetings?.length || 0}
                         </Typography>
                     </div>
                     <Typography id='created-at' variant='body2' color='text.secondary'>
