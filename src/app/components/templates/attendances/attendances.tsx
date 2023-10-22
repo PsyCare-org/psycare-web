@@ -4,6 +4,7 @@ import { OrgDefault } from '../../organisms/default/default'
 import { Attendance } from 'src/types'
 import { MolAttendanceCard } from '../../molecules/attendance-card/attendance-card'
 import { Typography } from '@mui/material'
+import { AtomEmpty } from '../../atoms/empty/empty'
 import './attendances.scss'
 
 export type TemAttendancesProps = {
@@ -59,14 +60,9 @@ export const TemAttendances = ({
                     )}
 
                     { data && data.length == 0 && (
-                        <div id='empty'>
-                            <Typography variant='h6'>
-                                { emptyTitle }
-                            </Typography>
-                            <Typography variant='body1'>
-                                { emptyDescription }
-                            </Typography>
-                        </div>
+                        <AtomEmpty title={emptyTitle}>
+                            { emptyDescription }
+                        </AtomEmpty>
                     )}
                 </div>
             </div>

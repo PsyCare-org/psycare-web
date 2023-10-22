@@ -3,7 +3,7 @@ import { ReactNode } from 'react'
 import './empty.scss'
 
 type Props = {
-    title: string
+    title: ReactNode | string
     children: ReactNode
 }
 

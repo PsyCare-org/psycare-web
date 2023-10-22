@@ -19,22 +19,5 @@ div#tem-attendances {
             align-items: center;
             margin: 0 auto;
         }
-    
-        div#empty {
-            display: flex;
-            flex-direction: column;
-            text-align: center;
-            gap: .75rem;
-            width: 60%;
-            margin: 2rem auto;
-    
-            h6 {
-                color: var(--primary);
-            }
-    
-            .MuiLink-root:hover {
-                cursor: pointer;
-            }
-        }
     }
 }
