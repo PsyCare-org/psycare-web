@@ -32,7 +32,7 @@ export const HeaderPages = () => {
                 <Button
                     key={page.url}
                     variant='text'
-                    className={pathname === page.url ? 'active' : ''}
+                    className={pathname.includes(page.url) ? 'active' : ''}
                     sx={{ color: (theme) => theme.palette.grey[700] }}
                     onClick={() => navigate(page.url)}
                 >
