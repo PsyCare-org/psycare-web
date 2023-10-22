@@ -4,7 +4,6 @@ import { Attendance } from 'src/types'
 import { MolFollowUp, AtomFollowUpForm, FollowUpForm, AtomButton, AtomEmpty } from 'src/app/components'
 import { AttendanceStatus } from 'src/enums'
 import { Fragment, useState } from 'react'
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
 import './attendance-follow-up.scss'
 
 type Props = {
