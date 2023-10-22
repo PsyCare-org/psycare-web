@@ -35,6 +35,7 @@ export const OrgAttendanceAside = ({
                 <MolProfessionalDisplay
                     professional={data.professional}
                     size='x-small'
+                    showLangAndRating={false}
                 />
             )}
 

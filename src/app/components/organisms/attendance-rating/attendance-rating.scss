@@ -1,0 +1,39 @@
+div#mol-attendance-rating {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        #rating {
+            display: flex;
+            flex-direction: column;
+
+            #label {
+                color: rgba(0, 0, 0, 0.6);
+
+                span#required {
+                    color: var(--error);
+                }
+            }
+
+            #input {
+                display: flex;
+                align-items: center;
+                gap: .5rem;
+
+                #value {
+                    color: rgba(0, 0, 0, 0.6);
+                }
+            }
+        }
+
+        div#buttons {
+            display: flex;
+            gap: 2rem;
+        }
+    }
+}

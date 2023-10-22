@@ -59,7 +59,7 @@ export const TemAttendance = ({
                         )}
 
                         { menuValue === 'rating' && (
-                            <MolAttendanceRating data={data} />
+                            <MolAttendanceRating data={data} reload={onReloadData} />
                         )}
 
                         { menuValue === 'delete' && (
