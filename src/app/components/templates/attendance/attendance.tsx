@@ -26,7 +26,7 @@ export const TemAttendance = ({
     data
 }: Props) => {
 
-    const [menuValue, setMenuValue] = useState<string>('medical-record')
+    const [menuValue, setMenuValue] = useState<string>('details')
 
     return (
         <OrgDefault breadcrumbs={breadcrumbs}>

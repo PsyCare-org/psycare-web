@@ -3,6 +3,7 @@ import {
     Attendance,
     Attendances,
     Calendar,
+    Historic,
     Historics,
     Messages,
     NotFound,
@@ -30,6 +31,7 @@ export const Router = () => {
                     <Route path='/attendances' element={<Attendances />} />
                     <Route path='/attendances/:id' element={<Attendance />} />
                     <Route path='/historics' element={<Historics />} />
+                    <Route path='/historics/:id' element={<Historic />} />
                     <Route path='/calendar' element={<Calendar />} />
                     <Route path='/profile' element={<Profile />} />
                     <Route path='/messages' element={<Messages />} />

@@ -1,0 +1,27 @@
+div#attendance-delete {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2.5rem;
+
+    div#title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        color: var(--error);
+    }
+
+    div#content {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    button {
+        width: 25%;
+        margin: 0 auto;
+    }
+}

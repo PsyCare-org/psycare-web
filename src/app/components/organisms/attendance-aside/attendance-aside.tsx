@@ -25,7 +25,7 @@ export const OrgAttendanceAside = ({
 }: Props) => {
 
     const { person } = usePerson()
-    const { userMenus, professionalMenus } = useMenus()
+    const { userMenus, professionalMenus } = useMenus(data.status)
 
     const menus = person?.type === 'user' ? userMenus : professionalMenus
 
