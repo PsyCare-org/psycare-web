@@ -1,24 +1,27 @@
-import { Divider, IconButton, Link, Tooltip, Typography } from '@mui/material'
+import { Link, Typography } from '@mui/material'
 import { useApi, usePerson, useSnackbar } from 'src/app/hooks'
 import { Attendance } from 'src/types'
 import { MolFollowUp, AtomFollowUpForm, FollowUpForm, AtomButton, AtomEmpty } from 'src/app/components'
-import { AttendanceStatus } from 'src/enums'
 import { Fragment, useState } from 'react'
 import './attendance-follow-up.scss'
 
 type Props = {
     data: Attendance
+    isActive: boolean
+    professionalName: string
     reload: () => void
 }
 
-export const MolAttendanceFollowUp = ({ data, reload }: Props) => {
+export const MolAttendanceFollowUp = ({ 
+    data,
+    isActive,
+    professionalName,
+    reload
+}: Props) => {
 
     const { person } = usePerson()
     const { post } = useApi()
     const { createSnack } = useSnackbar()
-
-    const professionalName = `${data.professional.name} ${data.professional.surname || ''}`
-    const isActive = data.status === AttendanceStatus.active
 
     const [createModal, setCreateModal] = useState<boolean>(false)
 

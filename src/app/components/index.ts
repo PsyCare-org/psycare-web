@@ -12,6 +12,7 @@ export * from './atoms/select-field/select-field'
 export * from './atoms/text-field/text-field'
 export * from './atoms/follow-up-form/follow-up-form'
 export * from './atoms/empty/empty'
+export * from './atoms/meeting-form/meeting-form'
 
 export * from './molecules/attendance-card/attendance-card'
 export * from './molecules/breadcrumb/breadcrumb'

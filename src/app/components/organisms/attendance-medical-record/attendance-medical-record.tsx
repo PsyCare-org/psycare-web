@@ -8,19 +8,22 @@ import { AtomTextField } from '../../atoms/text-field/text-field'
 import { AtomButton } from '../../atoms/button/button'
 import { useApi, useSnackbar } from 'src/app/hooks'
 import './attendance-medical-record.scss'
-import { AttendanceStatus } from 'src/enums'
 
 type Props = {
     data: Attendance
+    isActive: boolean
+    patientName: string
     reload: () => void
 }
 
-export const MolAttendanceMedicalRecord = ({ data, reload }: Props) => {
+export const MolAttendanceMedicalRecord = ({
+    data,
+    isActive,
+    patientName,
+    reload
+}: Props) => {
 
     const mode = data.medicalRecord ? 'edit' : 'create'
-    const isActive = data.status === AttendanceStatus.active
-    console.log('isActive', isActive)
-    const patientName = `${data.user.name} ${data.user.surname || ''}`
     const { id, attendanceId, ...currentMedicalRecord } = data.medicalRecord || {}
 
     const { post, patch } = useApi()

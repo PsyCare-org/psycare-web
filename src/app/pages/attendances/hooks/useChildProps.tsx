@@ -18,7 +18,7 @@ export const useChildProps = (): ChildProps => {
             subTitle: 'Aqui você encontra informações sobre os seus acompanhamentos em andamento e as solicitações pendentes.',
             emptyTitle: 'Nenhum Acompanhamento Ativo!',
             emptyDescription: <>
-                Você não possui nenhum acompanhamento ativo no momento. Considere explorar a <Link onClick={() => navigate('/professionals')}>lista de profissionais</Link> disponíveis ou verificar o <Link onClick={() => navigate('/historic')}>histórico de acompanhamentos</Link> anteriores.
+                Você não possui nenhum acompanhamento ativo no momento. Considere explorar a <Link onClick={() => navigate('/professionals')}>lista de profissionais</Link> disponíveis ou verificar o <Link onClick={() => navigate('/historics')}>histórico de acompanhamentos</Link> anteriores.
             </>
         },
         professional: {

@@ -19,7 +19,7 @@ export const Attendances = () => {
     const [attendances, setAttendances] = useState<Attendance[] | null>(null)
 
     const loadData = () => {
-        get(`/attendance/${person?.type}/${person?.id}`).then(res => {
+        get(`/attendance/list/${person?.type}/${person?.id}`).then(res => {
             setAttendances(res.data.active)
             setPendingAttendances(res.data.pending)
         })

@@ -14,7 +14,7 @@ export const Attendance = () => {
     const [breadcrumbs, setBreadcrumbs] = useState<BreadcrumbItem[] | undefined>(undefined)
 
     const loadData = () => {
-        get(`/attendance/${id}`).then((res: Attendance_) => {
+        get(`/attendance/${person?.type}/${id}`).then((res: Attendance_) => {
             setData(res)
 
             const firtLabel = person?.type === 'user' ? 'Acompanhamentos' : 'Pacientes'

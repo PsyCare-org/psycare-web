@@ -9,17 +9,22 @@ import { useNavigate } from 'react-router-dom'
 
 type Props = {
     data: Attendance
+    professionalName: string
+    patientName: string
 }
 
-export const MolAttendanceDelete = ({ data }: Props) => {
+export const MolAttendanceDelete = ({
+    data,
+    professionalName,
+    patientName
+}: Props) => {
 
     const { person } = usePerson()
     const { patch } = useApi()
     const { createSnack } = useSnackbar()
     const navigate = useNavigate()
 
-    const otherPerson = person?.type == 'user' ? 'professional' : 'user'
-    const fullName = `${data[otherPerson].name} ${data[otherPerson].surname || ''}`
+    const otherPerson = person?.type == 'user' ? professionalName : patientName
 
     const onSubmit = () => {
         const payload = {
@@ -44,7 +49,7 @@ export const MolAttendanceDelete = ({ data }: Props) => {
 
             <div id='content'>
                 <Typography variant='body1'>
-                    Você está prestes a encerrar o acompanhamento com {fullName}. Por favor, esteja ciente de que essa ação é irreversível e implica nas seguintes consequências:
+                    Você está prestes a encerrar o acompanhamento com {otherPerson}. Por favor, esteja ciente de que essa ação é irreversível e implica nas seguintes consequências:
                 </Typography>
 
                 <ul>

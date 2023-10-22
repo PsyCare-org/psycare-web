@@ -6,9 +6,8 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { formSchema } from './schemas/form-schema'
 import { AtomTextField } from '../../atoms/text-field/text-field'
 import { AtomButton } from '../../atoms/button/button'
-import './attendance-rating.scss'
 import { useApi, useSnackbar } from 'src/app/hooks'
-import { useState } from 'react'
+import './attendance-rating.scss'
 
 type Props = {
     data: Attendance

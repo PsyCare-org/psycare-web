@@ -14,7 +14,7 @@ export const Historic = () => {
     const [breadcrumbs, setBreadcrumbs] = useState<BreadcrumbItem[] | undefined>(undefined)
 
     const loadData = () => {
-        get(`/attendance/${id}`).then((res: Attendance) => {
+        get(`/attendance/${person?.type}/${id}`).then((res: Attendance) => {
             setData(res)
 
             const otherPerson: Professional | User = person?.type === 'user' ? res.professional : res.user

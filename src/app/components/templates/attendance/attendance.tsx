@@ -13,6 +13,7 @@ import {
 } from 'src/app/components'
 import { useState } from 'react'
 import './attendance.scss'
+import { AttendanceStatus } from 'src/enums'
 
 type Props = {
     breadcrumbs: BreadcrumbItem[] | undefined
@@ -27,6 +28,10 @@ export const TemAttendance = ({
 }: Props) => {
 
     const [menuValue, setMenuValue] = useState<string>('details')
+
+    const professionalName = `${data?.professional.name} ${data?.professional.surname || ''}`
+    const patientName = `${data?.user.name} ${data?.user.surname || ''}`
+    const isActive = data?.status === AttendanceStatus.active
 
     return (
         <OrgDefault breadcrumbs={breadcrumbs}>
@@ -47,23 +52,45 @@ export const TemAttendance = ({
                         )}
 
                         { menuValue === 'medical-record' && (
-                            <MolAttendanceMedicalRecord data={data} reload={onReloadData} />
+                            <MolAttendanceMedicalRecord 
+                                data={data}
+                                isActive={isActive}
+                                patientName={patientName}
+                                reload={onReloadData}
+                            />
                         )}
                         
                         { menuValue === 'follow-up' && (
-                            <MolAttendanceFollowUp data={data} reload={onReloadData} />
+                            <MolAttendanceFollowUp 
+                                data={data} 
+                                isActive={isActive}
+                                professionalName={professionalName}
+                                reload={onReloadData}
+                            />
                         )}
 
                         { menuValue === 'meetings' && (
-                            <MolAttendanceMeetings data={data} />
+                            <MolAttendanceMeetings
+                                data={data}
+                                isActive={isActive}
+                                professionalName={professionalName}
+                                reload={onReloadData}
+                            />
                         )}
 
                         { menuValue === 'rating' && (
-                            <MolAttendanceRating data={data} reload={onReloadData} />
+                            <MolAttendanceRating 
+                                data={data}
+                                reload={onReloadData}
+                            />
                         )}
 
                         { menuValue === 'delete' && (
-                            <MolAttendanceDelete data={data} />
+                            <MolAttendanceDelete
+                                data={data}
+                                professionalName={professionalName}
+                                patientName={patientName}
+                            />
                         )}
                     </div>
                 </div>
