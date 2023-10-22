@@ -1,0 +1,16 @@
+div#mol-attendance-medical-record {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        div#buttons {
+            display: flex;
+            gap: 2rem;
+        }
+    }
+}

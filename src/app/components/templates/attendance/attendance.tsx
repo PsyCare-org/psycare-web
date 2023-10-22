@@ -47,7 +47,7 @@ export const TemAttendance = ({
                         )}
 
                         { menuValue === 'medical-record' && (
-                            <MolAttendanceMedicalRecord data={data} />
+                            <MolAttendanceMedicalRecord data={data} reload={onReloadData} />
                         )}
                         
                         { menuValue === 'follow-up' && (
