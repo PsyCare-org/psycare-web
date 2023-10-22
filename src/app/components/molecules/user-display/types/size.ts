@@ -1,1 +1,1 @@
-export type UserDisplaySize = 'small' | 'normal' | 'large'
+export type UserDisplaySize = 'x-small' | 'small' | 'normal' | 'large'

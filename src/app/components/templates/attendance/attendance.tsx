@@ -1,8 +1,17 @@
-import { usePerson } from 'src/app/hooks'
 import { Attendance } from 'src/types'
-import { OrgDefault } from '../../organisms/default/default'
-import { BreadcrumbItem } from '../../molecules/breadcrumb/breadcrumb'
-import { AtomLoader } from '../../atoms/loader/loader'
+import { 
+    BreadcrumbItem,
+    OrgDefault,
+    AtomLoader,
+    OrgAttendanceAside,
+    MolAttendanceMedicalRecord,
+    MolAttendanceFollowUp,
+    MolAttendanceMeetings,
+    MolAttendanceDelete, 
+    MolAttendanceDetails
+} from 'src/app/components'
+import { useState } from 'react'
+import './attendance.scss'
 
 type Props = {
     breadcrumbs: BreadcrumbItem[] | undefined
@@ -12,13 +21,44 @@ type Props = {
 export const TemAttendance = ({
     breadcrumbs,
     data
-}: Props) => {    
+}: Props) => {
+
+    const [menuValue, setMenuValue] = useState<string>('medical-record')
+
     return (
         <OrgDefault breadcrumbs={breadcrumbs}>
             { !data && <AtomLoader /> }
 
             { data && (
-                <>{ data.status }</>
+                <div id='attendance'>
+                    <OrgAttendanceAside 
+                        data={data}
+                        menuValue={menuValue}
+                        setMenuValue={setMenuValue}
+                    />
+
+                    <div className='content'>
+                        { menuValue === 'details' && (
+                            <MolAttendanceDetails data={data} />
+                        )}
+
+                        { menuValue === 'medical-record' && (
+                            <MolAttendanceMedicalRecord data={data} />
+                        )}
+                        
+                        { menuValue === 'follow-up' && (
+                            <MolAttendanceFollowUp data={data} />
+                        )}
+
+                        { menuValue === 'meetings' && (
+                            <MolAttendanceMeetings data={data} />
+                        )}
+
+                        { menuValue === 'delete' && (
+                            <MolAttendanceDelete data={data} />
+                        )}
+                    </div>
+                </div>
             )}
         </OrgDefault>
     )

@@ -19,6 +19,10 @@ export const MolUserDisplay = ({
     const { calcAge } = useUtils()
 
     const typography: UserDisplayTypography = {
+        'x-small': {
+            title: 'h6',
+            text: 'body2'
+        },
         small: {
             title: 'h6',
             text: 'body2'
@@ -34,7 +38,7 @@ export const MolUserDisplay = ({
     }
 
     return (
-        <div id='mol-professional-display'>
+        <div id='mol-user-display'>
             <Avatar 
                 src={user.avatar}
                 className={`${size}-size`}

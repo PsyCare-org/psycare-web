@@ -22,6 +22,10 @@ export const MolProfessionalDisplay = ({
     const languages = professional.languages.map(el => languageLabels[el]).join(', ')
 
     const typography: ProfessionalDisplayTypography = {
+        'x-small': {
+            title: 'h6',
+            text: 'body2'
+        },
         small: {
             title: 'h6',
             text: 'body2'

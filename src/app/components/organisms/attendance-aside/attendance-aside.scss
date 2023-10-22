@@ -1,0 +1,35 @@
+aside#mol-attendance-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    div#communications {
+        display: flex;
+        justify-content: space-around;
+        width: 80%;
+        margin: 0 auto;
+
+        button {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            width: 30%;
+            color: rgba(0, 0, 0, 0.87);
+        }
+    }
+
+    li {
+        display: block;
+
+        &.active {
+            .MuiListItemButton-root {
+                background-color: rgba(58, 0, 134, .3);
+                color: var(--primary);
+                
+                .MuiListItemIcon-root {
+                    color: var(--primary);
+                }
+            }
+        }
+    }    
+}

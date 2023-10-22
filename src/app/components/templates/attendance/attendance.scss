@@ -1,0 +1,7 @@
+div#attendance {
+    width: 80%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: .3fr .7fr;
+    gap: 2rem;
+}

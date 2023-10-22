@@ -1,1 +1,1 @@
-export type ProfessionalDisplaySize = 'small' | 'normal' | 'large'
+export type ProfessionalDisplaySize = 'x-small' | 'small' | 'normal' | 'large'

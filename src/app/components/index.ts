@@ -18,6 +18,12 @@ export * from './molecules/professional-display/professional-display'
 
 export * from './organisms/auth/auth'
 export * from './organisms/default/default'
+export * from './organisms/attendance-aside/attendance-aside'
+export * from './organisms/attendance-delete/attendance-delete'
+export * from './organisms/attendance-details/attendance-details'
+export * from './organisms/attendance-follow-up/attendance-follow-up'
+export * from './organisms/attendance-medical-record/attendance-medical-record'
+export * from './organisms/attendance-meetings/attendance-meetings'
 
 export * from './templates/attendances/attendances'
 export * from './templates/attendance/attendance'
