@@ -8,6 +8,7 @@ import { AtomTextField } from '../../atoms/text-field/text-field'
 import { AtomButton } from '../../atoms/button/button'
 import { useApi, useSnackbar } from 'src/app/hooks'
 import './attendance-medical-record.scss'
+import { AttendanceStatus } from 'src/enums'
 
 type Props = {
     data: Attendance
@@ -17,6 +18,8 @@ type Props = {
 export const MolAttendanceMedicalRecord = ({ data, reload }: Props) => {
 
     const mode = data.medicalRecord ? 'edit' : 'create'
+    const isActive = data.status === AttendanceStatus.active
+    console.log('isActive', isActive)
     const patientName = `${data.user.name} ${data.user.surname || ''}`
     const { id, attendanceId, ...currentMedicalRecord } = data.medicalRecord || {}
 
@@ -85,6 +88,7 @@ export const MolAttendanceMedicalRecord = ({ data, reload }: Props) => {
                     render={({ field }) => (
                         <AtomTextField
                             {...field}
+                            { ...!isActive && { disabled: true } }
                             required
                             id='initialDemand'
                             label='Demanda inicial'
@@ -102,6 +106,7 @@ export const MolAttendanceMedicalRecord = ({ data, reload }: Props) => {
                     render={({ field }) => (
                         <AtomTextField
                             {...field}
+                            { ...!isActive && { disabled: true } }
                             id='pastHistory'
                             label='História regressa'
                             error={!!formErrors.pastHistory}
@@ -118,6 +123,7 @@ export const MolAttendanceMedicalRecord = ({ data, reload }: Props) => {
                     render={({ field }) => (
                         <AtomTextField
                             {...field}
+                            { ...!isActive && { disabled: true } }
                             id='intervationPlan'
                             label='Plano de intervenção'
                             error={!!formErrors.intervationPlan}
@@ -134,6 +140,7 @@ export const MolAttendanceMedicalRecord = ({ data, reload }: Props) => {
                     render={({ field }) => (
                         <AtomTextField
                             {...field}
+                            { ...!isActive && { disabled: true } }
                             id='evolutions'
                             label='Evoluções'
                             error={!!formErrors.evolutions}
@@ -144,15 +151,17 @@ export const MolAttendanceMedicalRecord = ({ data, reload }: Props) => {
                     )}
                 />
 
-                <div id='buttons'>
-                    <AtomButton
-                        type='submit'
-                        disabled={!formIsValid}
-                        variant='contained'
-                    >
-                        { mode === 'create' ? 'Criar prontuário' : 'Editar prontuário' }
-                    </AtomButton>
-                </div>
+                { isActive && (
+                    <div id='buttons'>
+                        <AtomButton
+                            type='submit'
+                            disabled={!formIsValid}
+                            variant='contained'
+                        >
+                            { mode === 'create' ? 'Criar prontuário' : 'Editar prontuário' }
+                        </AtomButton>
+                    </div>
+                )}
             </form>
         </div>
     )
