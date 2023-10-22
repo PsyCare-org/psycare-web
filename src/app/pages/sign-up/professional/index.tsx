@@ -245,8 +245,8 @@ export const SignUpProfessional = ({ submit }: Props) => {
                         required
                         {...field}
                         label='Data de Nascimento'
-                        error={!!formErrors.gender}
-                        helperText={formErrors.gender?.message}
+                        error={!!formErrors.birthDate}
+                        helperText={formErrors.birthDate?.message}
                         disableFuture
                         disableTyping
                     />

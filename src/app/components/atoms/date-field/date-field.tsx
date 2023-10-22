@@ -1,6 +1,7 @@
 import { DatePicker, DatePickerProps, LocalizationProvider } from '@mui/x-date-pickers'
 import { RefObject, forwardRef } from 'react'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { FieldError, FieldErrorsImpl, Merge } from 'react-hook-form'
 import 'dayjs/locale/pt-br'
 import './date-field.scss'
 
@@ -9,10 +10,10 @@ type Props = {
     type?: string
     label: string
     error?: boolean
-    helperText?: string
+    helperText?: string | FieldError | Merge<FieldError, FieldErrorsImpl<any>>
     disableTyping?: boolean
     required?: boolean
-} & DatePickerProps<any> & React.RefAttributes<HTMLDivElement>
+} & Omit<DatePickerProps<any> & React.RefAttributes<HTMLDivElement>, 'helperText'>
 
 export const AtomDateField = forwardRef((
     {
@@ -34,7 +35,7 @@ export const AtomDateField = forwardRef((
                     slotProps={{
                         textField: {
                             error,
-                            helperText,
+                            helperText: <>{ helperText }</>,
                             required,
                             ...disableTyping && {
                                 onKeyDown: e => e.preventDefault(),

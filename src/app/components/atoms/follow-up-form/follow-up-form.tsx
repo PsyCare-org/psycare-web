@@ -58,7 +58,7 @@ export const AtomFollowUpForm = ({
             title={title}
             confirmBtnLabel={confirmBtnLabel}
             confirmBtnDisabled={!formIsValid}
-            confirmBtnForm='mol-follow-up-form'
+            confirmBtnForm='atom-follow-up-form'
             confirmBtnVariant='contained'
             confirmBtnClick={handleSubmit(submitHandler)}
         >
