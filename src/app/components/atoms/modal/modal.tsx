@@ -6,7 +6,8 @@ type Props = {
     className?: string
     value: boolean
     setValue: (value: SetStateAction<boolean>) => void
-    title: string
+    title?: string
+    showTitle?: boolean
     children: ReactNode
     showButtons?: boolean
     cancelBtnLabel?: string
@@ -23,6 +24,7 @@ export const AtomModal = ({
     value,
     setValue,
     title,
+    showTitle = true,
     children,
     showButtons = true,
     cancelBtnLabel = 'Cancelar',
@@ -40,9 +42,11 @@ export const AtomModal = ({
             open={value} 
             onClose={() => setValue(false)}
         >
-            <DialogTitle>
-                { title }
-            </DialogTitle>
+            { showTitle && (
+                <DialogTitle>
+                    { title }
+                </DialogTitle>
+            )}
 
             <DialogContent>
                 { children }

@@ -1,0 +1,47 @@
+@mixin dayMixin($color, $bgColor) {
+    width: 40px;
+    height: 40px;
+    background-color:$bgColor;
+    color: $color;
+    padding: 0.5rem;
+    border-radius: 50%;
+}
+
+.rbc-time-header {
+    button {
+        pointer-events: none;
+    }
+
+    .rbc-header {
+        padding: .5rem;
+        height: max-content;
+        border-bottom: none;
+
+        &.rbc-today {
+            background-color: var(--primary);
+            color: white;
+
+            .day {
+                @include dayMixin(var(--primary), white);
+            }
+        }
+    
+        .day {
+            @include dayMixin(var(--primary), transparent);
+        }
+    }
+
+    .rbc-time-header-gutter {
+        padding: 0;
+        width: max-content !important;
+
+        .custom-gutter {
+            padding: 0 1rem;
+            color: transparent;
+        }
+    }
+
+    .rbc-allday-cell {
+        display: none;
+    }
+}

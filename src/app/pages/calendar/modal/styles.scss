@@ -1,0 +1,23 @@
+div#calendar-modal {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    div#actions {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+
+        h6 {
+            font-size: 18px;
+            font-weight: 400;
+        }
+
+        div#buttons {
+            display: flex;
+            justify-content: space-around;
+        }
+
+    }
+}
