@@ -2,8 +2,15 @@ div#default-template {
     display: flex;
     flex-direction: column;
     
-    main {
+    &:has(nav) main {
         height: calc(100vh - 6.5rem - 1px);
+    }
+
+    &:not(:has(nav)) main {
+        height: calc(100vh - 4rem - 1px);
+    }
+
+    main {
         overflow-y: auto;
         padding: 1rem 1.5rem;
     }

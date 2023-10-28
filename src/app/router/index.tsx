@@ -5,6 +5,7 @@ import {
     Calendar,
     Historic,
     Historics,
+    Call,
     Messages,
     NotFound,
     Professional,
@@ -30,6 +31,7 @@ export const Router = () => {
                     <Route path='/professionals/:id' element={<Professional />} />
                     <Route path='/attendances' element={<Attendances />} />
                     <Route path='/attendances/:id' element={<Attendance />} />
+                    <Route path='/attendances/:id/call' element={<Call />} />
                     <Route path='/historics' element={<Historics />} />
                     <Route path='/historics/:id' element={<Historic />} />
                     <Route path='/calendar' element={<Calendar />} />

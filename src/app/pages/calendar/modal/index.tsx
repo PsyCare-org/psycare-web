@@ -34,8 +34,12 @@ export const CalendarModal = ({
 
     const label = `${formatedWeekDay}, ${start.get('hours')}:${start.get('minutes')}0 - ${end.get('hours')}:${end.get('minutes')}`
 
-    const onNavigate = () => {
+    const onAttendance = () => {
         navigate(`/attendances/${event.resource.id}`)
+    }
+
+    const onCall = () => {
+        navigate(`/attendances/${event.resource.id}/call`)
     }
 
     return (
@@ -70,7 +74,7 @@ export const CalendarModal = ({
 
                     <div id='buttons'>
                         <Tooltip title='Entrar na chamada'>
-                            <IconButton color='primary'>
+                            <IconButton color='primary' onClick={onCall}>
                                 <VideoChatIcon />
                             </IconButton>
                         </Tooltip>
@@ -82,7 +86,7 @@ export const CalendarModal = ({
                         </Tooltip>
 
                         <Tooltip title='Ver acompanhamento'>
-                            <IconButton onClick={onNavigate}>
+                            <IconButton onClick={onAttendance}>
                                 <NavigateNextIcon />
                             </IconButton>
                         </Tooltip>

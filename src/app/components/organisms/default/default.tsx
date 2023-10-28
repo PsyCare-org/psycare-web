@@ -9,16 +9,10 @@ type Props = {
 }
 
 export const OrgDefault = ({ breadcrumbs, children }: Props) => {
-    const emptyBreacrumbs: BreadcrumbItem[] = [{
-        active: false,
-        label: '...',
-        url: ''
-    }]
-
     return (
         <div id='default-template'>
             <MolHeader/>
-            <MolBreadcrumb items={breadcrumbs || emptyBreacrumbs}/>
+            { breadcrumbs && <MolBreadcrumb items={breadcrumbs} /> }
             <main>
                 { children }
             </main>

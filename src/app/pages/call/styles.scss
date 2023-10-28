@@ -1,0 +1,11 @@
+div#meeting {
+    height: calc(100vh - 8.5rem - 1px);
+
+    #loading {
+        height: inherit;
+        display: flex;
+        height: inherit;
+        align-items: center;
+        justify-content: center;
+    }
+}

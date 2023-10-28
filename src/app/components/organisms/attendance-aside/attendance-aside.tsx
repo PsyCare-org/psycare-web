@@ -9,6 +9,7 @@ import { AtomButton } from '../../atoms/button/button'
 import { AttendanceStatus } from 'src/enums'
 import { useMenus } from './hooks/useMenus'
 import './attendance-aside.scss'
+import { useNavigate } from 'react-router-dom'
 
 type Props = {
     data: Attendance
@@ -23,6 +24,8 @@ export const OrgAttendanceAside = ({
     menuValue,
     setMenuValue
 }: Props) => {
+
+    const navigate = useNavigate()
 
     const { person } = usePerson()
     const { userMenus, professionalMenus } = useMenus(data.status)
@@ -52,7 +55,7 @@ export const OrgAttendanceAside = ({
                         <ChatIcon />
                         Chat
                     </AtomButton>
-                    <AtomButton>
+                    <AtomButton onClick={() => navigate(`/attendances/${data.id}/call`)}>
                         <VideoChatIcon />
                         Chamada
                     </AtomButton>
