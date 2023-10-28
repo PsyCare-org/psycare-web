@@ -1,3 +1,39 @@
 div#call-controls {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    div#text {
+        position: absolute;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    div#buttons {
+        display: flex;
+        gap: 1.5rem;
+
+        #mic,
+        #webcam {
+            &.active {
+                background-color: rgba(0, 0, 0, .45);
+                color: white;
+            }
+
+            &.inactive {
+                background-color: var(--error);
+                color: white;
+            }
+        }
+
+        #leave {
+            background-color: var(--error);
+            color: white;
+            width: 75px;
+            border-radius: 25px;
+            padding: 0.5rem 0.75rem;
+        }
+    }
 }

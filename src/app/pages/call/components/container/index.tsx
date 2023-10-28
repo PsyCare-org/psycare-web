@@ -57,6 +57,7 @@ export const CallContainer = ({ callId, attendance }: Props) => {
                     </div>
 
                     <CallControls
+                        callId={callId}
                         leaveCall={leaveCall}
                         toggleMic={toggleMic}
                         toggleWebcam={toggleWebcam}

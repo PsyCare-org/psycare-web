@@ -1,7 +1,11 @@
 div#call-container {
     height: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 
     div#participants {
         display: flex;
+        height: 100%;
     }
 }

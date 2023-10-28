@@ -23,7 +23,7 @@ export const Call = () => {
             get(`/call/${id}`), 
             get(`/attendance/${person?.type}/${id}`)
         ]).then(([room, attendance]: any) => {
-            // setRoom(room)
+            setRoom(room)
             setAttendance(attendance)
 
             const firtLabel = person?.type === 'user' ? 'Acompanhamentos' : 'Pacientes'
