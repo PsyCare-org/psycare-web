@@ -53,7 +53,7 @@ export const Call = () => {
                             meetingId: room.roomId,
                             micEnabled: false,
                             webcamEnabled: false,
-                            name: person?.name || ''
+                            name: `${person?.name}@${person?.type}`
                         }}
                         token={env.callToken}
                     >

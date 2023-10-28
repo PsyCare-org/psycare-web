@@ -1,8 +1,10 @@
-import { Typography } from '@mui/material'
+import { Avatar, Typography } from '@mui/material'
 import { useParticipant } from '@videosdk.live/react-sdk'
 import { useEffect, useMemo, useRef } from 'react'
 import ReactPlayer from 'react-player'
 import { Attendance } from 'src/types'
+import MicOutlinedIcon from '@mui/icons-material/MicOutlined'
+import MicOffOutlinedIcon from '@mui/icons-material/MicOffOutlined'
 import './styles.scss'
 
 type Props = {
@@ -15,8 +17,6 @@ export const CallParticipant = ({
     attendance
 }: Props) => {
 
-    const micRef = useRef<any>(null)
-
     const {
         webcamStream,
         micStream,
@@ -25,6 +25,10 @@ export const CallParticipant = ({
         isLocal,
         displayName
     } = useParticipant(id)
+
+    const micRef = useRef<any>(null)
+
+    const [name, type] = displayName.split('@')
 
     const videoStream = useMemo(() => {
         if(webcamOn && webcamStream) {
@@ -41,7 +45,7 @@ export const CallParticipant = ({
                 mediaStream.addTrack(micStream.track)
 
                 micRef.current.srcObject = mediaStream
-                micRef.current.play().catch((err: any) => console.log('Mic error', err))
+                micRef.current.play().catch((err: any) => console.error('Mic error', err))
             } else {
                 micRef.current.srcObject = null
             }
@@ -50,33 +54,42 @@ export const CallParticipant = ({
 
     return (
         <div id='call-participant'>
-            <Typography variant='body2'>
-                { displayName }
-            </Typography>
-            <Typography variant='body2'>
-                Mic: { micOn ? ' ON' : ' OFF' } | Webcam: { webcamOn ? ' ON' : ' OFF' }
+            <div id='mic'>
+                { micOn ? <MicOutlinedIcon/> : <MicOffOutlinedIcon/> }
+                <audio 
+                    ref={micRef}
+                    autoPlay
+                    muted={isLocal}
+                />
+            </div>
+
+            <Typography id='display-name' variant='body1'>
+                { name }
             </Typography>
 
-            <audio 
-                ref={micRef}
-                autoPlay
-                muted={isLocal}
-            />
-
-            <div id='webcam-wrap'>
-                { webcamOn && (
-                    <ReactPlayer
-                        pip={false}
-                        light={false}
-                        controls={false}
-                        muted={true}
-                        playing={true}
-                        url={videoStream}
-                        height={'200px'}
-                        width={'300px'}
-                        onError={(err: any) => console.log('Webcam error', err)}
-                    />
-                )}
+            <div id='webcam'>
+                { webcamOn 
+                    ? (
+                        <ReactPlayer
+                            id='active'
+                            pip={false}
+                            light={false}
+                            controls={false}
+                            muted={true}
+                            playing={true}
+                            url={videoStream}
+                            width='70%'
+                            height='100%'
+                            onError={(err: any) => console.error('Webcam error', err)}
+                        />
+                    )
+                    : (
+                        <Avatar 
+                            id='inactive'
+                            src={attendance[type as 'user' | 'professional']?.avatar}
+                        />
+                    )
+                }
             </div>
         </div>
     )

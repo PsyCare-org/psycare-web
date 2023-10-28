@@ -4,6 +4,7 @@ import { CallJoin } from '../join'
 import { Attendance } from 'src/types'
 import { CallParticipant } from '../participant'
 import { CallControls } from '../controls'
+import { useNavigate } from 'react-router-dom'
 import './styles.scss'
 
 type Props = {
@@ -12,6 +13,9 @@ type Props = {
 }
 
 export const CallContainer = ({ callId, attendance }: Props) => {
+
+    const navigate = useNavigate()
+
     const {
         join,
         leave,
@@ -32,6 +36,7 @@ export const CallContainer = ({ callId, attendance }: Props) => {
     const leaveCall = () => {
         leave()
         setJoined(false)
+        navigate(`/attendances/${attendance.id}`)
     }
 
     return (
