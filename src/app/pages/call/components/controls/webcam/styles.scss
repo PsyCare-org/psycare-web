@@ -1,0 +1,28 @@
+div#call-controls-webcam {
+    display: flex;
+    gap: .25rem;
+    align-items: center;
+
+    #webcam {
+        &.active {
+            background-color: rgba(0, 0, 0, .45);
+            color: white;
+        }
+
+        &.inactive {
+            background-color: var(--error);
+            color: white;
+        }
+    }
+
+    #change {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}

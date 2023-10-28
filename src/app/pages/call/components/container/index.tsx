@@ -19,12 +19,14 @@ export const CallContainer = ({ callId, attendance }: Props) => {
     const {
         join,
         leave,
+        getMics,
         toggleMic,
+        changeMic,
+        getWebcams,
         toggleWebcam,
+        changeWebcam,
         participants,
-    } = useMeeting({
-        onParticipantJoined: (val) => console.log('entraro', val)
-    })
+    } = useMeeting()
 
     const [joined, setJoined] = useState<boolean>(false)
 
@@ -64,8 +66,12 @@ export const CallContainer = ({ callId, attendance }: Props) => {
                     <CallControls
                         callId={callId}
                         leaveCall={leaveCall}
+                        getMics={getMics}
                         toggleMic={toggleMic}
+                        changeMic={changeMic}
+                        getWebcams={getWebcams}
                         toggleWebcam={toggleWebcam}
+                        changeWebcam={changeWebcam}
                     />
                 </>
             )}
