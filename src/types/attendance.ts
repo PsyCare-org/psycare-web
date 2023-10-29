@@ -6,6 +6,7 @@ import { Rating } from './rating'
 import { MedicalRecord } from './medical-record'
 import { FollowUp } from './follow-up'
 import { Meeting } from './meeting'
+import { Message } from './message'
 
 export type Attendance = {
     id: number
@@ -19,5 +20,6 @@ export type Attendance = {
     medicalRecord?: MedicalRecord
     followUps?: FollowUp[]
     meetings?: Meeting[]
+    lastMessage?: Message
     createdAt: string
 }

@@ -30,6 +30,7 @@ export * from './organisms/attendance-follow-up/attendance-follow-up'
 export * from './organisms/attendance-medical-record/attendance-medical-record'
 export * from './organisms/attendance-meeting/attendance-meeting'
 export * from './organisms/attendance-rating/attendance-rating'
+export * from './organisms/chat/chat'
 
 export * from './templates/attendances/attendances'
 export * from './templates/attendance/attendance'

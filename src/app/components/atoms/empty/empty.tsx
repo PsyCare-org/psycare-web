@@ -3,7 +3,7 @@ import { ReactNode } from 'react'
 import './empty.scss'
 
 type Props = {
-    title: ReactNode | string
+    title?: ReactNode | string
     children: ReactNode
 }
 
@@ -13,9 +13,11 @@ export const AtomEmpty = ({
 }: Props) => {
     return (
         <div id='atom-empty'>
-            <Typography variant='h6'>
-                { title }
-            </Typography>
+            { title && (
+                <Typography variant='h6'>
+                    { title }
+                </Typography>
+            )}
             <Typography variant='body1'>
                 { children }
             </Typography>

@@ -8,6 +8,14 @@ export const useUtils = () => {
         return new Date(origin).toLocaleDateString('pt-BR')
     }
 
+    const formatFullDate = (origin: string) => {
+        const dateInstance = dayjs(origin)
+        const date = `${dateInstance.get('D')}/${dateInstance.get('M')}`
+        const hour = `${dateInstance.get('h')}:${dateInstance.get('m')}`
+
+        return `${dayjs().isSame(dateInstance, 'day') ? '' : `${date}, `}${hour}`
+    }
+
     const formatCalendarHour = (calendarHour: CalendarHour, upperCase = true) => {
         const [ day, hour ] = calendarHour.split('-')
         return `${upperCase ? days[day] : days[day].toLowerCase()} às ${hours[hour]}`
@@ -31,6 +39,7 @@ export const useUtils = () => {
 
     return {
         formatDate,
+        formatFullDate,
         formatCalendarHour,
         calcAge,
         getCalendarHourDates
