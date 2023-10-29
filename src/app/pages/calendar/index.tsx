@@ -29,7 +29,7 @@ export const Calendar = () => {
     const [modal, setModal] = useState<boolean>(false)
 
     useEffect(() => {
-        get(`/attendance/list/${person?.type}/${person?.id}`).then(({ data: { active } }) => {
+        get(`/attendance/${person?.type}/${person?.id}/list`).then(({ data: { active } }) => {
             const otherPerson = person?.type === 'user' ? 'professional' : 'user'
 
             const newData: Event[] = active.map((attendance: Attendance) => ({

@@ -26,7 +26,7 @@ export const Historics = () => {
     const props = useChildProps()[(person as Person).type]
 
     useEffect(() => {
-        get(`/attendance/list/${person?.type}/${person?.id}`).then(res => {
+        get(`/attendance/${person?.type}/${person?.id}/list`).then(res => {
             setAttendances(res.data.closed)
         })
     }, [])
