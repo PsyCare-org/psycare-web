@@ -5,11 +5,12 @@ import { MouseEvent, useState } from 'react'
 import { usePerson } from 'src/app/hooks'
 import PersonIcon from '@mui/icons-material/Person'
 import LogoutIcon from '@mui/icons-material/Logout'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import './header-menus.scss'
 
 export const HeaderMenus = () => {
 
+    const { pathname } = useLocation()
     const navigate = useNavigate()
     const { person, avatar, signOut } = usePerson()
 
@@ -26,17 +27,18 @@ export const HeaderMenus = () => {
 
     return (
         <div id='header-menus'>
-            <IconButton onClick={() => navigate('/messages')}>
+            <IconButton 
+                id='messages'
+                className={pathname.includes('messages') ? 'active' : ''}
+                onClick={() => navigate('/messages')}
+            >
                 <EmailIcon />
-            </IconButton>
-
-            <IconButton>
-                <NotificationsIcon />
             </IconButton>
 
             <>
                 <IconButton
                     id='profile'
+                    className={pathname.includes('profile') ? 'active' : ''}
                     onClick={openMenu}
                 >
                     <Avatar 

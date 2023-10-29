@@ -51,7 +51,7 @@ export const OrgAttendanceAside = ({
 
             { data.status === AttendanceStatus.active && (
                 <div id='communications'>
-                    <AtomButton>
+                    <AtomButton onClick={() => navigate(`/messages?attendanceId=${data.id}`)}>
                         <ChatIcon />
                         Chat
                     </AtomButton>

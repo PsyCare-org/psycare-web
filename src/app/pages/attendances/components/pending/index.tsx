@@ -7,6 +7,7 @@ import { Attendance } from 'src/types'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext'
 import CheckIcon from '@mui/icons-material/Check'
 import CloseIcon from '@mui/icons-material/Close'
+import ChatIcon from '@mui/icons-material/Chat'
 import { useNavigate } from 'react-router-dom'
 import './styles.scss'
 
@@ -64,7 +65,7 @@ export const AttendancesPending = ({ data, reload }: Props) => {
                     </Typography>
                 )}
 
-                <List { ...!isUser && { id: 'patients-pending' } }>
+                <List id='pending-list'>
                     {data.map(attendance => (
                         <ListItem key={attendance.id}>
                             <ListItemAvatar>
@@ -77,29 +78,34 @@ export const AttendancesPending = ({ data, reload }: Props) => {
                                     : { secondary: `${calcAge(attendance.user.birthDate)} | ${attendance.user.gender}` }
                                 }
                             />
-                            {isUser && (
-                                <ListItemSecondaryAction>
+                            <ListItemSecondaryAction>
+                                <Tooltip title='Ver mensagens'>
+                                    <IconButton onClick={() => navigate(`/messages?attendanceId=${attendance.id}`)}>
+                                        <ChatIcon />
+                                    </IconButton>
+                                </Tooltip>
+                                {isUser && (
                                     <Tooltip title='Ver perfil do profissional'>
                                         <IconButton onClick={() => navigate(`/professionals/${attendance.professional.id}`)}>
                                             <NavigateNextIcon />
                                         </IconButton>
                                     </Tooltip>
-                                </ListItemSecondaryAction>
-                            )}
-                            {!isUser && (
-                                <ListItemSecondaryAction>
-                                    <Tooltip title='Recusar'>
-                                        <IconButton onClick={() => onSubmit(attendance, AttendanceStatus.closed)}>
-                                            <CloseIcon />
-                                        </IconButton>
-                                    </Tooltip>
-                                    <Tooltip title='Aceitar' color='primary'>
-                                        <IconButton onClick={() => onSubmit(attendance, AttendanceStatus.active)}>
-                                            <CheckIcon />
-                                        </IconButton>
-                                    </Tooltip>
-                                </ListItemSecondaryAction>
-                            )}
+                                )}
+                                {!isUser && (
+                                    <>
+                                        <Tooltip title='Recusar'>
+                                            <IconButton onClick={() => onSubmit(attendance, AttendanceStatus.closed)}>
+                                                <CloseIcon />
+                                            </IconButton>
+                                        </Tooltip>
+                                        <Tooltip title='Aceitar' color='primary'>
+                                            <IconButton onClick={() => onSubmit(attendance, AttendanceStatus.active)}>
+                                                <CheckIcon />
+                                            </IconButton>
+                                        </Tooltip>
+                                    </>
+                                )}
+                            </ListItemSecondaryAction>
                         </ListItem>
                     ))}
                 </List>

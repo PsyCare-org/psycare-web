@@ -37,6 +37,10 @@ export const CalendarModal = ({
     const onAttendance = () => {
         navigate(`/attendances/${event.resource.id}`)
     }
+    
+    const onChat = () => {
+        navigate(`/messages?attendanceId=${event.resource.id}`)
+    }
 
     const onCall = () => {
         navigate(`/attendances/${event.resource.id}/call`)
@@ -79,7 +83,7 @@ export const CalendarModal = ({
                             </IconButton>
                         </Tooltip>
 
-                        <Tooltip title='Abrir chat'>
+                        <Tooltip title='Abrir chat' onClick={onChat}>
                             <IconButton>
                                 <ChatIcon />
                             </IconButton>
