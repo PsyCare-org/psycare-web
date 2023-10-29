@@ -1,49 +1,45 @@
-import { Divider, IconButton, Tooltip, Typography } from '@mui/material'
-import dayjs from 'dayjs'
-import { SetStateAction } from 'react'
-import { Event } from 'react-big-calendar'
-import { AtomModal, MolProfessionalDisplay } from 'src/app/components'
-import { MolUserDisplay } from 'src/app/components/molecules/user-display/user-display'
+import { ReactNode, SetStateAction } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { usePerson } from 'src/app/hooks'
 import { Attendance } from 'src/types'
+import { AtomModal } from '../../atoms/modal/modal'
+import { MolProfessionalDisplay } from '../professional-display/professional-display'
+import { MolUserDisplay } from '../user-display/user-display'
+import { Divider, IconButton, Tooltip } from '@mui/material'
 import ChatIcon from '@mui/icons-material/Chat'
 import VideoChatIcon from '@mui/icons-material/VideoChat'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext'
-import './styles.scss'
-import { useNavigate } from 'react-router-dom'
+import './attendance-modal.scss'
 
 type Props = {
     flag: boolean
     setFlag: (value: SetStateAction<boolean>) => void
-    event: Event
+    attendance: Attendance
+    children?: ReactNode
+    showChatBtn?: boolean
 }
 
-export const CalendarModal = ({
+export const MolAttendanceModal = ({
     flag,
     setFlag,
-    event
+    attendance,
+    children,
+    showChatBtn = true
 }: Props) => {
 
     const { person } = usePerson()
     const navigate = useNavigate()
 
-    const weekDay: string = event?.start?.toLocaleDateString('pt-BR', { weekday: 'long' }) as string
-    const formatedWeekDay = weekDay[0].toUpperCase() + weekDay.slice(1)
-    const start = dayjs(event?.start)
-    const end = dayjs(event?.end)
-
-    const label = `${formatedWeekDay}, ${start.get('hours')}:${start.get('minutes')}0 - ${end.get('hours')}:${end.get('minutes')}`
-
     const onAttendance = () => {
-        navigate(`/attendances/${event.resource.id}`)
+        navigate(`/attendances/${attendance.id}`)
     }
     
     const onChat = () => {
-        navigate(`/messages?attendanceId=${event.resource.id}`)
+        navigate(`/messages?attendanceId=${attendance.id}`)
     }
 
     const onCall = () => {
-        navigate(`/attendances/${event.resource.id}/call`)
+        navigate(`/attendances/${attendance.id}/call`)
     }
 
     return (
@@ -53,10 +49,10 @@ export const CalendarModal = ({
             showButtons={false}
             showTitle={false}
         >
-            <div id='calendar-modal'>
+            <div id='mol-attendance-modal'>
                 {person?.type === 'user' && (
                     <MolProfessionalDisplay
-                        professional={(event?.resource as Attendance).professional}
+                        professional={attendance.professional}
                         size='x-small'
                         showLangAndRating={false}
                     />
@@ -64,7 +60,7 @@ export const CalendarModal = ({
 
                 {person?.type === 'professional' && (
                     <MolUserDisplay
-                        user={(event?.resource as Attendance).user}
+                        user={attendance.user}
                         size='x-small'
                     />
                 )}
@@ -72,9 +68,7 @@ export const CalendarModal = ({
                 <Divider flexItem />
 
                 <div id='actions'>
-                    <Typography variant='h6'>
-                        {label}
-                    </Typography>
+                    { children && children }
 
                     <div id='buttons'>
                         <Tooltip title='Entrar na chamada'>
@@ -83,11 +77,13 @@ export const CalendarModal = ({
                             </IconButton>
                         </Tooltip>
 
-                        <Tooltip title='Abrir chat' onClick={onChat}>
-                            <IconButton>
-                                <ChatIcon />
-                            </IconButton>
-                        </Tooltip>
+                        { showChatBtn && (
+                            <Tooltip title='Abrir chat' onClick={onChat}>
+                                <IconButton>
+                                    <ChatIcon />
+                                </IconButton>
+                            </Tooltip>
+                        )}
 
                         <Tooltip title='Ver acompanhamento'>
                             <IconButton onClick={onAttendance}>

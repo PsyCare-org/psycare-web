@@ -11,8 +11,12 @@ div#calendar {
     div#content {
         position: relative;
         height: inherit;
-
     }
+}
+
+#calendar-label {
+    font-size: 18px;
+    font-weight: 400;
 }
 
 div.rbc-calendar {
