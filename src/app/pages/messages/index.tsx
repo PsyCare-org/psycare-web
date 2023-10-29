@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
-import { AtomEmpty, BreadcrumbItem, MessagePayload, OrgChat, OrgDefault } from 'src/app/components'
+import { AtomEmpty, BreadcrumbItem, OrgChat, OrgDefault } from 'src/app/components'
 import { useApi, usePerson, useQuery } from 'src/app/hooks'
-import { Attendance, Message } from 'src/types'
+import { Attendance } from 'src/types'
 import { MessagesAside } from './aside'
-import './styles.scss'
 import { Typography } from '@mui/material'
+import './styles.scss'
 
 const breadcrumbs: BreadcrumbItem[] = [{
     active: false,
