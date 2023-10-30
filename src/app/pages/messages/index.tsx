@@ -56,13 +56,14 @@ export const Messages = () => {
                             <MessagesAside
                                 data={data}
                                 selected={selected}
-                                onSelect={val => setSelected(val)}
+                                onSelect={val => {
+                                    // setSelected(null)
+                                    setSelected(val)
+                                }}
                             />
 
                             { selected && (
-                                <OrgChat 
-                                    attendance={selected}
-                                />
+                                <OrgChat attendance={selected} />
                             )}
                         </>
                     )}

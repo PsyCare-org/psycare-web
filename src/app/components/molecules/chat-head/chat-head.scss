@@ -1,0 +1,9 @@
+div#mol-chat-head {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+
+    div#spacer {
+        flex: 1 1 auto;
+    }
+}
