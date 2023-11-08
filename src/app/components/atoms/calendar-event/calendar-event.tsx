@@ -1,10 +1,10 @@
 import { Typography } from '@mui/material'
 import { EventProps } from 'react-big-calendar'
-import './styles.scss'
+import './calendar-event.scss'
 
-export const CalendarEvent = ({ ...props }: EventProps) => {
+export const AtomCalendarEvent = ({ ...props }: EventProps) => {
     return (
-        <div id='calendar-event'>
+        <div id='atom-calendar-event'>
             <Typography variant='body1' color='white'>
                 { props.event.title }
             </Typography>

@@ -20,8 +20,8 @@ export const Attendances = () => {
 
     const loadData = () => {
         get(`/attendance/${person?.type}/${person?.id}/list`).then(res => {
-            setAttendances(res.data.active)
-            setPendingAttendances(res.data.pending)
+            setAttendances([...res.data.active,...res.data.active,...res.data.active,...res.data.active,...res.data.active,...res.data.active,...res.data.active,...res.data.active,...res.data.active,...res.data.active,...res.data.active,...res.data.active,...res.data.active,...res.data.active,...res.data.active,...res.data.active,...res.data.active,...res.data.active])
+            setPendingAttendances([...res.data.pending,...res.data.pending,...res.data.pending,...res.data.pending,...res.data.pending,...res.data.pending,...res.data.pending,...res.data.pending,...res.data.pending,...res.data.pending,...res.data.pending,...res.data.pending,...res.data.pending,...res.data.pending,...res.data.pending,...res.data.pending,...res.data.pending,...res.data.pending])
         })
     }
 
@@ -35,6 +35,7 @@ export const Attendances = () => {
             { ...pendingAttendances.length > 0 && {
                 headButton: <AttendancesPending data={pendingAttendances} reload={loadData} />
             }}
+            showDailyCalendar={true}
             data={attendances}
             onAttendanceClick={({ id }) => navigate(`/attendances/${id}`)}
         />

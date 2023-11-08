@@ -1,12 +1,12 @@
 import { Typography } from '@mui/material'
 import { HeaderProps } from 'react-big-calendar'
-import './styles.scss'
+import './calendar-header.scss'
 
-export const CalendarHeader = ({ label }: HeaderProps) => {
+export const AtomCalendarHeader = ({ label }: HeaderProps) => {
     const [day, weekDay] = label.split(' ')
 
     return (
-        <div id='calendar-header'>
+        <div id='atom-calendar-header'>
             <Typography variant='caption'>
                 { weekDay.toUpperCase() }.
             </Typography>

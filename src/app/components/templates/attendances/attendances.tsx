@@ -5,6 +5,7 @@ import { Attendance } from 'src/types'
 import { MolAttendanceCard } from '../../molecules/attendance-card/attendance-card'
 import { Typography } from '@mui/material'
 import { AtomEmpty } from '../../atoms/empty/empty'
+import { OrgCalendar } from '../../organisms/calendar/calendar'
 import './attendances.scss'
 
 export type TemAttendancesProps = {
@@ -16,6 +17,7 @@ export type TemAttendancesProps = {
     onAttendanceClick: (attendance: Attendance) => void
     emptyTitle: ReactNode
     emptyDescription: ReactNode
+    showDailyCalendar?: boolean
 }
 
 export const TemAttendances = ({
@@ -26,7 +28,8 @@ export const TemAttendances = ({
     data,
     onAttendanceClick,
     emptyTitle,
-    emptyDescription
+    emptyDescription,
+    showDailyCalendar = false
 }: TemAttendancesProps) => {
     return (
         <OrgDefault breadcrumbs={breadcrumbs}>
@@ -46,17 +49,24 @@ export const TemAttendances = ({
                     )}
                 </div>
 
-                <div id='content'>
+                <div id='content' className={data && data.length == 0 ? 'empty' : ''}>
                     { data && data.length > 0 && (
-                        <div id='list'>
-                            {data.map(attendance => (
-                                <MolAttendanceCard 
-                                    key={attendance.id} 
-                                    attendance={attendance}
-                                    onClick={onAttendanceClick}
-                                />
-                            ))}
-                        </div>
+                        <>
+                            <div id='list'>
+                                {data.map((attendance, index) => (
+                                    <MolAttendanceCard 
+                                        key={index} 
+                                        attendance={attendance}
+                                        onClick={onAttendanceClick}
+                                    />
+                                ))}
+                            </div>
+                            { showDailyCalendar && (
+                                <div id='calendar-wrap'>
+                                    <OrgCalendar view='day' />
+                                </div>
+                            )}
+                        </>
                     )}
 
                     { data && data.length == 0 && (

@@ -12,12 +12,29 @@ div#tem-attendances {
     }
 
     div#content {
+        &:not(.empty) {
+            display: grid;
+            grid-template-columns: .7fr .3fr;
+            grid-template-rows: auto;
+            gap: 2rem;
+            height: 70vh;
+        }
+
         div#list {
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
             align-items: center;
-            margin: 0 auto;
+            height: inherit;
+            overflow: auto;
+        }
+
+        div#calendar-wrap {
+            height: inherit;
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+            text-align: center;
         }
     }
 }
