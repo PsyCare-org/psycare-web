@@ -52,7 +52,6 @@ export const Messages = () => {
     }, [])
 
     const onChangeSelected = (value: Attendance) => {
-        console.log(value)
         socket.emit('leaveRoom', selected?.id.toString())
 
         socket.emit('joinRoom', value.id.toString())

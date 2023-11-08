@@ -4,8 +4,25 @@ div#call-container {
     flex-direction: column;
     gap: 1.5rem;
 
-    div#participants {
-        display: flex;
-        height: 100%;
+    div#call {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: .9fr .1fr;
+        gap: 1rem;
+        height: inherit;
+
+        div#view {
+            display: flex;
+            gap: 1rem;
+
+            div#participants {
+                display: flex;
+                width: 100%;
+            }
+
+            div#org-chat {
+                width: 33%;
+            }
+        }
     }
 }

@@ -4,6 +4,7 @@ import { Mic } from '../../types/mic'
 import { Webcam } from '../../types/webcam'
 import { CallControlsMic } from './mic'
 import { CallControlsWebcam } from './webcam'
+import ChatIcon from '@mui/icons-material/Chat'
 import './styles.scss'
 
 type Props = {
@@ -15,6 +16,7 @@ type Props = {
     toggleWebcam: (customVideoTrack?: MediaStream | undefined) => void
     changeWebcam: (object: string | MediaStream) => void
     leaveCall: () => void
+    toggleDrawer: () => void
 }
 
 export const CallControls = ({
@@ -25,7 +27,8 @@ export const CallControls = ({
     getWebcams,
     toggleWebcam,
     changeWebcam,
-    leaveCall
+    leaveCall,
+    toggleDrawer
 }: Props) => {
     return (
         <div id='call-controls'>
@@ -59,7 +62,11 @@ export const CallControls = ({
                 </IconButton>
             </div>
 
-            <div></div>
+            <div id='right'>
+                <IconButton onClick={toggleDrawer}>
+                    <ChatIcon />
+                </IconButton>
+            </div>
         </div>
     )
 }
