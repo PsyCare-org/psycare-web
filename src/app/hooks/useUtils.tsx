@@ -10,10 +10,7 @@ export const useUtils = () => {
 
     const formatFullDate = (origin: string) => {
         const dateInstance = dayjs(origin)
-        const date = `${dateInstance.get('D')}/${dateInstance.get('M')}`
-        const hour = `${dateInstance.get('h')}:${dateInstance.get('m')}`
-
-        return `${dayjs().isSame(dateInstance, 'day') ? '' : `${date}, `}${hour}`
+        return dateInstance.format(dayjs().isSame(dateInstance, 'day') ? 'HH:mm' : 'DD/MM, HH:mm')
     }
 
     const formatCalendarHour = (calendarHour: CalendarHour, upperCase = true) => {
