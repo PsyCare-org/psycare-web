@@ -19,7 +19,7 @@ const PersonProvider = ({ children }: Props) => {
     const signIn = (value: Person) => {
         setPerson(value)
 
-        const url = `${env.dataApiUrl}/avatar/${value.type}/${value.id}`
+        const url = `${env.apiUrl}/avatar/${value.type}/${value.id}`
 
         const config: AxiosRequestConfig = {
             headers: {

@@ -8,7 +8,7 @@ import { env } from 'src/constants'
 import { io } from 'socket.io-client'
 import './styles.scss'
 
-const socket = io(env.dataWsUrl || '')
+const socket = io(env.wsUrl || '')
 
 const breadcrumbs: BreadcrumbItem[] = [{
     active: false,

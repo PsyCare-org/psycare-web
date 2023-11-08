@@ -10,7 +10,7 @@ import { OrgChat } from 'src/app/components'
 import { io } from 'socket.io-client'
 import { env } from 'src/constants'
 
-const chatSocket = io(env.dataWsUrl || '')
+const chatSocket = io(env.wsUrl || '')
 
 type Props = {
     callId: string
