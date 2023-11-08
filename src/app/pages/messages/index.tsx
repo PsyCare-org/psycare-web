@@ -4,7 +4,11 @@ import { useApi, usePerson, useQuery } from 'src/app/hooks'
 import { Attendance } from 'src/types'
 import { MessagesAside } from './aside'
 import { Typography } from '@mui/material'
+import { env } from 'src/constants'
+import { io } from 'socket.io-client'
 import './styles.scss'
+
+const socket = io(env.dataWsUrl || '')
 
 const breadcrumbs: BreadcrumbItem[] = [{
     active: false,
@@ -13,24 +17,47 @@ const breadcrumbs: BreadcrumbItem[] = [{
 }]
 
 export const Messages = () => {
-
+    
     const { get } = useApi()
     const { person } = usePerson()
+
     const queryParams = useQuery()
 
     const [selected, setSelected] = useState<Attendance | null>(null)
     const [data, setData] = useState<Attendance[] | null>(null)
 
-    useEffect(() => {
+    const loadData = () => {
         get(`/attendance/${person?.type}/${person?.id}/messages`).then(res => {
-            const attendanceId = parseInt(queryParams.get('attendanceId') as string)
+            let attendanceId = parseInt(queryParams.get('attendanceId') as string)
+            let newSelected = res.data.find((el: Attendance) => el.id === attendanceId)
 
-            const newSelected = res.data.find((el: Attendance) => el.id === attendanceId) || res.data[0]
+            if(!newSelected) {
+                newSelected = res.data[0]
+                attendanceId = res.data[0].id
+            }
 
             setData(res.data)
+            socket.emit('joinRoom', attendanceId.toString())
             setSelected(newSelected)
         })
+    }
+
+    useEffect(() => {
+        loadData()
+        socket.connect()
+
+        return () => {
+            socket.disconnect()
+        }
     }, [])
+
+    const onChangeSelected = (value: Attendance) => {
+        console.log(value)
+        socket.emit('leaveRoom', selected?.id.toString())
+
+        socket.emit('joinRoom', value.id.toString())
+        setSelected(value)
+    }
 
     return (
         <OrgDefault breadcrumbs={breadcrumbs}>
@@ -56,14 +83,14 @@ export const Messages = () => {
                             <MessagesAside
                                 data={data}
                                 selected={selected}
-                                onSelect={val => {
-                                    // setSelected(null)
-                                    setSelected(val)
-                                }}
+                                onSelect={onChangeSelected}
                             />
 
                             { selected && (
-                                <OrgChat attendance={selected} />
+                                <OrgChat 
+                                    socket={socket}
+                                    attendance={selected}
+                                />
                             )}
                         </>
                     )}

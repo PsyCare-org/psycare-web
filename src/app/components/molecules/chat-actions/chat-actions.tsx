@@ -1,15 +1,16 @@
 import { IconButton, TextField } from '@mui/material'
 import SendOutlinedIcon from '@mui/icons-material/SendOutlined'
 import { useEffect, useState } from 'react'
-import { Attendance } from 'src/types'
+import { Attendance, Message } from 'src/types'
 import { useApi, usePerson } from 'src/app/hooks'
 import './chat-actions.scss'
 
 type Props = {
     attendance: Attendance
+    onNewMessage: (val: Message) => void
 }
 
-export const MolChatActions = ({ attendance }: Props) => {
+export const MolChatActions = ({ attendance, onNewMessage }: Props) => {
 
     const { post } = useApi()
     const { person } = usePerson()
@@ -23,7 +24,10 @@ export const MolChatActions = ({ attendance }: Props) => {
             content: newMessage
         }
 
-        post('/message', payload).then(() => setNewMessage(''))
+        post('/message', payload).then(res => {
+            setNewMessage('')
+            onNewMessage(res)
+        })
     }
 
     useEffect(() => {
