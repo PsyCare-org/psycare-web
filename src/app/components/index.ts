@@ -26,6 +26,7 @@ export * from './molecules/chat-head/chat-head'
 export * from './molecules/chat-list/chat-list'
 export * from './molecules/chat-actions/chat-actions'
 export * from './molecules/attendance-modal/attendance-modal'
+export * from './molecules/meeting-filter/meeting-filter'
 
 export * from './organisms/auth/auth'
 export * from './organisms/default/default'

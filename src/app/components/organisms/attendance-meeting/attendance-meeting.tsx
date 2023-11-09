@@ -1,8 +1,14 @@
-import { Link, Typography } from '@mui/material'
+import { Card, CardContent, Link, Table, TableBody, TableCell, TableContainer, TableHead, Typography } from '@mui/material'
 import { useState } from 'react'
 import { useApi, usePerson, useSnackbar } from 'src/app/hooks'
-import { Attendance } from 'src/types'
-import { AtomButton, AtomEmpty, AtomMeetingForm, MeetingForm, MolMeeting } from 'src/app/components'
+import { Attendance, Meeting } from 'src/types'
+import { AtomButton, AtomEmpty, AtomMeetingForm, MeetingForm, MolMeeting, MolMeetingFilter } from 'src/app/components'
+import { MeetingFilter } from '../../molecules/meeting-filter/types/meeting-filter'
+import dayjs from 'dayjs'
+import isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
+import isSameOrAfter from 'dayjs/plugin/isSameOrAfter'
+dayjs.extend(isSameOrBefore)
+dayjs.extend(isSameOrAfter)
 import './attendance-meeting.scss'
 
 type Props = {
@@ -19,9 +25,11 @@ export const MolAttendanceMeeting = ({
 
     const { person } = usePerson()
     const { post } = useApi()
-    const { createSnack } = useSnackbar()    
+    const { createSnack } = useSnackbar()
 
     const [createModal, setCreateModal] = useState<boolean>(false)
+
+    const [meetings, setMeetings] = useState<Meeting[]>(data.meetings || [])
 
     const onCreate = (value: MeetingForm) => {
         const payload = {
@@ -34,6 +42,35 @@ export const MolAttendanceMeeting = ({
             setCreateModal(false)
             reload()
         })
+    }
+
+    const filterHandler = (filter: MeetingFilter) => {
+        if(Object.keys(filter).length === 0) {
+            setMeetings(data.meetings || [])
+            return
+        }
+
+        const newMeetings = data.meetings?.filter(meeting => {
+            const meetingDate = dayjs(meeting.dateTime)
+
+            const startDateFlag = filter.startDate ? meetingDate.isSameOrAfter(filter.startDate) : true
+
+            const endDateFlag = filter.endDate ? meetingDate.isSameOrBefore(filter.endDate) : true
+
+            let keyWordFlag = true
+            if(filter.keyword) {
+                keyWordFlag = ['status', 'relatory', 'analisys', 'observations']
+                    .map(field => {
+                        const value: string = meeting[field as keyof Meeting]?.toString().toLowerCase() || ''
+                        return value.includes(filter.keyword?.toLowerCase() || '')
+                    })
+                    .some(field => field)
+            }
+
+            return startDateFlag && endDateFlag && keyWordFlag
+        })
+
+        setMeetings(newMeetings || [])
     }
 
     return (
@@ -54,7 +91,7 @@ export const MolAttendanceMeeting = ({
                             Criar encontro
                         </AtomButton>
 
-                        { createModal && (
+                        {createModal && (
                             <AtomMeetingForm
                                 title='Criar Encontro'
                                 confirmBtnLabel='Criar'
@@ -67,23 +104,36 @@ export const MolAttendanceMeeting = ({
                 )}
             </div>
 
-            { !data.meetings || data.meetings.length === 0 && (
+            {!data.meetings || data.meetings.length === 0 && (
                 <AtomEmpty title='Nenhum Encontro!'>
-                    No momento, não há nenhum encontro registrado. 
+                    No momento, não há nenhum encontro registrado.
                     Para adicionar um encontro, utilize o botão acima ou <Link onClick={() => setCreateModal(true)}>clique aqui</Link>
                 </AtomEmpty>
             )}
 
-            { data.meetings && data.meetings.length > 0 && (
+            {data.meetings && data.meetings.length > 0 && (
                 <div id='content'>
-                    { data.meetings.map(meeting => (
-                        <MolMeeting
-                            key={meeting.id}
-                            allowEdit={isActive}
-                            data={meeting}
-                            reload={reload}
-                        />
-                    ))}
+                    <MolMeetingFilter onSubmit={filterHandler} />
+
+                    <TableContainer>
+                        <Table>
+                            <TableHead>
+                                <TableCell>Data do encontro</TableCell>
+                                <TableCell>Resumo</TableCell>
+                                <TableCell />
+                            </TableHead>
+                            <TableBody>
+                                { meetings.map(meeting => (
+                                    <MolMeeting
+                                        key={meeting.id}
+                                        data={meeting}
+                                        allowEdit={isActive}
+                                        reload={reload}
+                                    />
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
                 </div>
             )}
         </div>

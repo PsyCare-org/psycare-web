@@ -92,7 +92,7 @@ export const AtomMeetingForm = ({
                             required
                             id='status'
                             type='text'
-                            label='Status'
+                            label='Resumo'
                             error={!!formErrors.status}
                             helperText={formErrors.status?.message}
                         />
