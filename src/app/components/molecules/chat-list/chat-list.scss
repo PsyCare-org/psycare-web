@@ -9,11 +9,10 @@ div#mol-chat-list {
     div.message {
         display: flex;
         flex-direction: column;
-        min-width: max-content;
-        max-width: 50%;
 
         &.received {
             align-self: flex-start;
+            max-width: 55%;
 
             div.content {
                 border: 2px solid #d9d9d9;
@@ -30,6 +29,7 @@ div#mol-chat-list {
 
         &.sended {
             align-self: flex-end;
+            max-width: 55%;
 
             div.content {
                 border: 2px solid var(--primary);
