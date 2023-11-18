@@ -82,7 +82,7 @@ export const MolAttendanceFollowUp = ({
                             Caso tenha alguma dúvida ou precise de orientação, não hesite em entrar em contato com {professionalName}.
                         </>
                         : <>
-                            No momento não há nenhum afazer registrado. Para adicionar um afazer, utilize o botão acima ou <Link onClick={() => setCreateModal(true)}>clique aqui</Link>
+                            No momento não há nenhum afazer registrado. { isActive && <>Para adicionar um afazer, utilize o botão acima ou <Link onClick={() => setCreateModal(true)}>clique aqui</Link></> }
                         </>
                     }
                 </AtomEmpty>

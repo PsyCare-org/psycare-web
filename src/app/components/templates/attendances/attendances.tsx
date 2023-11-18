@@ -52,7 +52,7 @@ export const TemAttendances = ({
                 <div id='content' className={data && data.length == 0 ? 'empty' : ''}>
                     { data && data.length > 0 && (
                         <>
-                            <div id='list'>
+                            <div id='list' className={showDailyCalendar ? '' : 'full-width'}>
                                 {data.map((attendance, index) => (
                                     <MolAttendanceCard 
                                         key={index} 

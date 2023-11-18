@@ -97,7 +97,8 @@ export const CallContainer = ({ callId, attendance }: Props) => {
                         getWebcams={getWebcams}
                         toggleWebcam={toggleWebcam}
                         changeWebcam={changeWebcam}
-                        toggleDrawer={() => setChatFlag(!chatFlag)}
+                        chatFlag={chatFlag}
+                        toggleChat={() => setChatFlag(!chatFlag)}
                     />
                 </div>
             )}

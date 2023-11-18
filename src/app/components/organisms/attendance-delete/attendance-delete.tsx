@@ -34,7 +34,7 @@ export const MolAttendanceDelete = ({
 
         patch(`/attendance/${data.id}`, payload).then(() => {
             createSnack('Atendimento encerrado com sucesso!', 'success')
-            navigate(`/historic/${data.id}`)
+            navigate(`/historics/${data.id}`)
         })
     }
 

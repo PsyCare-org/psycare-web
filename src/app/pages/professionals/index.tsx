@@ -22,7 +22,7 @@ export const Professionals = () => {
 
     const [total, setTotal] = useState<number>(0)
     const [page, setPage] = useState<number>(0)
-    const [rowsPerPage, setRowsPerPage] = useState<number>(10)
+    const [rowsPerPage, setRowsPerPage] = useState<number>(4)
     const [filter, setFilter] = useState<Filter>({})
     const [data, setData] = useState<Professional[]>([])
 
@@ -68,7 +68,7 @@ export const Professionals = () => {
                     rowsPerPage={rowsPerPage}
                     setRowsPerPage={setRowsPerPage}
                     entityName='Profissionais'
-                    options={[10, 20]}
+                    options={[4, 10, 20]}
                 />
             </div>
         </OrgDefault>

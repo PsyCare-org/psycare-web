@@ -27,6 +27,10 @@ div#tem-attendances {
             align-items: center;
             height: inherit;
             overflow: auto;
+
+            &.full-width {
+                grid-column: span 2;
+            }
         }
 
         div#calendar-wrap {

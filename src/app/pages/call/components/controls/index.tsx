@@ -16,7 +16,8 @@ type Props = {
     toggleWebcam: (customVideoTrack?: MediaStream | undefined) => void
     changeWebcam: (object: string | MediaStream) => void
     leaveCall: () => void
-    toggleDrawer: () => void
+    chatFlag: boolean
+    toggleChat: () => void
 }
 
 export const CallControls = ({
@@ -28,7 +29,8 @@ export const CallControls = ({
     toggleWebcam,
     changeWebcam,
     leaveCall,
-    toggleDrawer
+    chatFlag,
+    toggleChat
 }: Props) => {
     return (
         <div id='call-controls'>
@@ -63,7 +65,10 @@ export const CallControls = ({
             </div>
 
             <div id='right'>
-                <IconButton onClick={toggleDrawer}>
+                <IconButton
+                    className={chatFlag ? 'active' : 'inactive'}
+                    onClick={toggleChat}
+                >
                     <ChatIcon />
                 </IconButton>
             </div>

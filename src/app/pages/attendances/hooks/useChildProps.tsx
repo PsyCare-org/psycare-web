@@ -24,12 +24,12 @@ export const useChildProps = (): ChildProps => {
         professional: {
             breadcrumbs: [{
                 active: false,
-                label: 'Pacientes',
+                label: 'Acompanhamentos',
                 url: '/attendances'
             }],
-            title: 'Pacientes',
+            title: 'Acompanhamentos',
             subTitle: 'Aqui estão todos os atendimentos ativos que você, como profissional, está atualmente cuidando. Este é o seu espaço para acompanhar o progresso e fornecer o melhor suporte aos seus pacientes.',
-            emptyTitle: 'Nenhum Paciente ativo!',
+            emptyTitle: 'Nenhum Acompanhamento Ativo!',
             emptyDescription: <>
                 Atualmente, não há pacientes com acompanhamentos ativos em sua lista. Para iniciar um acompanhamento com um novo paciente, confira a lista de solicitações de acompanhamento pendentes. Certifique-se de manter o <Link onClick={() => navigate('/profile')}>seu perfil</Link> na plataforma atualizado.
             </>

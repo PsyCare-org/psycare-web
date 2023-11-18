@@ -19,7 +19,7 @@ export const OrgAuth = ({ children }: Props) => {
             </main>
             <aside>
                 <img src={mindImg} />
-                <Typography className='text' variant='caption' color='white'>
+                <Typography className='text' variant='body1' color='white'>
                     Acompanhamento acessível, online, em qualquer momento e lugar
                 </Typography>
             </aside>

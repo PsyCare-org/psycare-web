@@ -107,7 +107,7 @@ export const MolAttendanceMeeting = ({
             {!data.meetings || data.meetings.length === 0 && (
                 <AtomEmpty title='Nenhum Encontro!'>
                     No momento, não há nenhum encontro registrado.
-                    Para adicionar um encontro, utilize o botão acima ou <Link onClick={() => setCreateModal(true)}>clique aqui</Link>
+                    { isActive && <>Para adicionar um encontro, utilize o botão acima ou <Link onClick={() => setCreateModal(true)}>clique aqui</Link></> }
                 </AtomEmpty>
             )}
 
