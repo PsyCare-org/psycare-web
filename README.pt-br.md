@@ -2,7 +2,7 @@
 [![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/PsyCare-org/psycare-web/blob/main/README.md)
 [![pt-br](https://img.shields.io/badge/lang-pt--br-green.svg)](https://github.com/PsyCare-org/psycare-web/blob/main/README.pt-br.md)
 
-## About
+## Sobre
 Aplicação web que fornece a interface do usuário para o aplicativo PsyCare. Ele consome seu respectivo back-end, a [API PsyCare](https://github.com/PsyCare-org/psycare-api). As principais tecnologias utilizadas no desenvolvimento foram:
 * [ReactJS](https://react.dev/)
 * [MUI](https://mui.com/)
