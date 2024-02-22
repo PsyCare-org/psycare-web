@@ -11,7 +11,7 @@ Web application that provides the user interface for the PsyCare application. It
 
 ## Getting Started
 ### Prerequisites
-You will need [NodeJS](https://nodejs.org/en/download/),  a package manager of your choice.
+You will need [NodeJS](https://nodejs.org/en/download/), and a package manager of your choice.
 
 ### Environment variables
 In the root of the project, create a file called .env, with the following content, filling it with your values:

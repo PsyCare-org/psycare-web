@@ -11,7 +11,7 @@ Aplicação web que fornece a interface do usuário para o aplicativo PsyCare. E
 
 ## Começando
 ### Pré-requisitos
-Você precisará do [NodeJS](https://nodejs.org/en/download/), um gerenciador de pacotes de sua preferência.
+Você precisará do [NodeJS](https://nodejs.org/en/download/), e um gerenciador de pacotes de sua preferência.
 
 ### Variáveis de ambiente
 Na raiz do projeto, crie um arquivo chamado `.env`, com o seguinte conteúdo, preencendo-o com os seus valores:
